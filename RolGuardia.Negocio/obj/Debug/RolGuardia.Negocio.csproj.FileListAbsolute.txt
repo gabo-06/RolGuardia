@@ -1,0 +1,17 @@
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Negocio.dll.config
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Negocio.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Negocio.pdb
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\EntityFramework.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Datos.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Entidad.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Datos.pdb
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Datos.dll.config
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\RolGuardia.Entidad.pdb
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\EntityFramework.xml
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\obj\Debug\RolGuardia.Negocio.csprojAssemblyReference.cache
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\obj\Debug\RolGuardia.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\obj\Debug\RolGuardia.Negocio.csproj.CopyComplete
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\obj\Debug\RolGuardia.Negocio.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Negocio\obj\Debug\RolGuardia.Negocio.pdb

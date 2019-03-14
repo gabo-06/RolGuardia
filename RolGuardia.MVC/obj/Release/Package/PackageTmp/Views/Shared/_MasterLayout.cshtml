@@ -1,0 +1,33 @@
+﻿@{ 
+    string IdMenuSeleccionado = ViewBag.IdMenuSeleccionado;
+}
+
+<!DOCTYPE html>
+
+<html lang="es-pe">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @Styles.Render("~/Estilos/AppStack")
+    @RenderSection("styles", false)
+    @*Colocar aquì Modernizr*@
+    <link rel="shortcut icon" href="">
+</head>
+<body>
+    <input type="hidden" id="IdMenuSeleccionado" value="@IdMenuSeleccionado" />
+    <div class="wrapper">
+        @Html.Partial("_SideBar") <!--Menú Lateral-->
+        <div class="main">
+            @Html.Partial("_HeaderNavBar") <!--Cabecera-->
+            <main class="content">
+                @RenderBody() <!--Cuerpo-->
+            </main>
+            @Html.Partial("_Footer") <!--Pie de Página-->
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/core")
+    @RenderSection("scripts", false)
+</body>
+</html>

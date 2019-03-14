@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDMarinaModelStoreContainer" CdmEntityContainer="BDMarinaConexion">
+    <EntitySetMapping Name="Calendario">
+      <EntityTypeMapping TypeName="BDMarinaModel.Calendario">
+        <MappingFragment StoreEntitySet="Calendario">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdCalendario" ColumnName="IdCalendario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CondicionPapeleta">
+      <EntityTypeMapping TypeName="BDMarinaModel.CondicionPapeleta">
+        <MappingFragment StoreEntitySet="CondicionPapeleta">
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="EstadoAprobacion" ColumnName="EstadoAprobacion" />
+          <ScalarProperty Name="IdPersonalAprobador" ColumnName="IdPersonalAprobador" />
+          <ScalarProperty Name="IdPapeleta" ColumnName="IdPapeleta" />
+          <ScalarProperty Name="IdCondicionP" ColumnName="IdCondicionP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamento">
+      <EntityTypeMapping TypeName="BDMarinaModel.Departamento">
+        <MappingFragment StoreEntitySet="Departamento">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dependencia">
+      <EntityTypeMapping TypeName="BDMarinaModel.Dependencia">
+        <MappingFragment StoreEntitySet="Dependencia">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdDependencia" ColumnName="IdDependencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidad">
+      <EntityTypeMapping TypeName="BDMarinaModel.Especialidad">
+        <MappingFragment StoreEntitySet="Especialidad">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FrecuenciaGuardia">
+      <EntityTypeMapping TypeName="BDMarinaModel.FrecuenciaGuardia">
+        <MappingFragment StoreEntitySet="FrecuenciaGuardia">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="TotalHoras" ColumnName="TotalHoras" />
+          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+          <ScalarProperty Name="HoraInio" ColumnName="HoraInio" />
+          <ScalarProperty Name="Etiqueta" ColumnName="Etiqueta" />
+          <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdFrecuencia" ColumnName="IdFrecuencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GradoPersonal">
+      <EntityTypeMapping TypeName="BDMarinaModel.GradoPersonal">
+        <MappingFragment StoreEntitySet="GradoPersonal">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdSueldo" ColumnName="IdSueldo" />
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+          <ScalarProperty Name="IdGrado" ColumnName="IdGrado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periodo">
+      <EntityTypeMapping TypeName="BDMarinaModel.Periodo">
+        <MappingFragment StoreEntitySet="Periodo">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personal">
+      <EntityTypeMapping TypeName="BDMarinaModel.Personal">
+        <MappingFragment StoreEntitySet="Personal">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono3" ColumnName="Telefono3" />
+          <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+          <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+          <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="NDocumento" ColumnName="NDocumento" />
+          <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
+          <ScalarProperty Name="Cip" ColumnName="Cip" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="CodigoSenal" ColumnName="CodigoSenal" />
+          <ScalarProperty Name="IdDependencia" ColumnName="IdDependencia" />
+          <ScalarProperty Name="IdGrado" ColumnName="IdGrado" />
+          <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restricciones">
+      <EntityTypeMapping TypeName="BDMarinaModel.Restricciones">
+        <MappingFragment StoreEntitySet="Restricciones">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Obligatorio" ColumnName="Obligatorio" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Regla" ColumnName="Regla" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdRestricción" ColumnName="IdRestricción" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolGuardia">
+      <EntityTypeMapping TypeName="BDMarinaModel.RolGuardia">
+        <MappingFragment StoreEntitySet="RolGuardia">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioModificacioon" ColumnName="UsuarioModificacioon" />
+          <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaProgramada" ColumnName="FechaProgramada" />
+          <ScalarProperty Name="IdPersonalCambio" ColumnName="IdPersonalCambio" />
+          <ScalarProperty Name="IdFrecuencia" ColumnName="IdFrecuencia" />
+          <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
+          <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
+          <ScalarProperty Name="IdCalendario" ColumnName="IdCalendario" />
+          <ScalarProperty Name="IdTipoGuardia" ColumnName="IdTipoGuardia" />
+          <ScalarProperty Name="IdRolGuardia" ColumnName="IdRolGuardia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sueldo">
+      <EntityTypeMapping TypeName="BDMarinaModel.Sueldo">
+        <MappingFragment StoreEntitySet="Sueldo">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CostoHoraExtra" ColumnName="CostoHoraExtra" />
+          <ScalarProperty Name="CostoHora" ColumnName="CostoHora" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="IdSueldo" ColumnName="IdSueldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoGuardia">
+      <EntityTypeMapping TypeName="BDMarinaModel.TipoGuardia">
+        <MappingFragment StoreEntitySet="TipoGuardia">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="IdTipoGuardia" ColumnName="IdTipoGuardia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPaleleta">
+      <EntityTypeMapping TypeName="BDMarinaModel.TipoPaleleta">
+        <MappingFragment StoreEntitySet="TipoPaleleta">
+          <ScalarProperty Name="RequiereAprobacion" ColumnName="RequiereAprobacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="IdTipoPapeleta" ColumnName="IdTipoPapeleta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Turnos">
+      <EntityTypeMapping TypeName="BDMarinaModel.Turnos">
+        <MappingFragment StoreEntitySet="Turnos">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FrecuenciaTurno" ColumnName="FrecuenciaTurno" />
+          <ScalarProperty Name="HorasServicio" ColumnName="HorasServicio" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacaciones">
+      <EntityTypeMapping TypeName="BDMarinaModel.Vacaciones">
+        <MappingFragment StoreEntitySet="Vacaciones">
+          <ScalarProperty Name="IdVacaciones" ColumnName="IdVacaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PapeletaMultiple">
+      <EntityTypeMapping TypeName="BDMarinaModel.PapeletaMultiple">
+        <MappingFragment StoreEntitySet="PapeletaMultiple">
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaDevolverTurno" ColumnName="FechaDevolverTurno" />
+          <ScalarProperty Name="FechaCubrir" ColumnName="FechaCubrir" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdTipoPapeleta" ColumnName="IdTipoPapeleta" />
+          <ScalarProperty Name="IdPersonalRemplazo" ColumnName="IdPersonalRemplazo" />
+          <ScalarProperty Name="IdPersonalEnturno" ColumnName="IdPersonalEnturno" />
+          <ScalarProperty Name="IdPersonalRegistro" ColumnName="IdPersonalRegistro" />
+          <ScalarProperty Name="NumeroPapeleta" ColumnName="NumeroPapeleta" />
+          <ScalarProperty Name="IdPapeleta" ColumnName="IdPapeleta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

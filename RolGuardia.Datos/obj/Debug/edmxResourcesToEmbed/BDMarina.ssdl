@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDMarinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Calendario">
+    <Key>
+      <PropertyRef Name="IdCalendario" />
+    </Key>
+    <Property Name="IdCalendario" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaInicial" Type="datetime" />
+    <Property Name="FechaFinal" Type="datetime" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="CondicionPapeleta">
+    <Key>
+      <PropertyRef Name="IdCondicionP" />
+    </Key>
+    <Property Name="IdCondicionP" Type="int" Nullable="false" />
+    <Property Name="IdPapeleta" Type="int" Nullable="false" />
+    <Property Name="IdPersonalAprobador" Type="int" />
+    <Property Name="EstadoAprobacion" Type="char" MaxLength="3" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Observacion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="IdDepartamento" />
+    </Key>
+    <Property Name="IdDepartamento" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Dependencia">
+    <Key>
+      <PropertyRef Name="IdDependencia" />
+    </Key>
+    <Property Name="IdDependencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Especialidad">
+    <Key>
+      <PropertyRef Name="IdEspecialidad" />
+    </Key>
+    <Property Name="IdEspecialidad" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="20" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="FrecuenciaGuardia">
+    <Key>
+      <PropertyRef Name="IdFrecuencia" />
+    </Key>
+    <Property Name="IdFrecuencia" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Abreviatura" Type="varchar" MaxLength="10" />
+    <Property Name="Etiqueta" Type="varchar" MaxLength="50" />
+    <Property Name="HoraInio" Type="time" Precision="7" />
+    <Property Name="HoraFinal" Type="time" Precision="7" />
+    <Property Name="TotalHoras" Type="int" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="GradoPersonal">
+    <Key>
+      <PropertyRef Name="IdGrado" />
+    </Key>
+    <Property Name="IdGrado" Type="int" Nullable="false" />
+    <Property Name="IdTurno" Type="int" />
+    <Property Name="IdSueldo" Type="int" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="20" />
+    <Property Name="Estado" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="PapeletaMultiple">
+    <Key>
+      <PropertyRef Name="IdPapeleta" />
+    </Key>
+    <Property Name="IdPapeleta" Type="int" Nullable="false" />
+    <Property Name="IdPersonalRegistro" Type="int" />
+    <Property Name="IdPersonalEnturno" Type="int" />
+    <Property Name="IdPersonalRemplazo" Type="int" />
+    <Property Name="IdTipoPapeleta" Type="int" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+    <Property Name="Observacion" Type="nchar" MaxLength="200" />
+    <Property Name="FechaCubrir" Type="date" />
+    <Property Name="FechaDevolverTurno" Type="date" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="UsuarioRegistro" Type="varchar" MaxLength="10" />
+    <Property Name="UsuarioModificacion" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Periodo">
+    <Key>
+      <PropertyRef Name="IdPeriodo" />
+    </Key>
+    <Property Name="IdPeriodo" Type="int" Nullable="false" />
+    <Property Name="Ano" Type="char" MaxLength="4" />
+    <Property Name="Mes" Type="char" MaxLength="2" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="char" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="IdPersonal" />
+    </Key>
+    <Property Name="IdPersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDepartamento" Type="int" />
+    <Property Name="IdEspecialidad" Type="int" />
+    <Property Name="IdGrado" Type="int" />
+    <Property Name="IdDependencia" Type="int" />
+    <Property Name="CodigoSenal" Type="int" />
+    <Property Name="Nombres" Type="varchar" MaxLength="100" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="20" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="20" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="Cip" Type="varchar" MaxLength="10" />
+    <Property Name="IdTipoDocumento" Type="int" />
+    <Property Name="NDocumento" Type="varchar" MaxLength="20" />
+    <Property Name="FechaIngreso" Type="date" />
+    <Property Name="FechaBaja" Type="date" />
+    <Property Name="Telefono1" Type="varchar" MaxLength="10" />
+    <Property Name="Telefono2" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Telefono3" Type="varchar" MaxLength="10" />
+    <Property Name="Correo" Type="varchar" MaxLength="30" />
+    <Property Name="Sexo" Type="char" MaxLength="1" />
+    <Property Name="Foto" Type="image" />
+    <Property Name="Dirección" Type="varchar" MaxLength="100" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="UsuarioRegistro" Type="varchar" MaxLength="15" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="15" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Restricciones">
+    <Key>
+      <PropertyRef Name="IdRestricción" />
+    </Key>
+    <Property Name="IdRestricción" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Regla" Type="varchar" MaxLength="100" />
+    <Property Name="Valor" Type="int" />
+    <Property Name="Obligatorio" Type="varchar" MaxLength="10" />
+    <Property Name="Estado" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="RolGuardia">
+    <Key>
+      <PropertyRef Name="IdRolGuardia" />
+    </Key>
+    <Property Name="IdRolGuardia" Type="int" Nullable="false" />
+    <Property Name="IdTipoGuardia" Type="int" Nullable="false" />
+    <Property Name="IdCalendario" Type="int" Nullable="false" />
+    <Property Name="IdPersonal" Type="int" Nullable="false" />
+    <Property Name="IdPeriodo" Type="int" />
+    <Property Name="IdFrecuencia" Type="int" />
+    <Property Name="IdPersonalCambio" Type="int" />
+    <Property Name="FechaProgramada" Type="date" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Observacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioRegistro" Type="varchar" MaxLength="20" />
+    <Property Name="UsuarioModificacioon" Type="varchar" MaxLength="20" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Sueldo">
+    <Key>
+      <PropertyRef Name="IdSueldo" />
+    </Key>
+    <Property Name="IdSueldo" Type="int" Nullable="false" />
+    <Property Name="Moneda" Type="varchar" MaxLength="5" />
+    <Property Name="CostoHora" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="CostoHoraExtra" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="TipoGuardia">
+    <Key>
+      <PropertyRef Name="IdTipoGuardia" />
+    </Key>
+    <Property Name="IdTipoGuardia" Type="int" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="TipoPaleleta">
+    <Key>
+      <PropertyRef Name="IdTipoPapeleta" />
+    </Key>
+    <Property Name="IdTipoPapeleta" Type="int" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+    <Property Name="RequiereAprobacion" Type="char" MaxLength="1" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'BDMarina.dbo.TurnoGrado' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="TurnoGrado">
+          <Property Name="IdGrado" Type="int" />
+          <Property Name="IdTurno" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Turnos">
+    <Key>
+      <PropertyRef Name="IdTurno" />
+    </Key>
+    <Property Name="IdTurno" Type="int" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="50" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="20" />
+    <Property Name="HorasServicio" Type="int" />
+    <Property Name="FrecuenciaTurno" Type="int" />
+    <Property Name="Estado" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Vacaciones">
+    <Key>
+      <PropertyRef Name="IdVacaciones" />
+    </Key>
+    <Property Name="IdVacaciones" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CondicionPapeleta_PapeletaMultiple">
+    <End Role="PapeletaMultiple" Type="Self.PapeletaMultiple" Multiplicity="1" />
+    <End Role="CondicionPapeleta" Type="Self.CondicionPapeleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PapeletaMultiple">
+        <PropertyRef Name="IdPapeleta" />
+      </Principal>
+      <Dependent Role="CondicionPapeleta">
+        <PropertyRef Name="IdPapeleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CondicionPapeleta_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="0..1" />
+    <End Role="CondicionPapeleta" Type="Self.CondicionPapeleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="IdPersonal" />
+      </Principal>
+      <Dependent Role="CondicionPapeleta">
+        <PropertyRef Name="IdPersonalAprobador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GradoPersonal_Sueldo">
+    <End Role="Sueldo" Type="Self.Sueldo" Multiplicity="0..1" />
+    <End Role="GradoPersonal" Type="Self.GradoPersonal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sueldo">
+        <PropertyRef Name="IdSueldo" />
+      </Principal>
+      <Dependent Role="GradoPersonal">
+        <PropertyRef Name="IdSueldo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GradoPersonal_Turnos">
+    <End Role="Turnos" Type="Self.Turnos" Multiplicity="0..1" />
+    <End Role="GradoPersonal" Type="Self.GradoPersonal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Turnos">
+        <PropertyRef Name="IdTurno" />
+      </Principal>
+      <Dependent Role="GradoPersonal">
+        <PropertyRef Name="IdTurno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PapeletaMultiple_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="0..1" />
+    <End Role="PapeletaMultiple" Type="Self.PapeletaMultiple" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="IdPersonal" />
+      </Principal>
+      <Dependent Role="PapeletaMultiple">
+        <PropertyRef Name="IdPersonalRemplazo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PapeletaMultiple_Personal1">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="0..1" />
+    <End Role="PapeletaMultiple" Type="Self.PapeletaMultiple" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="IdPersonal" />
+      </Principal>
+      <Dependent Role="PapeletaMultiple">
+        <PropertyRef Name="IdPersonalRegistro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PapeletaMultiple_TipoPaleleta">
+    <End Role="TipoPaleleta" Type="Self.TipoPaleleta" Multiplicity="0..1" />
+    <End Role="PapeletaMultiple" Type="Self.PapeletaMultiple" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPaleleta">
+        <PropertyRef Name="IdTipoPapeleta" />
+      </Principal>
+      <Dependent Role="PapeletaMultiple">
+        <PropertyRef Name="IdTipoPapeleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Departamento">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="IdDepartamento" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Dependencia">
+    <End Role="Dependencia" Type="Self.Dependencia" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dependencia">
+        <PropertyRef Name="IdDependencia" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="IdDependencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Especialidad">
+    <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Especialidad">
+        <PropertyRef Name="IdEspecialidad" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="IdEspecialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_GradoPersonal">
+    <End Role="GradoPersonal" Type="Self.GradoPersonal" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GradoPersonal">
+        <PropertyRef Name="IdGrado" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="IdGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolGuardia_Calendario">
+    <End Role="Calendario" Type="Self.Calendario" Multiplicity="1" />
+    <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendario">
+        <PropertyRef Name="IdCalendario" />
+      </Principal>
+      <Dependent Role="RolGuardia">
+        <PropertyRef Name="IdCalendario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolGuardia_FrecuenciaGuardia">
+    <End Role="FrecuenciaGuardia" Type="Self.FrecuenciaGuardia" Multiplicity="0..1" />
+    <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FrecuenciaGuardia">
+        <PropertyRef Name="IdFrecuencia" />
+      </Principal>
+      <Dependent Role="RolGuardia">
+        <PropertyRef Name="IdFrecuencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolGuardia_Periodo">
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="0..1" />
+    <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Periodo">
+        <PropertyRef Name="IdPeriodo" />
+      </Principal>
+      <Dependent Role="RolGuardia">
+        <PropertyRef Name="IdPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolGuardia_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+    <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="IdPersonal" />
+      </Principal>
+      <Dependent Role="RolGuardia">
+        <PropertyRef Name="IdPersonal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolGuardia_TipoGuardia">
+    <End Role="TipoGuardia" Type="Self.TipoGuardia" Multiplicity="1" />
+    <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoGuardia">
+        <PropertyRef Name="IdTipoGuardia" />
+      </Principal>
+      <Dependent Role="RolGuardia">
+        <PropertyRef Name="IdTipoGuardia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'BDMarina.dbo.TurnoGrado', pero no se encuentra la tabla.
+        <Association Name="FK_TurnoGrado_Turnos" />-->
+  <EntityContainer Name="BDMarinaModelStoreContainer">
+    <EntitySet Name="Calendario" EntityType="Self.Calendario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CondicionPapeleta" EntityType="Self.CondicionPapeleta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dependencia" EntityType="Self.Dependencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FrecuenciaGuardia" EntityType="Self.FrecuenciaGuardia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GradoPersonal" EntityType="Self.GradoPersonal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PapeletaMultiple" EntityType="Self.PapeletaMultiple" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Periodo" EntityType="Self.Periodo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restricciones" EntityType="Self.Restricciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolGuardia" EntityType="Self.RolGuardia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sueldo" EntityType="Self.Sueldo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoGuardia" EntityType="Self.TipoGuardia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoPaleleta" EntityType="Self.TipoPaleleta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CondicionPapeleta_PapeletaMultiple" Association="Self.FK_CondicionPapeleta_PapeletaMultiple">
+      <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
+      <End Role="CondicionPapeleta" EntitySet="CondicionPapeleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CondicionPapeleta_Personal" Association="Self.FK_CondicionPapeleta_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="CondicionPapeleta" EntitySet="CondicionPapeleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradoPersonal_Sueldo" Association="Self.FK_GradoPersonal_Sueldo">
+      <End Role="Sueldo" EntitySet="Sueldo" />
+      <End Role="GradoPersonal" EntitySet="GradoPersonal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradoPersonal_Turnos" Association="Self.FK_GradoPersonal_Turnos">
+      <End Role="Turnos" EntitySet="Turnos" />
+      <End Role="GradoPersonal" EntitySet="GradoPersonal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PapeletaMultiple_Personal" Association="Self.FK_PapeletaMultiple_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PapeletaMultiple_Personal1" Association="Self.FK_PapeletaMultiple_Personal1">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PapeletaMultiple_TipoPaleleta" Association="Self.FK_PapeletaMultiple_TipoPaleleta">
+      <End Role="TipoPaleleta" EntitySet="TipoPaleleta" />
+      <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Departamento" Association="Self.FK_Personal_Departamento">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Dependencia" Association="Self.FK_Personal_Dependencia">
+      <End Role="Dependencia" EntitySet="Dependencia" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Especialidad" Association="Self.FK_Personal_Especialidad">
+      <End Role="Especialidad" EntitySet="Especialidad" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_GradoPersonal" Association="Self.FK_Personal_GradoPersonal">
+      <End Role="GradoPersonal" EntitySet="GradoPersonal" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolGuardia_Calendario" Association="Self.FK_RolGuardia_Calendario">
+      <End Role="Calendario" EntitySet="Calendario" />
+      <End Role="RolGuardia" EntitySet="RolGuardia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolGuardia_FrecuenciaGuardia" Association="Self.FK_RolGuardia_FrecuenciaGuardia">
+      <End Role="FrecuenciaGuardia" EntitySet="FrecuenciaGuardia" />
+      <End Role="RolGuardia" EntitySet="RolGuardia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolGuardia_Periodo" Association="Self.FK_RolGuardia_Periodo">
+      <End Role="Periodo" EntitySet="Periodo" />
+      <End Role="RolGuardia" EntitySet="RolGuardia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolGuardia_Personal" Association="Self.FK_RolGuardia_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="RolGuardia" EntitySet="RolGuardia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolGuardia_TipoGuardia" Association="Self.FK_RolGuardia_TipoGuardia">
+      <End Role="TipoGuardia" EntitySet="TipoGuardia" />
+      <End Role="RolGuardia" EntitySet="RolGuardia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

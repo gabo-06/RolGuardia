@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D90F74D-651E-448F-8EBA-CE8E77F4A226}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RolGuardia.Datos</RootNamespace>
+    <AssemblyName>RolGuardia.Datos</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="modelo\BDMarina.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDMarina.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\BDMarina.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\BDMarina.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDMarina.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Calendario.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\CondicionPapeleta.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Departamento.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Dependencia.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Especialidad.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\FrecuenciaGuardia.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\GradoPersonal.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\PapeletaMultiple.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Periodo.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Personal.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="modelo\Restricciones.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\RolGuardia.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Sueldo.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\TipoGuardia.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\TipoPaleleta.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Turnos.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Vacaciones.cs">
+      <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="modelo\BDMarina.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDMarina.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="modelo\BDMarina.edmx.diagram">
+      <DependentUpon>BDMarina.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="modelo\BDMarina.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BDMarina.Context.cs</LastGenOutput>
+      <DependentUpon>BDMarina.edmx</DependentUpon>
+    </Content>
+    <Content Include="modelo\BDMarina.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDMarina.edmx</DependentUpon>
+      <LastGenOutput>BDMarina.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

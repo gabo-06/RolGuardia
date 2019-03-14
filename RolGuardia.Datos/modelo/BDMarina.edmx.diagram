@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="89c95f3ba06a4a979b02753de5d45e7c" Name="Diagram1">
+        <EntityTypeShape EntityType="BDMarinaModel.Calendario" Width="1.5" PointX="8.25" PointY="3.875" />
+        <EntityTypeShape EntityType="BDMarinaModel.CondicionPapeleta" Width="1.5" PointX="12.75" PointY="8.125" />
+        <EntityTypeShape EntityType="BDMarinaModel.Departamento" Width="1.5" PointX="3" PointY="15.25" />
+        <EntityTypeShape EntityType="BDMarinaModel.Dependencia" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="BDMarinaModel.Especialidad" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="BDMarinaModel.FrecuenciaGuardia" Width="1.5" PointX="8.25" PointY="12.625" />
+        <EntityTypeShape EntityType="BDMarinaModel.GradoPersonal" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="BDMarinaModel.Periodo" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="BDMarinaModel.Personal" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="BDMarinaModel.Restricciones" Width="1.5" PointX="10.75" PointY="2.25" />
+        <EntityTypeShape EntityType="BDMarinaModel.RolGuardia" Width="1.5" PointX="10.5" PointY="7.125" />
+        <EntityTypeShape EntityType="BDMarinaModel.Sueldo" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="BDMarinaModel.TipoGuardia" Width="1.5" PointX="8.25" PointY="16.125" />
+        <EntityTypeShape EntityType="BDMarinaModel.TipoPaleleta" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="BDMarinaModel.Turnos" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="BDMarinaModel.Vacaciones" Width="1.5" PointX="10.75" PointY="13.25" />
+        <AssociationConnector Association="BDMarinaModel.FK_RolGuardia_Calendario" />
+        <AssociationConnector Association="BDMarinaModel.FK_CondicionPapeleta_Personal" />
+        <AssociationConnector Association="BDMarinaModel.FK_Personal_Departamento" />
+        <AssociationConnector Association="BDMarinaModel.FK_Personal_Dependencia" />
+        <AssociationConnector Association="BDMarinaModel.FK_Personal_Especialidad" />
+        <AssociationConnector Association="BDMarinaModel.FK_RolGuardia_FrecuenciaGuardia" />
+        <AssociationConnector Association="BDMarinaModel.FK_GradoPersonal_Sueldo" />
+        <AssociationConnector Association="BDMarinaModel.FK_GradoPersonal_Turnos" />
+        <AssociationConnector Association="BDMarinaModel.FK_Personal_GradoPersonal" />
+        <AssociationConnector Association="BDMarinaModel.FK_RolGuardia_Periodo" />
+        <AssociationConnector Association="BDMarinaModel.FK_RolGuardia_Personal" />
+        <AssociationConnector Association="BDMarinaModel.FK_RolGuardia_TipoGuardia" />
+        <EntityTypeShape EntityType="BDMarinaModel.PapeletaMultiple" Width="1.5" PointX="13.5" PointY="2.5" />
+        <AssociationConnector Association="BDMarinaModel.FK_CondicionPapeleta_PapeletaMultiple" />
+        <AssociationConnector Association="BDMarinaModel.FK_PapeletaMultiple_Personal" />
+        <AssociationConnector Association="BDMarinaModel.FK_PapeletaMultiple_Personal1" />
+        <AssociationConnector Association="BDMarinaModel.FK_PapeletaMultiple_TipoPaleleta" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+﻿<nav class="sidebar toggled">
+    <div class="sidebar-content ">
+        <a href="/Inicio" class="sidebar-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box align-middle">
+                <path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path>
+                <polyline points="2.32 6.16 12 11 21.68 6.16"></polyline>
+                <line x1="12" y1="22.76" x2="12" y2="11"></line>
+            </svg>
+            <span class="align-middle">ROL DE GUARDIA</span>
+        </a>
+        <hr />
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a href="#pages" data-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="fas fa-th-large text-primary"></i>
+                    <span class="align-middle text-primary">Mantenimientos</span>
+                </a>
+                <ul id="pages" class="sidebar-dropdown list-unstyled collapse ">
+                    <li class="sidebar-item">
+                        <a href="/RolGuardia" class="sidebar-link Menu" id="MenuRolGuardia">
+                            @*<a href="@Url.Action("Index", "RolGuardia")" class="sidebar-link Menu">*@
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Rol de Guardia</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a href="#auth" data-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="fas fa-th-large text-primary"></i>
+                    <span class="align-middle text-primary">Procesos</span>
+                </a>
+                <ul id="auth" class="sidebar-dropdown list-unstyled collapse ">
+                    <li class="sidebar-item">
+                        <a href="/PapeletaMultiple" class="sidebar-link Menu" id="PapeletaMultiple">
+                            <i class="far fa-list-alt"></i>
+                            <span>Papeleta Múltiple</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

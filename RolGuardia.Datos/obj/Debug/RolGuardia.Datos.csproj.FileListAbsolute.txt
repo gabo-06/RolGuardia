@@ -1,0 +1,11 @@
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\bin\Debug\RolGuardia.Datos.dll.config
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\bin\Debug\RolGuardia.Datos.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\bin\Debug\RolGuardia.Datos.pdb
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\bin\Debug\EntityFramework.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\bin\Debug\EntityFramework.xml
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.csproj.CopyComplete
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.dll
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.pdb
