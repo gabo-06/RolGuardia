@@ -22,7 +22,7 @@ namespace RolGuardia.MVC.App_Start
                         .ForMember(dest => dest.Especialidad,
                                     opt => opt.MapFrom(src => src.Especialidad))
                         .ForMember(dest => dest.NombreCompleto,
-                                    opt => opt.MapFrom(src => src.Nombres + " " + src.ApellidoPaterno + " " + src.ApellidoMaterno))
+                                    opt => opt.MapFrom(src => src.ApellidoPaterno + " " + src.ApellidoMaterno + " " + src.Nombres))
                         .ForMember(dest => dest.Departamento,
                                     opt => opt.MapFrom(src => src.Departamento))
                         .ForMember(dest => dest.FechaRegistro,

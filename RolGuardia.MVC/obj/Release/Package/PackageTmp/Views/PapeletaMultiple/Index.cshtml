@@ -1,7 +1,27 @@
 ﻿@*PaletaMultiple/Index*@
+@section styles
+{
+    <style>
+        tr > th:first-child:after,
+        tr > th:first-child:before
+        {
+            display: none !important;
+        }
 
+        
+
+        
+
+        .custom-control-label:after,
+        .custom-control-label:before
+        {
+            left: inherit;
+        }
+    </style>
+
+}
 @section scripts
-{    
+{
     <script src="~/Scripts/vistas/papeleta_multiple.js"></script>
 }
 @{
@@ -31,11 +51,11 @@
                                     <form>
                                         <div class="row">
                                             <div class="form-group col-6 mb-4">
-                                                <label class="col-form-label text-left font-weight-bold" for="txtShipName">Nro. Papeleta</label>
+                                                <label class="col-form-label text-left font-weight-bold" for="txtShipName">Número de Papeleta</label>
                                                 <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="Ship Name">
                                             </div>
                                             <div class="form-group col-6 mb-4">
-                                                <label class="col-form-label text-left font-weight-bold" for="txtShipName">Nom/Ape</label>
+                                                <label class="col-form-label text-left font-weight-bold" for="txtShipName">Apellidos y Nombres</label>
                                                 <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="Ship Name">
                                             </div>
                                         </div>
@@ -50,7 +70,8 @@
                                         <div class="card-body">
                                             <table id="tblPapeletaMultiple" class="table table-striped" style="width:100%">
                                                 <thead>
-                                                    <tr>
+                                                    <tr class="bg-dark text-light">
+                                                        <th></th> <!--Expander/Contraer fila-->
                                                         <th></th> <!--Checkbox-->
                                                         <th>Número de Papeleta</th>
                                                         <th>Grado</th>
@@ -58,14 +79,10 @@
                                                         <th>Apellidos y Nombres</th>
                                                         <th>Departamento</th>
                                                         <th>Fecha de Registro</th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th></th>
+                                                        <th>Operaciones</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                </tbody>
+                                                <tbody></tbody>
                                             </table>
                                         </div>
                                     </div>

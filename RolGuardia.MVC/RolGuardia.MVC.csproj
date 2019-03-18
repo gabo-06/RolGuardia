@@ -179,6 +179,8 @@
     <Content Include="Content\css\bootstrap\all.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\css\datatables_checkboxes\dataTables.checkboxes.css" />
+    <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\mis_estilos\general.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\img\avatars\avatar-2.jpg" />
@@ -222,11 +224,15 @@
     <Content Include="Scripts\core\core.js" />
     <Content Include="Scripts\core\user_interface.js" />
     <Content Include="Scripts\core\utilities.js" />
+    <Content Include="Scripts\datatables_checkboxes\dataTables.checkboxes.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery\jquery.min.js" />
+    <Content Include="Scripts\jquery\jquery_old.min.js" />
     <Content Include="Scripts\jquery_validate\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\vistas\index.js" />
     <Content Include="Scripts\vistas\papeleta_multiple.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -245,7 +251,8 @@
     <Content Include="Views\Shared\_SideBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\RolGuardia\Index.cshtml" />
-    <Content Include="Views\PapeletaMultiple\Index.cshtml" />
+    <Content Include="Views\PapeletaMultiple\Index_old.cshtml" />
+    <Content Include="Views\PapeletaMultiple\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -53,6 +53,7 @@ namespace RolGuardia.MVC
             #region Bundle de CSS para la plantilla de AppStack
             bundles.Add(new StyleBundle("~/Estilos/AppStack").Include(
                       "~/Content/css/app_stack/app_stack.css",
+                      "~/Content/css/bootstrap/all.min.css",
                       "~/Content/css/mis_estilos/general.css"));
             #endregion
             #endregion

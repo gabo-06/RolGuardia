@@ -2,3 +2,52 @@
 {
     background-color: #e6e9f1 !important;
 }
+
+/*#region Clases que se dan a la primera celda de las filas de la tabla para expandir el contenido completo*/
+.OrderID
+{
+    /*padding-top: 0 !important;*/
+    /*padding-right: 0 !important;*/
+    /*padding-bottom: 0 !important;*/
+    padding: 0 0.5em !important;
+}
+
+.OrderID::before
+{
+    /*border: none !important;
+    background-color: transparent !important;
+    border-radius: 0.2em !important;
+    box-shadow: none !important;
+    color: #505972 !important;
+    content: "\f06e" !important;
+    display: inline-block !important;
+    font-family: "Font Awesome 5 Free" !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    left: inherit !important;
+    margin-right: 0.7em !important;
+    padding: 0.2em !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;*/
+    content: "" !important;
+    display: none !important;
+}
+
+.OrderIDno::before
+{
+    border: none !important;
+    background-color: transparent !important;
+    border-radius: 0.2em !important;
+    box-shadow: none !important;
+    color: #505972 !important;
+    content: "\f070" !important;
+    display: inline-block !important;
+    font-family: "Font Awesome 5 Free" !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    margin-right: 0.7em !important;
+    padding: 0.2em !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+/*#endregion*/

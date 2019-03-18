@@ -14,7 +14,7 @@ namespace RolGuardia.MVC.Controllers
     public class PapeletaMultipleController : Controller
     {
         List<ModeloVista.Personal> listaPersonal = new List<ModeloVista.Personal>();
-        List<ModeloVista.Personal> listaPersonalTemporal;
+        List<ModeloVista.Personal> listaPersonalTemporal = new List<ModeloVista.Personal>();
 
         public ActionResult obtenerPersonal()
         {
@@ -31,46 +31,61 @@ namespace RolGuardia.MVC.Controllers
                 int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
                 #endregion
 
-                #region Obtención de data
-                enListaPersonal = nePersonal.listar();
-                this.listaPersonal = Mapper.Map<List<ModeloNegocio.Personal>, List<ModeloVista.Personal>>(enListaPersonal);
+                #region Obtención de data (ya).
+                if (listaPersonal.Count == 0)
+                {
+                    enListaPersonal = nePersonal.listar();
+                    this.listaPersonal = Mapper.Map<List<ModeloNegocio.Personal>, List<ModeloVista.Personal>>(enListaPersonal);
+                }
                 #endregion
 
-                #region Cantidad de registros totales.
+                #region Cantidad total de registros. (ya)
                 int recordsTotal = this.listaPersonal.Count();
                 #endregion
 
                 #region Clona la data en la variable temporal que se va a utilizar para manipular las búsquedas.
                 if (search.Trim() == "" || this.listaPersonalTemporal.Count() == 0)
+                {
                     this.listaPersonalTemporal = this.listaPersonal;
+                }
                 #endregion
 
                 #region Filtrado
                 if (!string.IsNullOrEmpty(search) && !string.IsNullOrWhiteSpace(search))
                 {
-                    this.listaPersonalTemporal = this.listaPersonal.Where(o => o.NombreCompleto.ToString().ToLower().Contains(search.Replace(" ", "").ToLower())).ToList();
+                    this.listaPersonalTemporal = this.listaPersonal.Where(p => (p.NumeroPapeleta = p.NumeroPapeleta ?? "").ToString().ToLower().Contains(search.ToLower()) ||
+                                                                                (p.NombreCompleto = p.NombreCompleto ?? "").ToString().ToLower().Contains(search.Replace(" ", "").ToLower())
+                                                                        ).ToList();
+                    // this.listaPersonalTemporal = this.listaPersonal.Where(o => 
+                    //                                                                         ).ToList();
                 }
                 #endregion
 
-                #region Obtiene cantidad de registro filtrados.
+                #region Ordenación. (Aún no tiene nada).
+
+                #endregion
+
+                #region Obtiene cantidad de registro filtrados. (ya)
                 int recordsFiltered = this.listaPersonalTemporal.Count();
                 #endregion
 
-                #region Aplica la paginación.
+                #region Aplica la paginación. (ya)
                 this.listaPersonalTemporal = this.listaPersonalTemporal.Skip(startRec).Take(pageSize).ToList();
                 #endregion
 
-                return Json(new
+                #region Retorno de datos.
+                return Json(new // (ya)
                 {
                     draw = Convert.ToInt32(draw),
                     recordsTotal = recordsTotal,
                     recordsFiltered = recordsFiltered,
                     data = this.listaPersonalTemporal
-                }, JsonRequestBehavior.AllowGet);
+                },
+                JsonRequestBehavior.AllowGet);
+                #endregion
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
