@@ -18,6 +18,7 @@ rolGuardia.papeletaMultiple.listado.tabla.configurarTabla = function ()
 		"responsive": true,
 		"processing": true,
         "serverSide": true,
+        "dom": '<"top"i>rt<"bottom"lp><"clear">',
 		"ajax": {
 			// "async": false,
 			"url": "/PapeletaMultiple/obtenerPersonal",
@@ -53,24 +54,17 @@ rolGuardia.papeletaMultiple.listado.tabla.configurarTabla = function ()
 					// $(row).attr("Order-ID", rowData.orderID);
 					// $(row).attr("Customer-ID", rowData.customer.CustomerID);
 				}
-			},
-			// {
-			// 	'targets': 1,
-			// 	'checkboxes': {
-			// 		'selectRow': true
-			// 	}
-			// },
-
-			{
+            },
+            {
 				"targets": [1],
 				"orderable": false,
 				"class": "text-nowrap",
 				"render": function (url, type, full)
 				{
 					// #region Control Switch 
-					return '<div class="custom-control custom-switch">' +
+                    return '<div class="custom-control custom-switch">' +
 						'<input type="checkbox" class="custom-control-input" value="' + url.IdPersonal + '" id="' + url.IdPersonal + '" >' +
-						'<label class="custom-control-label FilaPapeleta" for="' + url.IdPersonal + '" style="cursor: pointer"></label>' +
+                        '<label class="custom-control-label FilaPapeleta" for="' + url.IdPersonal + '" style="cursor: pointer;"></label>' +
 						'</div>';
 					// #endregion
 
@@ -88,7 +82,6 @@ rolGuardia.papeletaMultiple.listado.tabla.configurarTabla = function ()
 					$(column).css({ "padding": "0 4px" });
 				}
 			},
-
 			{
 				"targets": [7],
 				"orderable": false,
@@ -112,7 +105,7 @@ rolGuardia.papeletaMultiple.listado.tabla.configurarTabla = function ()
 			}
 		],
 		'select': {
-			'style': 'single'
+			'style': 'api'
 		},
 		"columns":
 			[
@@ -231,17 +224,22 @@ rolGuardia.papeletaMultiple.inicio = function ()
 		// else if (!this.checked && indice !== -1)
 		// 	rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
 		// #endregion
-
 		// #region Control Switch 
-		var contenedor = $(this).closest(".custom-switch");
-		var inputSwitch = $(contenedor).find("input[type=checkbox]");
-		var idPersonal = parseInt($(inputSwitch).attr("id"));
+		let contenedor = $(this).closest(".custom-switch");
+        let inputSwitch = $(contenedor).find("input[type=checkbox]");
+        let idPersonal = parseInt($(inputSwitch).attr("id"));
 		let indice = $.inArray(idPersonal, rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas);
+        let fila = $(inputSwitch).closest("tr");
 
+        // #region Agrega el índice del registro seleccionado al arreglo de filas seleccionadas.
 		if (!$(this)["0"].control.checked)
 			rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.push(idPersonal);
 		else
-			rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
+            rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
+        // #endregion
+        // #region Pintado de fila cuando selecciona el registro
+        $(fila).toggleClass("bg-warning font-weight-bold");
+        // #endregion
 		// #endregion
 	});
 
@@ -259,13 +257,6 @@ rolGuardia.papeletaMultiple.inicio = function ()
             .search(this.value)
 			.draw();
     });
-
-    // $("#btnBuscarPM").on("click", function () {
-    //     var table = $("#tblPapeletaMultiple").DataTable();
-    //     table.columns(5).search($("#txtApellidosNombresF").val().trim());
-    //     table.draw();
-    // });
-    // #endregion
 };
 
 $("#tblPapeletaMultiple").on('draw.dt', function ()
