@@ -251,7 +251,7 @@ rolGuardia.papeletaMultiple.inicio = function ()
     });
 
     $("#txtApellidosNombresF").on("keyup", function ()
-	{	
+	{	 
 		rolGuardia.papeletaMultiple.listado.tabla.DataTable
             .columns(5)
             .search(this.value)
