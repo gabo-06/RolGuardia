@@ -256,7 +256,7 @@ rolGuardia.papeletaMultiple.inicio = function ()
             .columns(5)
             .search(this.value)
 			.draw();
-    });
+    }); 
 };
 
 $("#tblPapeletaMultiple").on('draw.dt', function ()
