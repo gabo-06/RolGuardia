@@ -50,6 +50,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="modelo\BDAvance.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDAvance.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\BDAvance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDAvance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\BDAvance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDAvance.edmx</DependentUpon>
+    </Compile>
     <Compile Include="modelo\BDMarina.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +100,27 @@
     </Compile>
     <Compile Include="modelo\GradoPersonal.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Metrado.cs">
+      <DependentUpon>BDAvance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\MetradoAvance.cs">
+      <DependentUpon>BDAvance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\MetradoAvanceHito.cs">
+      <DependentUpon>BDAvance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\MetradoCampo.cs">
+      <DependentUpon>BDAvance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\MetradoCampo_Tmp.cs">
+      <DependentUpon>BDAvance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\MetradoHito.cs">
+      <DependentUpon>BDAvance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\Metrado_Tmp.cs">
+      <DependentUpon>BDAvance.tt</DependentUpon>
     </Compile>
     <Compile Include="modelo\PapeletaMultiple.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
@@ -128,12 +164,29 @@
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="modelo\BDAvance.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDAvance.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="modelo\BDAvance.edmx.diagram">
+      <DependentUpon>BDAvance.edmx</DependentUpon>
+    </None>
     <None Include="modelo\BDMarina.edmx.diagram">
       <DependentUpon>BDMarina.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="modelo\BDAvance.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDAvance.edmx</DependentUpon>
+      <LastGenOutput>BDAvance.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="modelo\BDAvance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDAvance.edmx</DependentUpon>
+      <LastGenOutput>BDAvance.cs</LastGenOutput>
+    </Content>
     <Content Include="modelo\BDMarina.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BDMarina.Context.cs</LastGenOutput>

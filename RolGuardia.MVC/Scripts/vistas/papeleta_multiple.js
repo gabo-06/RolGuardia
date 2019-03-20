@@ -16,8 +16,8 @@ rolGuardia.papeletaMultiple.listado.tabla.configurarTabla = function ()
 {
 	rolGuardia.papeletaMultiple.listado.tabla.DataTable = $("#tblPapeletaMultiple").DataTable({
 		"responsive": true,
-		"proccessing": true,
-		"serverSide": true,
+		"processing": true,
+        "serverSide": true,
 		"ajax": {
 			// "async": false,
 			"url": "/PapeletaMultiple/obtenerPersonal",
@@ -125,27 +125,33 @@ rolGuardia.papeletaMultiple.listado.tabla.configurarTabla = function ()
 					//class: "text-center"
 				},
 				{
-					data: "NumeroPapeleta",
+                    data: "NumeroPapeleta",
+                    name: "NumeroPapeleta",
 					class: "text-nowrap text-center"
 				},
 				{
-					data: "Grado",
+                    data: "Grado",                    
+                    name: "Grado",                    
 					class: "text-nowrap text-center"
 				},
 				{
 					data: "Especialidad",
+					name: "Especialidad",
 					class: "text-nowrap text-center"
 				},
 				{
 					data: "NombreCompleto",
+					name: "NombreCompleto",
 					class: "text-nowrap text-center"
 				},
 				{
 					data: "Departamento",
+					name: "Departamento",
 					class: "text-nowrap text-center"
 				},
 				{
 					data: "FechaRegistro",
+					name: "FechaRegistro",
 					class: "text-nowrap text-center"
 				},
 				{
@@ -238,29 +244,37 @@ rolGuardia.papeletaMultiple.inicio = function ()
 			rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
 		// #endregion
 	});
-	// $('#tblPapeletaMultiple tfoot th').each(function ()
-	// {
-	// 	var title = $(this).text();
-	// 	$(this).html('<input type="text" placeholder="Search ' + title + '" />');
-	// });
 
-	$("#txtNumeroPapeletaF").on("keyup", function ()
-	{
-		// debugger
+    $("#txtNumeroPapeletaF").on("keyup", function () {
+        rolGuardia.papeletaMultiple.listado.tabla.DataTable
+            .columns(2)
+            .search(this.value)
+            .draw();
+    });
+
+    $("#txtApellidosNombresF").on("keyup", function ()
+	{	
 		rolGuardia.papeletaMultiple.listado.tabla.DataTable
-			.columns(4)
-			.search(this.value)
+            .columns(5)
+            .search(this.value)
 			.draw();
-	});
+    });
+
+    // $("#btnBuscarPM").on("click", function () {
+    //     var table = $("#tblPapeletaMultiple").DataTable();
+    //     table.columns(5).search($("#txtApellidosNombresF").val().trim());
+    //     table.draw();
+    // });
+    // #endregion
 };
 
-// $("#tblPapeletaMultiple").on('draw.dt', function ()
-// {
-// 	for (var i = 0; i < rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.length; i++)
-// 	{
-// 		checkboxId = rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas[i];
-// 		$('#' + checkboxId).attr('checked', true);
-// 	}
-// });
+$("#tblPapeletaMultiple").on('draw.dt', function ()
+{
+	for (var i = 0; i < rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.length; i++)
+	{
+		checkboxId = rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas[i];
+		$('#' + checkboxId).attr('checked', true);
+	}
+});
 
 $(rolGuardia.papeletaMultiple.inicio);

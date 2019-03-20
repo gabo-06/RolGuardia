@@ -166,11 +166,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\MetradoController.cs" />
     <Compile Include="Controllers\PapeletaMultipleController.cs" />
     <Compile Include="Controllers\RolGuardiaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metrado.cs" />
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,6 +235,7 @@
     <Content Include="Scripts\jquery_validate\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\vistas\index.js" />
+    <Content Include="Scripts\vistas\metrado.js" />
     <Content Include="Scripts\vistas\papeleta_multiple.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -253,6 +256,7 @@
     <Content Include="Views\RolGuardia\Index.cshtml" />
     <Content Include="Views\PapeletaMultiple\Index_old.cshtml" />
     <Content Include="Views\PapeletaMultiple\index.cshtml" />
+    <Content Include="Views\Metrado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

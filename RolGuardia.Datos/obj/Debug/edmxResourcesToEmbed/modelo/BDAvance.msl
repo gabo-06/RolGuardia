@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ConexionAvance">
+    <EntitySetMapping Name="Metrado">
+      <EntityTypeMapping TypeName="Model.Metrado">
+        <MappingFragment StoreEntitySet="Metrado">
+          <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+          <ScalarProperty Name="IdMilestone" ColumnName="IdMilestone" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+          <ScalarProperty Name="IdUsuarioRelevo" ColumnName="IdUsuarioRelevo" />
+          <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+          <ScalarProperty Name="MetradoEstimado" ColumnName="MetradoEstimado" />
+          <ScalarProperty Name="IdUltimoMotivoEdicion" ColumnName="IdUltimoMotivoEdicion" />
+          <ScalarProperty Name="IdTipoOrigen" ColumnName="IdTipoOrigen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metrado_Tmp">
+      <EntityTypeMapping TypeName="Model.Metrado_Tmp">
+        <MappingFragment StoreEntitySet="Metrado_Tmp">
+          <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+          <ScalarProperty Name="IdMilestone" ColumnName="IdMilestone" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+          <ScalarProperty Name="IdUsuarioRelevo" ColumnName="IdUsuarioRelevo" />
+          <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+          <ScalarProperty Name="MetradoEstimado" ColumnName="MetradoEstimado" />
+          <ScalarProperty Name="IdUltimoMotivoEdicion" ColumnName="IdUltimoMotivoEdicion" />
+          <ScalarProperty Name="IdTipoOrigen" ColumnName="IdTipoOrigen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetradoAvance">
+      <EntityTypeMapping TypeName="Model.MetradoAvance">
+        <MappingFragment StoreEntitySet="MetradoAvance">
+          <ScalarProperty Name="IdMetradoAvance" ColumnName="IdMetradoAvance" />
+          <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetradoAvanceHito">
+      <EntityTypeMapping TypeName="Model.MetradoAvanceHito">
+        <MappingFragment StoreEntitySet="MetradoAvanceHito">
+          <ScalarProperty Name="IdMetradoHito" ColumnName="IdMetradoHito" />
+          <ScalarProperty Name="IdMetradoAvance" ColumnName="IdMetradoAvance" />
+          <ScalarProperty Name="PorcentajeAvanceReal" ColumnName="PorcentajeAvanceReal" />
+          <ScalarProperty Name="MetradoAvanceReal" ColumnName="MetradoAvanceReal" />
+          <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetradoCampo">
+      <EntityTypeMapping TypeName="Model.MetradoCampo">
+        <MappingFragment StoreEntitySet="MetradoCampo">
+          <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+          <ScalarProperty Name="IdProyectoDisciplinaCampo" ColumnName="IdProyectoDisciplinaCampo" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetradoCampo_Tmp">
+      <EntityTypeMapping TypeName="Model.MetradoCampo_Tmp">
+        <MappingFragment StoreEntitySet="MetradoCampo_Tmp">
+          <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+          <ScalarProperty Name="IdProyectoDisciplinaCampo" ColumnName="IdProyectoDisciplinaCampo" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetradoHito">
+      <EntityTypeMapping TypeName="Model.MetradoHito">
+        <MappingFragment StoreEntitySet="MetradoHito">
+          <ScalarProperty Name="IdMetradoHito" ColumnName="IdMetradoHito" />
+          <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+          <ScalarProperty Name="IdMilestoneHito" ColumnName="IdMilestoneHito" />
+          <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+          <ScalarProperty Name="PorcentajeAvanceAcumulado" ColumnName="PorcentajeAvanceAcumulado" />
+          <ScalarProperty Name="MetradoAvanceAcumulado" ColumnName="MetradoAvanceAcumulado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

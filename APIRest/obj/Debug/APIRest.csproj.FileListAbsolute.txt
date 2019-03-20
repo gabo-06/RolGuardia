@@ -1,0 +1,2 @@
+D:\gabriel\RolGuardia\APIRest\obj\Debug\APIRest.csprojAssemblyReference.cache
+D:\gabriel\RolGuardia\APIRest\obj\Debug\APIRest.csproj.CoreCompileInputs.cache

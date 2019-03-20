@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Metrado">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+          </Key>
+          <Property Name="IdMetrado" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMilestone" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="IdUsuarioRegistro" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="FechaModifico" Type="datetime" Nullable="false" />
+          <Property Name="IdUsuarioRelevo" Type="varchar" MaxLength="80" />
+          <Property Name="IdUnidadMedida" Type="varchar" MaxLength="8" />
+          <Property Name="MetradoEstimado" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="IdUltimoMotivoEdicion" Type="varchar" MaxLength="8" />
+          <Property Name="IdTipoOrigen" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Metrado_Tmp">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+          </Key>
+          <Property Name="IdMetrado" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdMilestone" Type="nvarchar" MaxLength="8" />
+          <Property Name="IdEstado" Type="varchar" MaxLength="8" />
+          <Property Name="IdUsuarioRegistro" Type="varchar" MaxLength="80" />
+          <Property Name="IdUsuarioModifico" Type="varchar" MaxLength="80" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="FechaModifico" Type="datetime" Nullable="false" />
+          <Property Name="IdUsuarioRelevo" Type="varchar" MaxLength="80" />
+          <Property Name="IdUnidadMedida" Type="varchar" MaxLength="8" />
+          <Property Name="MetradoEstimado" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="IdUltimoMotivoEdicion" Type="varchar" MaxLength="8" />
+          <Property Name="IdTipoOrigen" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="MetradoAvance">
+          <Key>
+            <PropertyRef Name="IdMetradoAvance" />
+          </Key>
+          <Property Name="IdMetradoAvance" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMetrado" Type="bigint" Nullable="false" />
+          <Property Name="IdTurno" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="IdEstado" Type="varchar" MaxLength="18" />
+          <Property Name="IdUsuarioRegistro" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="FechaModifico" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetradoAvanceHito">
+          <Key>
+            <PropertyRef Name="IdMetradoHito" />
+            <PropertyRef Name="IdMetradoAvance" />
+          </Key>
+          <Property Name="IdMetradoHito" Type="bigint" Nullable="false" />
+          <Property Name="IdMetradoAvance" Type="bigint" Nullable="false" />
+          <Property Name="PorcentajeAvanceReal" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MetradoAvanceReal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="IdUsuarioRegistro" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="FechaModifico" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetradoCampo">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+            <PropertyRef Name="IdProyectoDisciplinaCampo" />
+          </Key>
+          <Property Name="IdMetrado" Type="bigint" Nullable="false" />
+          <Property Name="IdProyectoDisciplinaCampo" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetradoCampo_Tmp">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+            <PropertyRef Name="IdProyectoDisciplinaCampo" />
+          </Key>
+          <Property Name="IdMetrado" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdProyectoDisciplinaCampo" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Valor" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="MetradoHito">
+          <Key>
+            <PropertyRef Name="IdMetradoHito" />
+          </Key>
+          <Property Name="IdMetradoHito" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMetrado" Type="bigint" Nullable="false" />
+          <Property Name="IdMilestoneHito" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="IdUsuarioRegistro" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="FechaModifico" Type="datetime" Nullable="false" />
+          <Property Name="PorcentajeAvanceAcumulado" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MetradoAvanceAcumulado" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="R_40">
+          <End Role="Metrado" Type="Self.Metrado" Multiplicity="1" />
+          <End Role="MetradoHito" Type="Self.MetradoHito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metrado">
+              <PropertyRef Name="IdMetrado" />
+            </Principal>
+            <Dependent Role="MetradoHito">
+              <PropertyRef Name="IdMetrado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_52">
+          <End Role="Metrado" Type="Self.Metrado" Multiplicity="1" />
+          <End Role="MetradoCampo" Type="Self.MetradoCampo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metrado">
+              <PropertyRef Name="IdMetrado" />
+            </Principal>
+            <Dependent Role="MetradoCampo">
+              <PropertyRef Name="IdMetrado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_63">
+          <End Role="MetradoHito" Type="Self.MetradoHito" Multiplicity="1" />
+          <End Role="MetradoAvanceHito" Type="Self.MetradoAvanceHito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetradoHito">
+              <PropertyRef Name="IdMetradoHito" />
+            </Principal>
+            <Dependent Role="MetradoAvanceHito">
+              <PropertyRef Name="IdMetradoHito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_69">
+          <End Role="Metrado" Type="Self.Metrado" Multiplicity="1" />
+          <End Role="MetradoAvance" Type="Self.MetradoAvance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metrado">
+              <PropertyRef Name="IdMetrado" />
+            </Principal>
+            <Dependent Role="MetradoAvance">
+              <PropertyRef Name="IdMetrado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_70">
+          <End Role="MetradoAvance" Type="Self.MetradoAvance" Multiplicity="1" />
+          <End Role="MetradoAvanceHito" Type="Self.MetradoAvanceHito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetradoAvance">
+              <PropertyRef Name="IdMetradoAvance" />
+            </Principal>
+            <Dependent Role="MetradoAvanceHito">
+              <PropertyRef Name="IdMetradoAvance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Metrado" EntityType="Self.Metrado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Metrado_Tmp" EntityType="Self.Metrado_Tmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetradoAvance" EntityType="Self.MetradoAvance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetradoAvanceHito" EntityType="Self.MetradoAvanceHito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetradoCampo" EntityType="Self.MetradoCampo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetradoCampo_Tmp" EntityType="Self.MetradoCampo_Tmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetradoHito" EntityType="Self.MetradoHito" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="R_40" Association="Self.R_40">
+            <End Role="Metrado" EntitySet="Metrado" />
+            <End Role="MetradoHito" EntitySet="MetradoHito" />
+          </AssociationSet>
+          <AssociationSet Name="R_52" Association="Self.R_52">
+            <End Role="Metrado" EntitySet="Metrado" />
+            <End Role="MetradoCampo" EntitySet="MetradoCampo" />
+          </AssociationSet>
+          <AssociationSet Name="R_63" Association="Self.R_63">
+            <End Role="MetradoHito" EntitySet="MetradoHito" />
+            <End Role="MetradoAvanceHito" EntitySet="MetradoAvanceHito" />
+          </AssociationSet>
+          <AssociationSet Name="R_69" Association="Self.R_69">
+            <End Role="Metrado" EntitySet="Metrado" />
+            <End Role="MetradoAvance" EntitySet="MetradoAvance" />
+          </AssociationSet>
+          <AssociationSet Name="R_70" Association="Self.R_70">
+            <End Role="MetradoAvance" EntitySet="MetradoAvance" />
+            <End Role="MetradoAvanceHito" EntitySet="MetradoAvanceHito" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Metrado">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+          </Key>
+          <Property Name="IdMetrado" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMilestone" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdUsuarioRegistro" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaModifico" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioRelevo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="IdUnidadMedida" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="MetradoEstimado" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="IdUltimoMotivoEdicion" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoOrigen" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MetradoHito" Relationship="Self.R_40" FromRole="Metrado" ToRole="MetradoHito" />
+          <NavigationProperty Name="MetradoCampo" Relationship="Self.R_52" FromRole="Metrado" ToRole="MetradoCampo" />
+          <NavigationProperty Name="MetradoAvance" Relationship="Self.R_69" FromRole="Metrado" ToRole="MetradoAvance" />
+        </EntityType>
+        <EntityType Name="Metrado_Tmp">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+          </Key>
+          <Property Name="IdMetrado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdMilestone" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="IdEstado" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuarioRegistro" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuarioModifico" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaModifico" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioRelevo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="IdUnidadMedida" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="MetradoEstimado" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="IdUltimoMotivoEdicion" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoOrigen" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MetradoAvance">
+          <Key>
+            <PropertyRef Name="IdMetradoAvance" />
+          </Key>
+          <Property Name="IdMetradoAvance" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMetrado" Type="Int64" Nullable="false" />
+          <Property Name="IdTurno" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdEstado" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuarioRegistro" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaModifico" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Metrado" Relationship="Self.R_69" FromRole="MetradoAvance" ToRole="Metrado" />
+          <NavigationProperty Name="MetradoAvanceHito" Relationship="Self.R_70" FromRole="MetradoAvance" ToRole="MetradoAvanceHito" />
+        </EntityType>
+        <EntityType Name="MetradoAvanceHito">
+          <Key>
+            <PropertyRef Name="IdMetradoHito" />
+            <PropertyRef Name="IdMetradoAvance" />
+          </Key>
+          <Property Name="IdMetradoHito" Type="Int64" Nullable="false" />
+          <Property Name="IdMetradoAvance" Type="Int64" Nullable="false" />
+          <Property Name="PorcentajeAvanceReal" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MetradoAvanceReal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="IdUsuarioRegistro" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaModifico" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="MetradoAvance" Relationship="Self.R_70" FromRole="MetradoAvanceHito" ToRole="MetradoAvance" />
+          <NavigationProperty Name="MetradoHito" Relationship="Self.R_63" FromRole="MetradoAvanceHito" ToRole="MetradoHito" />
+        </EntityType>
+        <EntityType Name="MetradoCampo">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+            <PropertyRef Name="IdProyectoDisciplinaCampo" />
+          </Key>
+          <Property Name="IdMetrado" Type="Int64" Nullable="false" />
+          <Property Name="IdProyectoDisciplinaCampo" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Metrado" Relationship="Self.R_52" FromRole="MetradoCampo" ToRole="Metrado" />
+        </EntityType>
+        <EntityType Name="MetradoCampo_Tmp">
+          <Key>
+            <PropertyRef Name="IdMetrado" />
+            <PropertyRef Name="IdProyectoDisciplinaCampo" />
+          </Key>
+          <Property Name="IdMetrado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProyectoDisciplinaCampo" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MetradoHito">
+          <Key>
+            <PropertyRef Name="IdMetradoHito" />
+          </Key>
+          <Property Name="IdMetradoHito" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMetrado" Type="Int64" Nullable="false" />
+          <Property Name="IdMilestoneHito" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdUsuarioRegistro" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdUsuarioModifico" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaModifico" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PorcentajeAvanceAcumulado" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MetradoAvanceAcumulado" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Metrado" Relationship="Self.R_40" FromRole="MetradoHito" ToRole="Metrado" />
+          <NavigationProperty Name="MetradoAvanceHito" Relationship="Self.R_63" FromRole="MetradoHito" ToRole="MetradoAvanceHito" />
+        </EntityType>
+        <Association Name="R_40">
+          <End Role="Metrado" Type="Self.Metrado" Multiplicity="1" />
+          <End Role="MetradoHito" Type="Self.MetradoHito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metrado">
+              <PropertyRef Name="IdMetrado" />
+            </Principal>
+            <Dependent Role="MetradoHito">
+              <PropertyRef Name="IdMetrado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_52">
+          <End Role="Metrado" Type="Self.Metrado" Multiplicity="1" />
+          <End Role="MetradoCampo" Type="Self.MetradoCampo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metrado">
+              <PropertyRef Name="IdMetrado" />
+            </Principal>
+            <Dependent Role="MetradoCampo">
+              <PropertyRef Name="IdMetrado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_69">
+          <End Role="Metrado" Type="Self.Metrado" Multiplicity="1" />
+          <End Role="MetradoAvance" Type="Self.MetradoAvance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metrado">
+              <PropertyRef Name="IdMetrado" />
+            </Principal>
+            <Dependent Role="MetradoAvance">
+              <PropertyRef Name="IdMetrado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_70">
+          <End Role="MetradoAvance" Type="Self.MetradoAvance" Multiplicity="1" />
+          <End Role="MetradoAvanceHito" Type="Self.MetradoAvanceHito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetradoAvance">
+              <PropertyRef Name="IdMetradoAvance" />
+            </Principal>
+            <Dependent Role="MetradoAvanceHito">
+              <PropertyRef Name="IdMetradoAvance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_63">
+          <End Role="MetradoHito" Type="Self.MetradoHito" Multiplicity="1" />
+          <End Role="MetradoAvanceHito" Type="Self.MetradoAvanceHito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetradoHito">
+              <PropertyRef Name="IdMetradoHito" />
+            </Principal>
+            <Dependent Role="MetradoAvanceHito">
+              <PropertyRef Name="IdMetradoHito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConexionAvance" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Metrado" EntityType="Self.Metrado" />
+          <EntitySet Name="Metrado_Tmp" EntityType="Self.Metrado_Tmp" />
+          <EntitySet Name="MetradoAvance" EntityType="Self.MetradoAvance" />
+          <EntitySet Name="MetradoAvanceHito" EntityType="Self.MetradoAvanceHito" />
+          <EntitySet Name="MetradoCampo" EntityType="Self.MetradoCampo" />
+          <EntitySet Name="MetradoCampo_Tmp" EntityType="Self.MetradoCampo_Tmp" />
+          <EntitySet Name="MetradoHito" EntityType="Self.MetradoHito" />
+          <AssociationSet Name="R_40" Association="Self.R_40">
+            <End Role="Metrado" EntitySet="Metrado" />
+            <End Role="MetradoHito" EntitySet="MetradoHito" />
+          </AssociationSet>
+          <AssociationSet Name="R_52" Association="Self.R_52">
+            <End Role="Metrado" EntitySet="Metrado" />
+            <End Role="MetradoCampo" EntitySet="MetradoCampo" />
+          </AssociationSet>
+          <AssociationSet Name="R_69" Association="Self.R_69">
+            <End Role="Metrado" EntitySet="Metrado" />
+            <End Role="MetradoAvance" EntitySet="MetradoAvance" />
+          </AssociationSet>
+          <AssociationSet Name="R_70" Association="Self.R_70">
+            <End Role="MetradoAvance" EntitySet="MetradoAvance" />
+            <End Role="MetradoAvanceHito" EntitySet="MetradoAvanceHito" />
+          </AssociationSet>
+          <AssociationSet Name="R_63" Association="Self.R_63">
+            <End Role="MetradoHito" EntitySet="MetradoHito" />
+            <End Role="MetradoAvanceHito" EntitySet="MetradoAvanceHito" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ConexionAvance">
+          <EntitySetMapping Name="Metrado">
+            <EntityTypeMapping TypeName="Model.Metrado">
+              <MappingFragment StoreEntitySet="Metrado">
+                <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+                <ScalarProperty Name="IdMilestone" ColumnName="IdMilestone" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="IdUsuarioRelevo" ColumnName="IdUsuarioRelevo" />
+                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+                <ScalarProperty Name="MetradoEstimado" ColumnName="MetradoEstimado" />
+                <ScalarProperty Name="IdUltimoMotivoEdicion" ColumnName="IdUltimoMotivoEdicion" />
+                <ScalarProperty Name="IdTipoOrigen" ColumnName="IdTipoOrigen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Metrado_Tmp">
+            <EntityTypeMapping TypeName="Model.Metrado_Tmp">
+              <MappingFragment StoreEntitySet="Metrado_Tmp">
+                <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+                <ScalarProperty Name="IdMilestone" ColumnName="IdMilestone" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="IdUsuarioRelevo" ColumnName="IdUsuarioRelevo" />
+                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+                <ScalarProperty Name="MetradoEstimado" ColumnName="MetradoEstimado" />
+                <ScalarProperty Name="IdUltimoMotivoEdicion" ColumnName="IdUltimoMotivoEdicion" />
+                <ScalarProperty Name="IdTipoOrigen" ColumnName="IdTipoOrigen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetradoAvance">
+            <EntityTypeMapping TypeName="Model.MetradoAvance">
+              <MappingFragment StoreEntitySet="MetradoAvance">
+                <ScalarProperty Name="IdMetradoAvance" ColumnName="IdMetradoAvance" />
+                <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetradoAvanceHito">
+            <EntityTypeMapping TypeName="Model.MetradoAvanceHito">
+              <MappingFragment StoreEntitySet="MetradoAvanceHito">
+                <ScalarProperty Name="IdMetradoHito" ColumnName="IdMetradoHito" />
+                <ScalarProperty Name="IdMetradoAvance" ColumnName="IdMetradoAvance" />
+                <ScalarProperty Name="PorcentajeAvanceReal" ColumnName="PorcentajeAvanceReal" />
+                <ScalarProperty Name="MetradoAvanceReal" ColumnName="MetradoAvanceReal" />
+                <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetradoCampo">
+            <EntityTypeMapping TypeName="Model.MetradoCampo">
+              <MappingFragment StoreEntitySet="MetradoCampo">
+                <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+                <ScalarProperty Name="IdProyectoDisciplinaCampo" ColumnName="IdProyectoDisciplinaCampo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetradoCampo_Tmp">
+            <EntityTypeMapping TypeName="Model.MetradoCampo_Tmp">
+              <MappingFragment StoreEntitySet="MetradoCampo_Tmp">
+                <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+                <ScalarProperty Name="IdProyectoDisciplinaCampo" ColumnName="IdProyectoDisciplinaCampo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetradoHito">
+            <EntityTypeMapping TypeName="Model.MetradoHito">
+              <MappingFragment StoreEntitySet="MetradoHito">
+                <ScalarProperty Name="IdMetradoHito" ColumnName="IdMetradoHito" />
+                <ScalarProperty Name="IdMetrado" ColumnName="IdMetrado" />
+                <ScalarProperty Name="IdMilestoneHito" ColumnName="IdMilestoneHito" />
+                <ScalarProperty Name="IdUsuarioRegistro" ColumnName="IdUsuarioRegistro" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="PorcentajeAvanceAcumulado" ColumnName="PorcentajeAvanceAcumulado" />
+                <ScalarProperty Name="MetradoAvanceAcumulado" ColumnName="MetradoAvanceAcumulado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

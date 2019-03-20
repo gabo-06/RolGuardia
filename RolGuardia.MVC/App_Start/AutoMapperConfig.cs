@@ -40,6 +40,27 @@ namespace RolGuardia.MVC.App_Start
                 //.ForMember(dest => dest.FechaRegistro,
                 //            opt => opt.NullSubstitute("Sin fecha de registro"));
 
+                cfg.CreateMap<ModeloNegocio.Metrado, ModeloVista.Metrado>()
+                    .ForMember(dest => dest.IdMetrado,
+                                opt => opt.MapFrom(src => src.IdMetrado))
+                    .ForMember(dest => dest.IdMilestone,
+                                opt => opt.MapFrom(src => src.IdMilestone))
+                    .ForMember(dest => dest.IdEstado,
+                                opt => opt.MapFrom(src => src.IdEstado))
+                    .ForMember(dest => dest.FechaRegistro,
+                                opt => opt.MapFrom(src => src.FechaRegistro))
+                    .ForMember(dest => dest.FechaModifico,
+                                opt => opt.MapFrom(src => src.FechaModifico))
+                    .ForMember(dest => dest.IdUsuarioRelevo,
+                                opt => opt.MapFrom(src => src.IdUsuarioRelevo))
+                    .ForMember(dest => dest.IdUnidadMedida,
+                                opt => opt.MapFrom(src => src.IdUnidadMedida));
+                    // .ForMember(dest => dest.MetradoEstimado,
+                    //             opt => opt.MapFrom(src => src.MetradoEstimado))
+                    // .ForMember(dest => dest.IdUltimoMotivoEdicion,
+                    //             opt => opt.MapFrom(src => src.IdUltimoMotivoEdicion))
+                    // .ForMember(dest => dest.IdTipoOrigen,
+                    //             opt => opt.MapFrom(src => src.IdTipoOrigen));
             });
         }
     }
