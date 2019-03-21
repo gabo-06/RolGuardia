@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ModeloNegocio = RolGuardia.Entidad;
-using ModeloVista = RolGuardia.MVC.Models;
+using DTO = RolGuardia.Entidad;
+using Model = RolGuardia.MVC.Models;
 using AutoMapper;
 
 namespace RolGuardia.MVC.App_Start
@@ -14,8 +14,8 @@ namespace RolGuardia.MVC.App_Start
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<ModeloNegocio.Personal, ModeloVista.Personal>()
-                        .ForMember(dest => dest.IdPersonal,
+                cfg.CreateMap<DTO.PapeletaMultiple, Model.PapeletaMultiple>()
+                        .ForMember(dest => dest.IdPapeleta,
                                     opt => opt.MapFrom(src => src.IdPersonal))
                         .ForMember(dest => dest.Grado,
                                     opt => opt.MapFrom(src => src.Grado))
@@ -40,27 +40,33 @@ namespace RolGuardia.MVC.App_Start
                 //.ForMember(dest => dest.FechaRegistro,
                 //            opt => opt.NullSubstitute("Sin fecha de registro"));
 
-                cfg.CreateMap<ModeloNegocio.Metrado, ModeloVista.Metrado>()
-                    .ForMember(dest => dest.IdMetrado,
-                                opt => opt.MapFrom(src => src.IdMetrado))
-                    .ForMember(dest => dest.IdMilestone,
-                                opt => opt.MapFrom(src => src.IdMilestone))
-                    .ForMember(dest => dest.IdEstado,
-                                opt => opt.MapFrom(src => src.IdEstado))
-                    .ForMember(dest => dest.FechaRegistro,
-                                opt => opt.MapFrom(src => src.FechaRegistro))
-                    .ForMember(dest => dest.FechaModifico,
-                                opt => opt.MapFrom(src => src.FechaModifico))
-                    .ForMember(dest => dest.IdUsuarioRelevo,
-                                opt => opt.MapFrom(src => src.IdUsuarioRelevo))
-                    .ForMember(dest => dest.IdUnidadMedida,
-                                opt => opt.MapFrom(src => src.IdUnidadMedida));
-                    // .ForMember(dest => dest.MetradoEstimado,
-                    //             opt => opt.MapFrom(src => src.MetradoEstimado))
-                    // .ForMember(dest => dest.IdUltimoMotivoEdicion,
-                    //             opt => opt.MapFrom(src => src.IdUltimoMotivoEdicion))
-                    // .ForMember(dest => dest.IdTipoOrigen,
-                    //             opt => opt.MapFrom(src => src.IdTipoOrigen));
+                cfg.CreateMap<DTO.GradoPersonal, Model.GradoPersonal>()
+                        .ForMember(dest => dest.IdGrado,
+                                    opt => opt.MapFrom(src => src.IdGrado))
+                        .ForMember(dest => dest.Descripcion,
+                                    opt => opt.MapFrom(src => src.Descripcion));
+
+                cfg.CreateMap<DTO.Departamento, Model.Departamento>()
+                        .ForMember(dest => dest.IdDepartamento,
+                                    opt => opt.MapFrom(src => src.IdDepartamento))
+                        .ForMember(dest => dest.Descripcion,
+                                    opt => opt.MapFrom(src => src.Descripcion));
+
+                cfg.CreateMap<DTO.Personal, Model.Personal>()
+                        .ForMember(dest => dest.IdPersonal,
+                                    opt => opt.MapFrom(src => src.IdPersonal))
+                        .ForMember(dest => dest.Grado,
+                                    opt => opt.MapFrom(src => src.Grado))
+                        .ForMember(dest => dest.Nombres,
+                                    opt => opt.MapFrom(src => src.Nombres))
+                        .ForMember(dest => dest.ApellidoPaterno,
+                                    opt => opt.MapFrom(src => src.ApellidoPaterno))
+                        .ForMember(dest => dest.ApellidoMaterno,
+                                    opt => opt.MapFrom(src => src.ApellidoMaterno))
+                        .ForMember(dest => dest.Departamento,
+                                    opt => opt.MapFrom(src => src.Departamento))
+                        .ForMember(dest => dest.cip,
+                                    opt => opt.MapFrom(src => src.cip));
             });
         }
     }

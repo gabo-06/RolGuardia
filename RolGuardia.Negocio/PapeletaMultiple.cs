@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ModeloDatos = RolGuardia.Datos.modelo;
 using ModeloNegocio = RolGuardia.Entidad;
 
 namespace RolGuardia.Negocio
 {
-    public class NE_Personal
+    public class PapeletaMultiple
     {
         ModeloDatos.BDMarinaConexion BD = new ModeloDatos.BDMarinaConexion();
 
-        public List<ModeloNegocio.Personal> listar()
+        public List<ModeloNegocio.PapeletaMultiple> listar()
         {
             try
             {
-                List<ModeloNegocio.Personal> enListaPersonal =
+                List<ModeloNegocio.PapeletaMultiple> enListaPapeletaMultiple =
                     (from personal in BD.Personal
                      join papeletaMultiple in BD.PapeletaMultiple on personal.IdPersonal equals papeletaMultiple.IdPersonalEnturno into GrupoPapeletaMultiple // Left join de Personal con PapeletaMultiple.
                      join departamento in BD.Departamento on personal.Departamento equals departamento into GrupoDepartamento // Left join de Personal con departamento.
@@ -25,8 +27,8 @@ namespace RolGuardia.Negocio
                      from grupoDepartamento in GrupoDepartamento.DefaultIfEmpty()
                      from grupoEspecialidad in GrupoEspecialidad.DefaultIfEmpty()
                      from grupoGradoPersonal in GrupoGradoPersonal.DefaultIfEmpty()
-                     
-                     select new ModeloNegocio.Personal
+
+                     select new ModeloNegocio.PapeletaMultiple
                      {
                          IdPersonal = personal.IdPersonal,
                          NumeroPapeleta = grupoPapeletaMultiple.NumeroPapeleta,
@@ -39,7 +41,7 @@ namespace RolGuardia.Negocio
                          FechaRegistro = personal.FechaRegistro
                      }).ToList();
 
-                return enListaPersonal;
+                return enListaPapeletaMultiple;
             }
             catch (Exception ex)
             {

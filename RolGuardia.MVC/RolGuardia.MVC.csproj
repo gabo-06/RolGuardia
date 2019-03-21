@@ -166,13 +166,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\InicioController.cs" />
-    <Compile Include="Controllers\MetradoController.cs" />
     <Compile Include="Controllers\PapeletaMultipleController.cs" />
     <Compile Include="Controllers\RolGuardiaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Metrado.cs" />
+    <Compile Include="Models\Departamento.cs" />
+    <Compile Include="Models\GradoPersonal.cs" />
+    <Compile Include="Models\PapeletaMultiple.cs" />
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

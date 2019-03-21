@@ -48,8 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NE_Metrado.cs" />
-    <Compile Include="NE_Personal.cs" />
+    <Compile Include="PapeletaMultiple.cs" />
+    <Compile Include="Personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

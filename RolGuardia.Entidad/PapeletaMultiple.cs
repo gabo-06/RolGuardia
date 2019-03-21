@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RolGuardia.Entidad
 {
-    public class Personal
+    public class PapeletaMultiple
     {
         public int IdPersonal { get; set; }
         public string NumeroPapeleta { get; set; }

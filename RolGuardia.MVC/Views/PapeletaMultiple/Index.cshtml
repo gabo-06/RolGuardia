@@ -77,11 +77,7 @@
                                                         <th>Fecha de Registro</th>
                                                         <th>Operaciones</th>
                                                     </tr>
-<<<<<<< HEAD
                                                 </thead>
-=======
-                                                </thead>                                                
->>>>>>> 7316c761c691eeb9449ef24a4183ae7035dad53d
                                             </table>
                                         </div>
                                     </div>
@@ -98,8 +94,8 @@
                                         <div class="row">
                                             <div class="col-xl-2 col-sm-12">
                                                 <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">CIP:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="CIP">
+                                                    <label class="col-form-label text-left font-weight-bold" for="txtCIPF">CIP:</label>
+                                                    <input type="text" class="col-lg-12 form-control" id="txtCIPF" tabindex="6" placeholder="CIP">
                                                 </div>
                                             </div>
                                         </div>
@@ -107,20 +103,20 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-sm-12">
                                                 <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">Grado y Nombre:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="Grado y Nombre" readonly>
+                                                    <label class="col-form-label text-left font-weight-bold" for="txtGradoNombre">Grado y Nombre:</label>
+                                                    <input type="text" class="col-lg-12 form-control" id="txtGradoNombre" tabindex="6" placeholder="Grado y Nombre" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-xl-2 col-sm-12">
                                                 <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">CIP:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="CIP" readonly>
+                                                    <label class="col-form-label text-left font-weight-bold" for="txtCIP">CIP:</label>
+                                                    <input type="text" class="col-lg-12 form-control" id="txtCIP" tabindex="6" placeholder="CIP" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-sm-12">
                                                 <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">Departamento:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="Departamento" readonly>
+                                                    <label class="col-form-label text-left font-weight-bold" for="txtDepartamento">Departamento:</label>
+                                                    <input type="text" class="col-lg-12 form-control" id="txtDepartamento" tabindex="6" placeholder="Departamento" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,8 +167,13 @@
                                             </div>
                                             <div class="col-xl-3 col-sm-12">
                                                 <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">Cubrir el día:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="CIP" readonly>
+                                                    <label class="col-form-label text-left font-weight-bold" for="txtFechaCubrira">Cubrirá el día:</label>
+                                                    <div class="input-group date">
+                                                        <span class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                        </span>
+                                                        <input type="text" class="form-control dtpFecha" id="txtFechaCubrira" tabindex="3" placeholder="Order Date" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,8 +195,13 @@
                                             </div>
                                             <div class="col-xl-3 col-sm-12">
                                                 <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">Cubrir el día:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="CIP" readonly>
+                                                    <label class="col-form-label text-left font-weight-bold" for="txtFechaDevolvera">Devolverá el día:</label>
+                                                    <div class="input-group date">
+                                                        <span class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                        </span>
+                                                        <input type="text" class="form-control dtpFecha" id="txtFechaDevolvera" tabindex="3" placeholder="Order Date" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
