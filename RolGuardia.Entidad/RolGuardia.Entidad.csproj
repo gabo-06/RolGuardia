@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CondicionPapeleta.cs" />
     <Compile Include="Departamento.cs" />
     <Compile Include="GradoPersonal.cs" />
     <Compile Include="PapeletaMultiple.cs" />

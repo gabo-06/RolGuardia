@@ -165,12 +165,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CondicionPapeletaController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\PapeletaMultipleController.cs" />
     <Compile Include="Controllers\RolGuardiaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CondicionPapeleta.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\GradoPersonal.cs" />
     <Compile Include="Models\PapeletaMultiple.cs" />
@@ -225,6 +227,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\core\core.js" />
+    <Content Include="Scripts\core\general_data.js" />
     <Content Include="Scripts\core\user_interface.js" />
     <Content Include="Scripts\core\utilities.js" />
     <Content Include="Scripts\datatables_checkboxes\dataTables.checkboxes.min.js" />
@@ -236,7 +239,7 @@
     <Content Include="Scripts\jquery_validate\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\vistas\index.js" />
-    <Content Include="Scripts\vistas\metrado.js" />
+    <Content Include="Scripts\vistas\inicio.js" />
     <Content Include="Scripts\vistas\papeleta_multiple.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -257,10 +260,10 @@
     <Content Include="Views\RolGuardia\Index.cshtml" />
     <Content Include="Views\PapeletaMultiple\Index_old.cshtml" />
     <Content Include="Views\PapeletaMultiple\index.cshtml" />
-    <Content Include="Views\Metrado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CondicionPapeleta\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -40,6 +40,12 @@ namespace RolGuardia.MVC.App_Start
                 //.ForMember(dest => dest.FechaRegistro,
                 //            opt => opt.NullSubstitute("Sin fecha de registro"));
 
+                cfg.CreateMap<DTO.CondicionPapeleta, Model.CondicionPapeleta>()
+                        .ForMember(dest => dest.IdCondicionP,
+                                    opt => opt.MapFrom(src => src.IdCondicionP))
+                        .ForMember(dest => dest.Observacion,
+                                    opt => opt.MapFrom(src => src.Observacion));
+
                 cfg.CreateMap<DTO.GradoPersonal, Model.GradoPersonal>()
                         .ForMember(dest => dest.IdGrado,
                                     opt => opt.MapFrom(src => src.IdGrado))

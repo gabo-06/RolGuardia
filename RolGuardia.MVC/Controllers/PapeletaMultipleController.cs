@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using RolGuardia.Negocio;
-using Servicio = RolGuardia.Negocio;
 using DTO = RolGuardia.Entidad;
 using Model = RolGuardia.MVC.Models;
+using Servicio = RolGuardia.Negocio;
 using Newtonsoft.Json;
 using AutoMapper;
 
@@ -19,8 +18,6 @@ namespace RolGuardia.MVC.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.IdMenuSeleccionado = "PapeletaMultiple"; // Envía el Id del menú seleccionado para saber que menú se eligió y así poder pintarlo.
-
             return View();
         }
 
@@ -28,7 +25,7 @@ namespace RolGuardia.MVC.Controllers
         {
             #region Variables
             Servicio.PapeletaMultiple nePapeletaMultiple = new Negocio.PapeletaMultiple();
-            List<DTO.PapeletaMultiple> enListaPapeletaMultiple;            
+            List<DTO.PapeletaMultiple> enListaPapeletaMultiple;
             string search = Request.Form.GetValues("search[value]")[0];
             string numeroPapeleta = Request.Form.GetValues("columns[2][search][value]").FirstOrDefault();
             string nombreCompleto = Request.Form.GetValues("columns[5][search][value]").FirstOrDefault();

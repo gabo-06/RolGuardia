@@ -216,6 +216,8 @@ rolGuardia.papeletaMultiple.inicio = function ()
         singleDatePicker: true,
         showDropdowns: true
     });
+    let data = rolGuardia.generalData.listarDataCombo("ListaCondicionesPapeleta");
+    rolGuardia.userInterface.configurarComboSelect2($("#cmbCondicion"), data, "Seleccione");
     rolGuardia.papeletaMultiple.listado.tabla.configurarTabla();
     // #endregion
 
@@ -264,24 +266,44 @@ rolGuardia.papeletaMultiple.inicio = function ()
             .search(this.value)
             .draw();
     });
-    $("#txtCIPF").on("focusout", function ()
+    $("#txtCIPF").closest(".row").find("button").on("click", function ()
     {
-        var filtro = { "cip": $("#txtCIPF").val().trim() };
+        let cipFiltro = $("#txtCIPF").val().trim();
 
-        $.ajax({
-            url: "/PapeletaMultiple/leerPorCIP",
-            type: "POST",
-            data: JSON.stringify(filtro),
-            contentType: "application/json",
-            dataType: 'json',
-            success: function (data)
+        if (cipFiltro.length !== 0)
+        {
+            let filtroAJAX = { "cip": $("#txtCIPF").val().trim() };
+
+            $.ajax({
+                url: "/PapeletaMultiple/leerPorCIP",
+                async: true,
+                type: "POST",
+                data: JSON.stringify(filtroAJAX),
+                contentType: "application/json",
+                dataType: 'json'
+            }).done(function (personal)
             {
-                debugger;
-                $("#txtGradoNombre").val(data.Grado.Descripcion + ' ' + data.Nombres + ' ' + data.ApellidoPaterno + ' ' + data.ApellidoMaterno);
-                $("#txtCIP").val(data.cip);
-                $("#txtDepartamento").val(data.Departamento.Descripcion);
-            }
-        });
+                $("#txtGradoNombre").val(personal.Grado.Descripcion + ' ' + personal.Nombres + ' ' + personal.ApellidoPaterno + ' ' + personal.ApellidoMaterno);
+                $("#txtCIP").val(personal.cip);
+                $("#txtDepartamento").val(personal.Departamento.Descripcion);
+                $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-info").addClass("d-flex").removeClass("d-none");
+                $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-warning").removeClass("d-flex").addClass("d-none");
+                $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-danger").removeClass("d-flex").addClass("d-none");
+            }).fail(function ()
+            {
+                $("#txtGradoNombre, #txtCIP, #txtDepartamento").val("");
+                $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-info").removeClass("d-flex").addClass("d-none");
+                $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-warning").removeClass("d-flex").addClass("d-none");
+                $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-danger").addClass("d-flex").removeClass("d-none");
+            });
+        }
+        else
+        {
+            $("#txtGradoNombre, #txtCIP, #txtDepartamento").val("");
+            $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-info").removeClass("d-flex").addClass("d-none");
+            $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-warning").addClass("d-flex").removeClass("d-none");
+            $("#txtCIPF").closest(".row").closest(".form-group").siblings(".row").find(".alert-danger").removeClass("d-flex").addClass("d-none");
+        }
     });
 };
 

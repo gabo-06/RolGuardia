@@ -3,3 +3,4 @@ C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Entidad\b
 C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Entidad\obj\Release\RolGuardia.Entidad.csproj.CoreCompileInputs.cache
 C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Entidad\obj\Release\RolGuardia.Entidad.dll
 C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Entidad\obj\Release\RolGuardia.Entidad.pdb
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Entidad\obj\Release\RolGuardia.Entidad.csprojAssemblyReference.cache
