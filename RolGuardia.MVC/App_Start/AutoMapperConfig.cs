@@ -16,7 +16,7 @@ namespace RolGuardia.MVC.App_Start
             {
                 cfg.CreateMap<DTO.PapeletaMultiple, Model.PapeletaMultiple>()
                         .ForMember(dest => dest.IdPapeleta,
-                                    opt => opt.MapFrom(src => src.IdPersonal))
+                                    opt => opt.MapFrom(src => src.IdPapeleta))
                         .ForMember(dest => dest.Grado,
                                     opt => opt.MapFrom(src => src.Grado))
                         .ForMember(dest => dest.Especialidad,

@@ -30,7 +30,7 @@ namespace RolGuardia.Negocio
 
                      select new ModeloNegocio.PapeletaMultiple
                      {
-                         IdPersonal = personal.IdPersonal,
+                         IdPapeleta = grupoPapeletaMultiple.IdPapeleta,
                          NumeroPapeleta = grupoPapeletaMultiple.NumeroPapeleta,
                          Grado = grupoGradoPersonal.Descripcion,
                          Especialidad = grupoEspecialidad.Descripcion,

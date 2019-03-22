@@ -62,9 +62,10 @@ rolGuardia.papeletaMultiple.listado.tabla.configurarTabla = function ()
                 "render": function (url, type, full)
                 {
                     // #region Control Switch 
+                    debugger
                     return '<div class="custom-control custom-switch">' +
-                        '<input type="checkbox" class="custom-control-input" value="' + url.IdPersonal + '" id="' + url.IdPersonal + '" >' +
-                        '<label class="custom-control-label FilaPapeleta" for="' + url.IdPersonal + '" style="cursor: pointer;"></label>' +
+                        '<input type="checkbox" class="custom-control-input" value="' + url.IdPapeleta + '" id="' + url.IdPersonal + '" >' +
+                        '<label class="custom-control-label FilaPapeleta" for="' + url.IdPapeleta + '" style="cursor: pointer;"></label>' +
                         '</div>';
                     // #endregion
 
@@ -234,7 +235,9 @@ rolGuardia.papeletaMultiple.inicio = function ()
         // else if (!this.checked && indice !== -1)
         // 	rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
         // #endregion
-        // #region Control Switch 
+
+        // #region Control Switch
+        debugger
         let contenedor = $(this).closest(".custom-switch");
         let inputSwitch = $(contenedor).find("input[type=checkbox]");
         let idPersonal = parseInt($(inputSwitch).attr("id"));
@@ -247,9 +250,11 @@ rolGuardia.papeletaMultiple.inicio = function ()
         else
             rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
         // #endregion
+
         // #region Pintado de fila cuando selecciona el registro
         // $(fila).toggleClass("bg-warning font-weight-bold");
         // #endregion
+
         // #endregion
     });
     $("#txtNumeroPapeletaF").on("keyup", function ()

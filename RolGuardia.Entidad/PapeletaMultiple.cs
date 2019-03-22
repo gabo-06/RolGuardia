@@ -8,7 +8,7 @@ namespace RolGuardia.Entidad
 {
     public class PapeletaMultiple
     {
-        public int IdPersonal { get; set; }
+        public int IdPapeleta { get; set; }
         public string NumeroPapeleta { get; set; }
         public string Grado { get; set; }
         public string Especialidad { get; set; }
