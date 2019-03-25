@@ -17,7 +17,7 @@ namespace RolGuardia.Datos.modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PapeletaMultiple()
         {
-            this.CondicionPapeleta = new HashSet<CondicionPapeleta>();
+            this.CondicionPapeletas = new HashSet<CondicionPapeleta>();
         }
     
         public int IdPapeleta { get; set; }
@@ -36,7 +36,7 @@ namespace RolGuardia.Datos.modelo
         public string UsuarioModificacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CondicionPapeleta> CondicionPapeleta { get; set; }
+        public virtual ICollection<CondicionPapeleta> CondicionPapeletas { get; set; }
         public virtual Personal Personal { get; set; }
         public virtual Personal Personal1 { get; set; }
         public virtual TipoPaleleta TipoPaleleta { get; set; }

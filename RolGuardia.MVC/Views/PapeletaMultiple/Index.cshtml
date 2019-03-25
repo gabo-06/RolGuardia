@@ -1,7 +1,6 @@
 ﻿@*PaletaMultiple/Index*@
 @section styles
 {
-    @*<link href="~/Content/css/datatables_checkboxes/dataTables.checkboxes.css" rel="stylesheet" />*@
     <style>
         tr > th:first-child:after,
         tr > th:first-child:before
@@ -15,10 +14,14 @@
             left: inherit;
         }
     </style>
+    <link href="~/Content/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
 }
 @section scripts
 {
     @*<script src="~/Scripts/datatables_checkboxes/dataTables.checkboxes.min.js"></script>*@
+    <script src="~/Scripts/datepicker/moment.min.js"></script>
+    <script src="~/Scripts/datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/datepicker/bootstrap-datepicker.es.min.js"></script>
     <script src="~/Scripts/vistas/papeleta_multiple.js"></script>
 }
 @{
@@ -33,16 +36,16 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs pull-right" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tab-1">Listado</a>
+                            <a class="nav-link active" id="CabeceraPestañaListado" data-toggle="tab" href="#CuerpoPestañaListado">Listado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab-2">Registro</a>
+                            <a class="nav-link" id="CabeceraPestañaRegistro" data-toggle="tab" href="#CuerpoPestañaRegistro">Registro</a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show active" role="tabpanel">
+                        <div id="CuerpoPestañaListado" class="tab-pane fade show active" role="tabpanel">
                             @*<div class="card bg-light pt-2 col-12 col-lg-12 col-xxl-12 ">*@
                             <div class="card bg-light">
                                 <div class="card-body">
@@ -60,17 +63,36 @@
                                     </form>
                                 </div>
                             </div>
-
                             <div class="row">
-                                <div class="col-12 col-lg-12 col-xxl-12">
+                                <div class="col-12 col-lg-12 col-xl-12">
                                     <div class="card bg-light">
-                                        <div class="card-body">
+                                        <div class="card bg-light ml-3 mt-3 mr-3 mb-0">
+                                            @*<span class="badge badge-dark col-2">Estados de Papeleta</span>*@
+                                            <div class="card-header">Estados de Papeleta</div>
+                                            <div class="card-body">
+                                                <span class="font-weight-bold text-info float-left mr-4"><i class="fas fa-square"></i> Papeleta Activa </span>
+                                                <span class="font-weight-bold text-success float-left mr-4"><i class="fas fa-square"></i> Papeleta Aprobada</span>
+                                                <span class="font-weight-bold text-danger float-left mr-4"><i class="fas fa-square"></i> Papeleta Rechazada</span>
+                                                <span class="font-weight-bold text-dark float-left mr-4"><i class="fas fa-square"></i> Papeleta Inactiva</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body pt-2 pb-0">
+                                            <button type="button" class="btn btn-primary" id="btnNuevaPapeleta" data-toggle="tooltip" data-placement="top" title="" data-original-title="Nueva Papeleta">
+                                                <i class="fas fa-plus-square"></i>
+                                            </button>
+                                        </div>
+                                        <div class="card-body pt-0">
                                             <table id="tblPapeletaMultiple" class="table table-striped table-light" style="width:100%">
                                                 <thead>
                                                     <tr class="bg-dark text-light">
                                                         <th></th>
-                                                        <th></th>
-                                                        <th>Número de Papeleta</th>
+                                                        <th>
+                                                            @*<label class='custom-control custom-checkbox' style='text-align: center! important; padding: 0! important; display: contents;'>
+                                                                <input type='checkbox' class='custom-control-input FilaPapeleta' id='SeleccionarPapeletasTodas' value='' name='validation-checkbox-custom'>
+                                                                <span class='custom-control-label' style='top: 12px'></span>
+                                                            </label>*@
+                                                        </th>
+                                                        <th># de Papeleta</th>
                                                         <th>Grado</th>
                                                         <th>Especialidad</th>
                                                         <th>Apellidos y Nombres</th>
@@ -84,13 +106,105 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal fade" id="ConfirmacionAprobacion" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title font-weight-bold">
+                                                <span class="badge badge-success">
+                                                    <i class="fas fa-check"></i>
+                                                </span>
+                                                Aprobación
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body m-3 text-center">
+                                            <p class="mb-0">¿Esta seguro de aprobar esta papeleta?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" id="btnSiAprobarPapeleta" data-dismiss="modal">Si</button>
+                                            <button type="button" class="btn btn-danger" id="btnNoAprobarPapeleta" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="ConfirmacionRechazo" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title font-weight-bold">
+                                                <span class="badge badge-danger">
+                                                    <i class="fas fa-times-circle"></i>
+                                                </span>
+                                                Rechazo
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body m-3 text-center">
+                                            <p class="mb-0">¿Esta seguro de rechazar esta papeleta?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" id="btnSiRechazarPapeleta" data-dismiss="modal">Si</button>
+                                            <button type="button" class="btn btn-danger" id="btnNoRechazarPapeleta" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="modal fade" id="ConfirmacionEliminacion" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title font-weight-bold">
+                                                <span class="badge badge-dark">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </span>
+                                                Eliminación
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body m-3 text-center">
+                                            <p class="mb-0">¿Esta seguro de eliminar esta papeleta?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" id="btnSiEliminarPapeleta" data-dismiss="modal">Si</button>
+                                            <button type="button" class="btn btn-danger" id="btnNoEliminarPapeleta" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @*</div>*@
                         </div>
-                        <div id="tab-2" class="tab-pane fade show" role="tabpanel">
+                        <div id="CuerpoPestañaRegistro" class="tab-pane fade show" role="tabpanel">
                             @*<div class="card bg-light pt-2 col-12 col-lg-12 col-xxl-12 ">*@
-                            <form>
+                            <form id="frmRegistroPapeleta">
                                 <div class="card bg-light">
+                                    <div class="card-header">
+                                        <h3 class="text-primary TituloOperacionPapeleta" id="TituloRegistroPapeleta">
+                                            <strong>
+                                                <i class="fas fa-plus-square"></i> Nueva Papeleta
+                                            </strong>
+                                        </h3>
+                                        <h3 class="text-primary d-none TituloOperacionPapeleta" id="TituloEdicionPapeleta">
+                                            <strong>
+                                                <i class="fas fa-edit"></i> Papeleta:
+                                            </strong>
+                                            <span class="TituloNumeroPapeleta"></span>
+                                        </h3>
+                                        <h3 class="text-primary d-none TituloOperacionPapeleta" id="TituloDetallePapeleta">
+                                            <strong>
+                                                <i class="fas fa-edit"></i> Papeleta:
+                                            </strong>
+                                            <span class="TituloNumeroPapeleta"></span>
+                                        </h3>
+                                        <input type="hidden" id="hdIdPapeleta" />
+                                    </div>
                                     <div class="card-body">
                                         <div class="form-group">
                                             <div class="row">
@@ -101,27 +215,16 @@
                                             <div class="row">
                                                 <div class="col-xl-2 col-sm-12 mb-2">
                                                     <input type="text" class="form-control" id="txtCIPF" tabindex="6" placeholder="CIP">
+                                                    <input type="hidden" id="hdIdPersonal" />
                                                 </div>
-                                                <div class="col-xl-2 col-sm-12 mb-2 btn-group d-flex">
-                                                    <button type="button" class="btn btn-primary"><i class="fas fa-search"></i> Buscar</button>
+                                                <div class="col-xl-1 col-sm-12 mb-2 btn-group d-flex">
+                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr />
                                         <div class="row">
-                                            <div class="col-12 ">
-                                                <div class="alert alert-info alert-outline-coloured alert-dismissible d-none" role="alert">
-                                                    <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true" class="text-info">×</span>
-                                                    </button>
-                                                    <div class="alert-icon">
-                                                        <i class="fas fa-fw fa-info-circle"></i>
-                                                    </div>
-                                                    <div class="alert-message text-info">
-                                                        <span class="font-weight-bold">Información: </span> ¡Resultado encontrado!
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-12 ">
                                                 <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
                                                     <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
@@ -153,19 +256,19 @@
                                             <div class="col-xl-6 col-sm-12">
                                                 <div class="form-group">
                                                     <label class="col-form-label text-left font-weight-bold" for="txtGradoNombre">Grado y Nombre:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtGradoNombre" tabindex="6" placeholder="Grado y Nombre" readonly>
+                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtGradoNombre" name="txtGradoNombre" tabindex="6" placeholder="Grado y Nombre" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-xl-2 col-sm-12">
                                                 <div class="form-group">
                                                     <label class="col-form-label text-left font-weight-bold" for="txtCIP">CIP:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtCIP" tabindex="6" placeholder="CIP" readonly>
+                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtCIP" name="txtCIP" tabindex="6" placeholder="CIP" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-sm-12">
                                                 <div class="form-group">
                                                     <label class="col-form-label text-left font-weight-bold" for="txtDepartamento">Departamento:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtDepartamento" tabindex="6" placeholder="Departamento" readonly>
+                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtDepartamento" name="txtDepartamento" tabindex="6" placeholder="Departamento" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,8 +280,8 @@
                                         <div class="row">
                                             <div class="col-xl-4 col-sm-12">
                                                 <div class="form-group">
-                                                    <label for="cmbCondicion" class="col-form-label text-left font-weight-bold">Tipo de Condición</label>
-                                                    <select class="form-control" id="cmbCondicion" name="validation-select">
+                                                    <label for="cmbCondicion" class="col-form-label text-left font-weight-bold">Tipo de Papeleta</label>
+                                                    <select class="form-control" id="cmbTipoPapeleta" name="validation-select">
                                                         <option></option>
                                                     </select>
                                                 </div>
@@ -186,67 +289,143 @@
                                         </div>
                                         <!--#endregion -->
                                         <hr />
-                                        <div class="row">
-                                            <div class="col-xl-2 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">CIP:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="CIP">
+                                        <div class="d-none" id="AsigancionGuardia">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="col-form-label text-left font-weight-bold" for="txtCIPCubriraF">CIP:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-2 col-sm-12 mb-2">
+                                                        <input type="text" class="form-control" id="txtCIPCubriraF" tabindex="6" placeholder="CIP">
+                                                        <input type="hidden" id="hdIdPersonalCubrira" />
+                                                    </div>
+                                                    <div class="col-xl-1 col-sm-12 mb-2 btn-group d-flex">
+                                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar">
+                                                            <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-9 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">Grado y Nombre:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtShipName" tabindex="6" placeholder="Grado y Nombre" readonly>
+                                            <div class="row">
+                                                <div class="col-12 ">
+                                                    <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true" class="text-warning">×</span>
+                                                        </button>
+                                                        <div class="alert-icon">
+                                                            <i class="fas fa-fw fa-exclamation-circle"></i>
+                                                        </div>
+                                                        <div class="alert-message text-warning">
+                                                            <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 ">
+                                                    <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true" class="text-danger">×</span>
+                                                        </button>
+                                                        <div class="alert-icon">
+                                                            <i class="fas fa-fw fa-times-circle"></i>
+                                                        </div>
+                                                        <div class="alert-message text-danger">
+                                                            <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtFechaCubrira">Cubrirá el día:</label>
-                                                    <div class="input-group date">
-                                                        <span class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                                        </span>
-                                                        <input type="text" class="form-control dtpFecha" id="txtFechaCubrira" tabindex="3" placeholder="Order Date" />
+                                            <div class="row">
+                                                <div class="col-xl-9 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label text-left font-weight-bold" for="txtGradoNombreCubrira">Grado y Nombre:</label>
+                                                        <input type="text" class="col-lg-12 form-control bg-light" id="txtGradoNombreCubrira" name="txtGradoNombreCubrira" tabindex="6" placeholder="Grado y Nombre" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label text-left font-weight-bold" for="txtFechaCubrira">Cubrirá el día:</label>
+                                                        <div class="input-group date">
+                                                            <span class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                            </span>
+                                                            <input type="text" class="form-control dtpFecha bg-light" id="txtFechaCubrira" name="txtFechaCubrira" tabindex="3" readonly />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="col-form-label text-left font-weight-bold" for="txtCIPDevolveraF">CIP:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-2 col-sm-12 mb-2">
+                                                        <input type="text" class="form-control" id="txtCIPDevolveraF" tabindex="6" placeholder="CIP">
+                                                        <input type="hidden" id="hdIdPersonalDevolvera" />
+                                                    </div>
+                                                    <div class="col-xl-1 col-sm-12 mb-2 btn-group d-flex">
+                                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar">
+                                                            <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 ">
+                                                    <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true" class="text-warning">×</span>
+                                                        </button>
+                                                        <div class="alert-icon">
+                                                            <i class="fas fa-fw fa-exclamation-circle"></i>
+                                                        </div>
+                                                        <div class="alert-message text-warning">
+                                                            <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 ">
+                                                    <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true" class="text-danger">×</span>
+                                                        </button>
+                                                        <div class="alert-icon">
+                                                            <i class="fas fa-fw fa-times-circle"></i>
+                                                        </div>
+                                                        <div class="alert-message text-danger">
+                                                            <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-9 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label text-left font-weight-bold" for="txtGradoNombreDevolvera">Grado y Nombre:</label>
+                                                        <input type="text" class="col-lg-12 form-control bg-light" id="txtGradoNombreDevolvera" name="txtGradoNombreDevolvera" tabindex="6" placeholder="Grado y Nombre" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label text-left font-weight-bold" for="txtFechaDevolvera">Devolverá el día:</label>
+                                                        <div class="input-group date">
+                                                            <span class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                            </span>
+                                                            <input type="text" class="form-control bg-light dtpFecha" id="txtFechaDevolvera" name="txtFechaDevolvera" tabindex="3" readonly />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-xl-2 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">CIP:</label>
-                                                    <input type="text" class="col-lg-12 form-control" id="txtShipName" tabindex="6" placeholder="CIP">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-9 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">Grado y Nombre:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtShipName" tabindex="6" placeholder="Grado y Nombre" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtFechaDevolvera">Devolverá el día:</label>
-                                                    <div class="input-group date">
-                                                        <span class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                                        </span>
-                                                        <input type="text" class="form-control dtpFecha" id="txtFechaDevolvera" tabindex="3" placeholder="Order Date" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtShipName">Motivo:</label>
-                                                    <textarea class="form-control" placeholder="Motivo" rows="5" tabindex=""></textarea>
+                                                    <label class="col-form-label text-left font-weight-bold" for="txtMotivo">Motivo:</label>
+                                                    <textarea class="form-control" placeholder="Motivo" id="txtMotivo" rows="5" tabindex=""></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -254,10 +433,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#centeredModalSuccess" tabindex="13"><i class="far fa-save"></i> Registrar PM</button>
-                                        <button type="submit" class="btn btn-danger text-right" tabindex="13"><i class="fas fa-power-off"></i> Cancelar</button>
-                                        <!--#region Modal de confirmación de registro de paleta múltiple -->
-                                        <div class="modal fade" id="centeredModalSuccess" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                        @*<button type="submit" id="btnRegistrarPapeleta" class="btn btn-primary text-right" data-toggle="modal" data-target="#ConfirmacionRegistro">*@
+                                        <button type="submit" id="btnGuardarPapeleta" class="btn btn-primary text-right">
+                                            <i class="far fa-save"></i> Guardar
+                                        </button>
+                                        <button type="button" id="btnCancelarRegistroPapeleta" class="btn btn-danger text-right">
+                                            <i class="far fa-times-circle"></i> Cancelar
+                                        </button>
+                                        <div class="modal fade" id="ConfirmacionRegistro" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -270,13 +453,12 @@
                                                         <p class="mb-0">¿Esta seguro de registrar esta papeleta múltiple?</p>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-success" data-dismiss="modal">Si</button>
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                        <button type="button" class="btn btn-success" id="btnSiGuardarPapeleta" data-dismiss="modal">Si</button>
+                                                        <button type="button" class="btn btn-danger" id="btnNoRGuardarapeleta" data-dismiss="modal">No</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--#endregion -->
                                     </div>
                                 </div>
                             </form>

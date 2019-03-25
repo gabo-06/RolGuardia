@@ -21,10 +21,10 @@ namespace RolGuardia.MVC.Controllers
             return View();
         }
 
-        public ActionResult listar()
+        public ActionResult listarPapeleta()
         {
             #region Variables
-            Servicio.PapeletaMultiple nePapeletaMultiple = new Negocio.PapeletaMultiple();
+            Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();
             List<DTO.PapeletaMultiple> enListaPapeletaMultiple;
             string search = Request.Form.GetValues("search[value]")[0];
             string numeroPapeleta = Request.Form.GetValues("columns[2][search][value]").FirstOrDefault();
@@ -40,17 +40,11 @@ namespace RolGuardia.MVC.Controllers
             {
 
                 #region Obtención de data.
-                if (Session["ListaPapeleteMultiple"] == null)
+                if (this.listaPapeleteMultiple.Count == 0)
                 {
-                    if (this.listaPapeleteMultiple.Count == 0)
-                    {
-                        enListaPapeletaMultiple = nePapeletaMultiple.listar();
-                        this.listaPapeleteMultiple = Mapper.Map<List<DTO.PapeletaMultiple>, List<Model.PapeletaMultiple>>(enListaPapeletaMultiple);
-                        Session["ListaPapeleteMultiple"] = this.listaPapeleteMultiple;
-                    }
+                    enListaPapeletaMultiple = sePapeletaMultiple.listar();
+                    this.listaPapeleteMultiple = Mapper.Map<List<DTO.PapeletaMultiple>, List<Model.PapeletaMultiple>>(enListaPapeletaMultiple);
                 }
-                else
-                    this.listaPapeleteMultiple = (List<Model.PapeletaMultiple>)Session["ListaPapeleteMultiple"];
                 #endregion
 
                 #region Cantidad total de registros.
@@ -104,10 +98,10 @@ namespace RolGuardia.MVC.Controllers
             }
         }
 
-        public JsonResult leerPorCIP(string cip = "")
+        public JsonResult leerPersonalPorCIP(string cip = "")
         {
             #region Variables
-            Negocio.Personal servicioPersonal = new Negocio.Personal();
+            Servicio.Personal servicioPersonal = new Servicio.Personal();
             DTO.Personal dtoPersonal;
             Model.Personal modeloPersonal;
             #endregion
@@ -118,6 +112,86 @@ namespace RolGuardia.MVC.Controllers
                 modeloPersonal = Mapper.Map<DTO.Personal, Model.Personal>(dtoPersonal);
 
                 return Json(modeloPersonal, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void registrarPapeleta(Model.PapeletaMultiple papeleta)
+        {
+
+            #region Variables
+            Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();
+            DTO.PapeletaMultiple dtoPapeleta;
+            #endregion
+
+            try
+            {
+                dtoPapeleta = Mapper.Map<Model.PapeletaMultiple, DTO.PapeletaMultiple>(papeleta);
+                sePapeletaMultiple.registrar(dtoPapeleta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void aprobarPapeleta(int IdPapeleta = 0)
+        {
+            Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();
+
+            try
+            {
+                sePapeletaMultiple.aprobar(IdPapeleta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void rechazarPapeleta(int IdPapeleta = 0)
+        {
+            Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();
+
+            try
+            {            
+                sePapeletaMultiple.rechazar(IdPapeleta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void eliminarPapeleta(int IdPapeleta = 0)
+        {
+            Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();
+
+            try
+            {
+                sePapeletaMultiple.eliminar(IdPapeleta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public JsonResult leerPapeletaPorId(int IdPapeleta = 0)
+        {            
+            Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();
+            DTO.PapeletaMultiple dtoPapeleta;
+            Model.PapeletaMultiple papeleta;
+
+            try
+            {
+                dtoPapeleta = sePapeletaMultiple.leer(IdPapeleta);
+                papeleta = Mapper.Map<DTO.PapeletaMultiple, Model.PapeletaMultiple>(dtoPapeleta);
+
+                return Json(papeleta, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

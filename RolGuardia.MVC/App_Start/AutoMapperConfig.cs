@@ -14,37 +14,11 @@ namespace RolGuardia.MVC.App_Start
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<DTO.PapeletaMultiple, Model.PapeletaMultiple>()
-                        .ForMember(dest => dest.IdPapeleta,
-                                    opt => opt.MapFrom(src => src.IdPapeleta))
-                        .ForMember(dest => dest.Grado,
-                                    opt => opt.MapFrom(src => src.Grado))
-                        .ForMember(dest => dest.Especialidad,
-                                    opt => opt.MapFrom(src => src.Especialidad))
-                        .ForMember(dest => dest.NombreCompleto,
-                                    opt => opt.MapFrom(src => src.ApellidoPaterno + " " + src.ApellidoMaterno + " " + src.Nombres))
-                        .ForMember(dest => dest.Departamento,
-                                    opt => opt.MapFrom(src => src.Departamento))
-                        .ForMember(dest => dest.FechaRegistro,
-                                    opt => opt.MapFrom(src => src.FechaRegistro));
-                //.ForMember(dest => dest.IdPersonal,
-                //            opt => opt.MapFrom(src => src.IdPersonal))
-                //.ForMember(dest => dest.Grado,
-                //            opt => opt.NullSubstitute("Sin grado"))
-                //.ForMember(dest => dest.Especialidad,
-                //            opt => opt.NullSubstitute("Sin especialidad"))
-                //.ForMember(dest => dest.NombreCompleto,
-                //            opt => opt.MapFrom(src => src.Nombres + " " + src.ApellidoPaterno + " " + src.ApellidoMaterno))
-                //.ForMember(dest => dest.Departamento,
-                //            opt => opt.NullSubstitute("Sin departamento"))
-                //.ForMember(dest => dest.FechaRegistro,
-                //            opt => opt.NullSubstitute("Sin fecha de registro"));
-
-                cfg.CreateMap<DTO.CondicionPapeleta, Model.CondicionPapeleta>()
-                        .ForMember(dest => dest.IdCondicionP,
-                                    opt => opt.MapFrom(src => src.IdCondicionP))
-                        .ForMember(dest => dest.Observacion,
-                                    opt => opt.MapFrom(src => src.Observacion));
+                cfg.CreateMap<DTO.TipoPapeleta, Model.TipoPapeleta>()
+                        .ForMember(dest => dest.IdTipoPapeleta,
+                                    opt => opt.MapFrom(src => src.IdTipoPapeleta))
+                        .ForMember(dest => dest.Descripcion,
+                                    opt => opt.MapFrom(src => src.Descripcion));
 
                 cfg.CreateMap<DTO.GradoPersonal, Model.GradoPersonal>()
                         .ForMember(dest => dest.IdGrado,
@@ -73,6 +47,42 @@ namespace RolGuardia.MVC.App_Start
                                     opt => opt.MapFrom(src => src.Departamento))
                         .ForMember(dest => dest.cip,
                                     opt => opt.MapFrom(src => src.cip));
+
+                cfg.CreateMap<DTO.PapeletaMultiple, Model.PapeletaMultiple>()
+                        .ForMember(dest => dest.IdPapeleta,
+                                    opt => opt.MapFrom(src => src.IdPapeleta))
+                        .ForMember(dest => dest.NombreCompleto,
+                                    opt => opt.MapFrom(src => src.ApellidoPaterno + " " + src.ApellidoMaterno + " " + src.Nombres))
+                        .ForMember(dest => dest.FechaRegistro,
+                                    opt => opt.MapFrom(src => src.FechaRegistro))
+                        .ForMember(dest => dest.Estado,
+                                    opt => opt.MapFrom(src => src.Estado))
+                        .ForMember(dest => dest.Observacion,
+                                    opt => opt.MapFrom(src => src.Observacion));
+
+                cfg.CreateMap<Model.PapeletaMultiple, DTO.PapeletaMultiple>()
+                        .ForMember(dest => dest.IdPapeleta,
+                                    opt => opt.MapFrom(src => src.IdPapeleta))
+                        // .ForMember(dest => dest.NombreCompleto,
+                        //             opt => opt.MapFrom(src => src.ApellidoPaterno + " " + src.ApellidoMaterno + " " + src.Nombres))
+                        .ForMember(dest => dest.personalRegistro,
+                                    opt => opt.MapFrom(src => src.personalRegistro))
+                        .ForMember(dest => dest.personalEnTurno,
+                                    opt => opt.MapFrom(src => src.personalEnTurno))
+                        .ForMember(dest => dest.personalReemplazo,
+                                    opt => opt.MapFrom(src => src.personalReemplazo))
+                        .ForMember(dest => dest.FechaRegistro,
+                                    opt => opt.MapFrom(src => src.FechaRegistro))
+                        .ForMember(dest => dest.FechaCubrir,
+                                    opt => opt.MapFrom(src => src.FechaCubrir))
+                        .ForMember(dest => dest.FechaDevolverTurno,
+                                    opt => opt.MapFrom(src => src.FechaDevolverTurno))
+                        .ForMember(dest => dest.Estado,
+                                    opt => opt.MapFrom(src => src.Estado))
+                        .ForMember(dest => dest.Observacion,
+                                    opt => opt.MapFrom(src => src.Observacion));
+
+
             });
         }
     }

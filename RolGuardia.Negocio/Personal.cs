@@ -14,9 +14,9 @@ namespace RolGuardia.Negocio
         {
             try
             {
-                DTO.Personal enPersonal = (from personal in BD.Personal
-                                           join gradoPersonal in BD.GradoPersonal on personal.GradoPersonal equals gradoPersonal into GrupoGradoPersonal // Left join de Personal con GradoPersonal.
-                                           join gradoDepartamento in BD.Departamento on personal.Departamento equals gradoDepartamento into GrupoDepartamento // Left join de Personal con Departamento.
+                DTO.Personal enPersonal = (from personal in BD.Personals
+                                           join gradoPersonal in BD.GradoPersonals on personal.GradoPersonal equals gradoPersonal into GrupoGradoPersonal // Left join de Personal con GradoPersonal.
+                                           join gradoDepartamento in BD.Departamentoes on personal.Departamento equals gradoDepartamento into GrupoDepartamento // Left join de Personal con Departamento.
                                            from grupoGradoPersonal in GrupoGradoPersonal.DefaultIfEmpty()
                                            from grupoDepartamento in GrupoDepartamento.DefaultIfEmpty()
                                            where personal.Cip == cip

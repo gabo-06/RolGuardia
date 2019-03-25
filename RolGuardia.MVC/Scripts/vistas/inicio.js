@@ -3,7 +3,7 @@ rolGuardia.inicio = {};
 
 rolGuardia.inicio.inicio = function ()
 {
-    localStorage.setItem("ListaCondicionesPapeleta", rolGuardia.generalData.listarData("/CondicionPapeleta/listar"));
+    localStorage.setItem("ListaTipoPapeleta", rolGuardia.generalData.listarData("/TipoPapeleta/listar"));
 };
 
 $(rolGuardia.inicio.inicio);

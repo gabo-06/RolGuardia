@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BDMarinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Calendario">
-          <Key>
-            <PropertyRef Name="IdCalendario" />
-          </Key>
-          <Property Name="IdCalendario" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="FechaInicial" Type="datetime" />
-          <Property Name="FechaFinal" Type="datetime" />
-          <Property Name="Estado" Type="char" MaxLength="3" />
-        </EntityType>
         <EntityType Name="CondicionPapeleta">
           <Key>
             <PropertyRef Name="IdCondicionP" />
@@ -34,15 +24,6 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="100" />
           <Property Name="Estado" Type="char" MaxLength="3" />
         </EntityType>
-        <EntityType Name="Dependencia">
-          <Key>
-            <PropertyRef Name="IdDependencia" />
-          </Key>
-          <Property Name="IdDependencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
-          <Property Name="DescripcionCorta" Type="varchar" MaxLength="50" />
-          <Property Name="Estado" Type="char" MaxLength="5" />
-        </EntityType>
         <EntityType Name="Especialidad">
           <Key>
             <PropertyRef Name="IdEspecialidad" />
@@ -50,19 +31,6 @@
           <Property Name="IdEspecialidad" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="DescripcionCorta" Type="varchar" MaxLength="20" />
-          <Property Name="Estado" Type="char" MaxLength="3" />
-        </EntityType>
-        <EntityType Name="FrecuenciaGuardia">
-          <Key>
-            <PropertyRef Name="IdFrecuencia" />
-          </Key>
-          <Property Name="IdFrecuencia" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="Abreviatura" Type="varchar" MaxLength="10" />
-          <Property Name="Etiqueta" Type="varchar" MaxLength="50" />
-          <Property Name="HoraInio" Type="time" Precision="7" />
-          <Property Name="HoraFinal" Type="time" Precision="7" />
-          <Property Name="TotalHoras" Type="int" />
           <Property Name="Estado" Type="char" MaxLength="3" />
         </EntityType>
         <EntityType Name="GradoPersonal">
@@ -80,7 +48,7 @@
           <Key>
             <PropertyRef Name="IdPapeleta" />
           </Key>
-          <Property Name="IdPapeleta" Type="int" Nullable="false" />
+          <Property Name="IdPapeleta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumeroPapeleta" Type="char" MaxLength="6" />
           <Property Name="IdPersonalRegistro" Type="int" />
           <Property Name="IdPersonalEnturno" Type="int" />
@@ -94,16 +62,6 @@
           <Property Name="FechaRegistro" Type="datetime" />
           <Property Name="UsuarioRegistro" Type="varchar" MaxLength="10" />
           <Property Name="UsuarioModificacion" Type="varchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="Periodo">
-          <Key>
-            <PropertyRef Name="IdPeriodo" />
-          </Key>
-          <Property Name="IdPeriodo" Type="int" Nullable="false" />
-          <Property Name="Ano" Type="char" MaxLength="4" />
-          <Property Name="Mes" Type="char" MaxLength="2" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="Estado" Type="char" MaxLength="4" />
         </EntityType>
         <EntityType Name="Personal">
           <Key>
@@ -136,78 +94,14 @@
           <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="15" />
           <Property Name="Estado" Type="char" MaxLength="3" />
         </EntityType>
-        <EntityType Name="Restricciones">
-          <Key>
-            <PropertyRef Name="IdRestricción" />
-          </Key>
-          <Property Name="IdRestricción" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="Regla" Type="varchar" MaxLength="100" />
-          <Property Name="Valor" Type="int" />
-          <Property Name="Obligatorio" Type="varchar" MaxLength="10" />
-          <Property Name="Estado" Type="varchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="RolGuardia">
-          <Key>
-            <PropertyRef Name="IdRolGuardia" />
-          </Key>
-          <Property Name="IdRolGuardia" Type="int" Nullable="false" />
-          <Property Name="IdTipoGuardia" Type="int" Nullable="false" />
-          <Property Name="IdCalendario" Type="int" Nullable="false" />
-          <Property Name="IdPersonal" Type="int" Nullable="false" />
-          <Property Name="IdPeriodo" Type="int" />
-          <Property Name="IdFrecuencia" Type="int" />
-          <Property Name="IdPersonalCambio" Type="int" />
-          <Property Name="FechaProgramada" Type="date" />
-          <Property Name="FechaRegistro" Type="datetime" />
-          <Property Name="Observacion" Type="varchar" MaxLength="50" />
-          <Property Name="UsuarioRegistro" Type="varchar" MaxLength="20" />
-          <Property Name="UsuarioModificacioon" Type="varchar" MaxLength="20" />
-          <Property Name="Estado" Type="char" MaxLength="3" />
-        </EntityType>
-        <EntityType Name="Sueldo">
-          <Key>
-            <PropertyRef Name="IdSueldo" />
-          </Key>
-          <Property Name="IdSueldo" Type="int" Nullable="false" />
-          <Property Name="Moneda" Type="varchar" MaxLength="5" />
-          <Property Name="CostoHora" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="CostoHoraExtra" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="Estado" Type="char" MaxLength="3" />
-        </EntityType>
-        <EntityType Name="TipoGuardia">
-          <Key>
-            <PropertyRef Name="IdTipoGuardia" />
-          </Key>
-          <Property Name="IdTipoGuardia" Type="int" Nullable="false" />
-          <Property Name="Descripción" Type="varchar" MaxLength="50" />
-          <Property Name="Estado" Type="char" MaxLength="3" />
-        </EntityType>
         <EntityType Name="TipoPaleleta">
           <Key>
             <PropertyRef Name="IdTipoPapeleta" />
           </Key>
-          <Property Name="IdTipoPapeleta" Type="int" Nullable="false" />
+          <Property Name="IdTipoPapeleta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripción" Type="varchar" MaxLength="50" />
           <Property Name="Estado" Type="char" MaxLength="3" />
           <Property Name="RequiereAprobacion" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="Turnos">
-          <Key>
-            <PropertyRef Name="IdTurno" />
-          </Key>
-          <Property Name="IdTurno" Type="int" Nullable="false" />
-          <Property Name="Descripción" Type="varchar" MaxLength="50" />
-          <Property Name="DescripcionCorta" Type="varchar" MaxLength="20" />
-          <Property Name="HorasServicio" Type="int" />
-          <Property Name="FrecuenciaTurno" Type="int" />
-          <Property Name="Estado" Type="char" MaxLength="3" />
-        </EntityType>
-        <EntityType Name="Vacaciones">
-          <Key>
-            <PropertyRef Name="IdVacaciones" />
-          </Key>
-          <Property Name="IdVacaciones" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_CondicionPapeleta_PapeletaMultiple">
           <End Role="PapeletaMultiple" Type="Self.PapeletaMultiple" Multiplicity="1" />
@@ -230,30 +124,6 @@
             </Principal>
             <Dependent Role="CondicionPapeleta">
               <PropertyRef Name="IdPersonalAprobador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GradoPersonal_Sueldo">
-          <End Role="Sueldo" Type="Self.Sueldo" Multiplicity="0..1" />
-          <End Role="GradoPersonal" Type="Self.GradoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sueldo">
-              <PropertyRef Name="IdSueldo" />
-            </Principal>
-            <Dependent Role="GradoPersonal">
-              <PropertyRef Name="IdSueldo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GradoPersonal_Turnos">
-          <End Role="Turnos" Type="Self.Turnos" Multiplicity="0..1" />
-          <End Role="GradoPersonal" Type="Self.GradoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Turnos">
-              <PropertyRef Name="IdTurno" />
-            </Principal>
-            <Dependent Role="GradoPersonal">
-              <PropertyRef Name="IdTurno" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -305,18 +175,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Personal_Dependencia">
-          <End Role="Dependencia" Type="Self.Dependencia" Multiplicity="0..1" />
-          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dependencia">
-              <PropertyRef Name="IdDependencia" />
-            </Principal>
-            <Dependent Role="Personal">
-              <PropertyRef Name="IdDependencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Personal_Especialidad">
           <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
           <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
@@ -341,84 +199,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RolGuardia_Calendario">
-          <End Role="Calendario" Type="Self.Calendario" Multiplicity="1" />
-          <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Calendario">
-              <PropertyRef Name="IdCalendario" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdCalendario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RolGuardia_FrecuenciaGuardia">
-          <End Role="FrecuenciaGuardia" Type="Self.FrecuenciaGuardia" Multiplicity="0..1" />
-          <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FrecuenciaGuardia">
-              <PropertyRef Name="IdFrecuencia" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdFrecuencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RolGuardia_Periodo">
-          <End Role="Periodo" Type="Self.Periodo" Multiplicity="0..1" />
-          <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Periodo">
-              <PropertyRef Name="IdPeriodo" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdPeriodo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RolGuardia_Personal">
-          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
-          <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personal">
-              <PropertyRef Name="IdPersonal" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RolGuardia_TipoGuardia">
-          <End Role="TipoGuardia" Type="Self.TipoGuardia" Multiplicity="1" />
-          <End Role="RolGuardia" Type="Self.RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoGuardia">
-              <PropertyRef Name="IdTipoGuardia" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdTipoGuardia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="BDMarinaModelStoreContainer">
-          <EntitySet Name="Calendario" EntityType="Self.Calendario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CondicionPapeleta" EntityType="Self.CondicionPapeleta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Dependencia" EntityType="Self.Dependencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FrecuenciaGuardia" EntityType="Self.FrecuenciaGuardia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GradoPersonal" EntityType="Self.GradoPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PapeletaMultiple" EntityType="Self.PapeletaMultiple" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Periodo" EntityType="Self.Periodo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Restricciones" EntityType="Self.Restricciones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RolGuardia" EntityType="Self.RolGuardia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sueldo" EntityType="Self.Sueldo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TipoGuardia" EntityType="Self.TipoGuardia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoPaleleta" EntityType="Self.TipoPaleleta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CondicionPapeleta_PapeletaMultiple" Association="Self.FK_CondicionPapeleta_PapeletaMultiple">
             <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
             <End Role="CondicionPapeleta" EntitySet="CondicionPapeleta" />
@@ -426,14 +214,6 @@
           <AssociationSet Name="FK_CondicionPapeleta_Personal" Association="Self.FK_CondicionPapeleta_Personal">
             <End Role="Personal" EntitySet="Personal" />
             <End Role="CondicionPapeleta" EntitySet="CondicionPapeleta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GradoPersonal_Sueldo" Association="Self.FK_GradoPersonal_Sueldo">
-            <End Role="Sueldo" EntitySet="Sueldo" />
-            <End Role="GradoPersonal" EntitySet="GradoPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GradoPersonal_Turnos" Association="Self.FK_GradoPersonal_Turnos">
-            <End Role="Turnos" EntitySet="Turnos" />
-            <End Role="GradoPersonal" EntitySet="GradoPersonal" />
           </AssociationSet>
           <AssociationSet Name="FK_PapeletaMultiple_Personal" Association="Self.FK_PapeletaMultiple_Personal">
             <End Role="Personal" EntitySet="Personal" />
@@ -451,10 +231,6 @@
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Personal" EntitySet="Personal" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personal_Dependencia" Association="Self.FK_Personal_Dependencia">
-            <End Role="Dependencia" EntitySet="Dependencia" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
           <AssociationSet Name="FK_Personal_Especialidad" Association="Self.FK_Personal_Especialidad">
             <End Role="Especialidad" EntitySet="Especialidad" />
             <End Role="Personal" EntitySet="Personal" />
@@ -463,125 +239,52 @@
             <End Role="GradoPersonal" EntitySet="GradoPersonal" />
             <End Role="Personal" EntitySet="Personal" />
           </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_Calendario" Association="Self.FK_RolGuardia_Calendario">
-            <End Role="Calendario" EntitySet="Calendario" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_FrecuenciaGuardia" Association="Self.FK_RolGuardia_FrecuenciaGuardia">
-            <End Role="FrecuenciaGuardia" EntitySet="FrecuenciaGuardia" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_Periodo" Association="Self.FK_RolGuardia_Periodo">
-            <End Role="Periodo" EntitySet="Periodo" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_Personal" Association="Self.FK_RolGuardia_Personal">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_TipoGuardia" Association="Self.FK_RolGuardia_TipoGuardia">
-            <End Role="TipoGuardia" EntitySet="TipoGuardia" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDMarinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BDMarinaConexion" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Calendario" EntityType="BDMarinaModel.Calendario" />
-          <EntitySet Name="CondicionPapeleta" EntityType="BDMarinaModel.CondicionPapeleta" />
-          <EntitySet Name="Departamento" EntityType="BDMarinaModel.Departamento" />
-          <EntitySet Name="Dependencia" EntityType="BDMarinaModel.Dependencia" />
-          <EntitySet Name="Especialidad" EntityType="BDMarinaModel.Especialidad" />
-          <EntitySet Name="FrecuenciaGuardia" EntityType="BDMarinaModel.FrecuenciaGuardia" />
-          <EntitySet Name="GradoPersonal" EntityType="BDMarinaModel.GradoPersonal" />
-          <EntitySet Name="Periodo" EntityType="BDMarinaModel.Periodo" />
-          <EntitySet Name="Personal" EntityType="BDMarinaModel.Personal" />
-          <EntitySet Name="Restricciones" EntityType="BDMarinaModel.Restricciones" />
-          <EntitySet Name="RolGuardia" EntityType="BDMarinaModel.RolGuardia" />
-          <EntitySet Name="Sueldo" EntityType="BDMarinaModel.Sueldo" />
-          <EntitySet Name="TipoGuardia" EntityType="BDMarinaModel.TipoGuardia" />
-          <EntitySet Name="TipoPaleleta" EntityType="BDMarinaModel.TipoPaleleta" />
-          <EntitySet Name="Turnos" EntityType="BDMarinaModel.Turnos" />
-          <EntitySet Name="Vacaciones" EntityType="BDMarinaModel.Vacaciones" />
-          <AssociationSet Name="FK_RolGuardia_Calendario" Association="BDMarinaModel.FK_RolGuardia_Calendario">
-            <End Role="Calendario" EntitySet="Calendario" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
+          <EntitySet Name="CondicionPapeletas" EntityType="BDMarinaModel.CondicionPapeleta" />
+          <EntitySet Name="Departamentoes" EntityType="BDMarinaModel.Departamento" />
+          <EntitySet Name="Especialidads" EntityType="BDMarinaModel.Especialidad" />
+          <EntitySet Name="GradoPersonals" EntityType="BDMarinaModel.GradoPersonal" />
+          <EntitySet Name="PapeletaMultiples" EntityType="BDMarinaModel.PapeletaMultiple" />
+          <EntitySet Name="Personals" EntityType="BDMarinaModel.Personal" />
+          <AssociationSet Name="FK_CondicionPapeleta_PapeletaMultiple" Association="BDMarinaModel.FK_CondicionPapeleta_PapeletaMultiple">
+            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiples" />
+            <End Role="CondicionPapeleta" EntitySet="CondicionPapeletas" />
           </AssociationSet>
           <AssociationSet Name="FK_CondicionPapeleta_Personal" Association="BDMarinaModel.FK_CondicionPapeleta_Personal">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="CondicionPapeleta" EntitySet="CondicionPapeleta" />
+            <End Role="Personal" EntitySet="Personals" />
+            <End Role="CondicionPapeleta" EntitySet="CondicionPapeletas" />
           </AssociationSet>
           <AssociationSet Name="FK_Personal_Departamento" Association="BDMarinaModel.FK_Personal_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Personal_Dependencia" Association="BDMarinaModel.FK_Personal_Dependencia">
-            <End Role="Dependencia" EntitySet="Dependencia" />
-            <End Role="Personal" EntitySet="Personal" />
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="Personal" EntitySet="Personals" />
           </AssociationSet>
           <AssociationSet Name="FK_Personal_Especialidad" Association="BDMarinaModel.FK_Personal_Especialidad">
-            <End Role="Especialidad" EntitySet="Especialidad" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_FrecuenciaGuardia" Association="BDMarinaModel.FK_RolGuardia_FrecuenciaGuardia">
-            <End Role="FrecuenciaGuardia" EntitySet="FrecuenciaGuardia" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GradoPersonal_Sueldo" Association="BDMarinaModel.FK_GradoPersonal_Sueldo">
-            <End Role="Sueldo" EntitySet="Sueldo" />
-            <End Role="GradoPersonal" EntitySet="GradoPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GradoPersonal_Turnos" Association="BDMarinaModel.FK_GradoPersonal_Turnos">
-            <End Role="Turnos" EntitySet="Turnos" />
-            <End Role="GradoPersonal" EntitySet="GradoPersonal" />
+            <End Role="Especialidad" EntitySet="Especialidads" />
+            <End Role="Personal" EntitySet="Personals" />
           </AssociationSet>
           <AssociationSet Name="FK_Personal_GradoPersonal" Association="BDMarinaModel.FK_Personal_GradoPersonal">
-            <End Role="GradoPersonal" EntitySet="GradoPersonal" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_Periodo" Association="BDMarinaModel.FK_RolGuardia_Periodo">
-            <End Role="Periodo" EntitySet="Periodo" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_Personal" Association="BDMarinaModel.FK_RolGuardia_Personal">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RolGuardia_TipoGuardia" Association="BDMarinaModel.FK_RolGuardia_TipoGuardia">
-            <End Role="TipoGuardia" EntitySet="TipoGuardia" />
-            <End Role="RolGuardia" EntitySet="RolGuardia" />
-          </AssociationSet>
-          <EntitySet Name="PapeletaMultiple" EntityType="BDMarinaModel.PapeletaMultiple" />
-          <AssociationSet Name="FK_CondicionPapeleta_PapeletaMultiple" Association="BDMarinaModel.FK_CondicionPapeleta_PapeletaMultiple">
-            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
-            <End Role="CondicionPapeleta" EntitySet="CondicionPapeleta" />
+            <End Role="GradoPersonal" EntitySet="GradoPersonals" />
+            <End Role="Personal" EntitySet="Personals" />
           </AssociationSet>
           <AssociationSet Name="FK_PapeletaMultiple_Personal" Association="BDMarinaModel.FK_PapeletaMultiple_Personal">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
+            <End Role="Personal" EntitySet="Personals" />
+            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiples" />
           </AssociationSet>
           <AssociationSet Name="FK_PapeletaMultiple_Personal1" Association="BDMarinaModel.FK_PapeletaMultiple_Personal1">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
+            <End Role="Personal" EntitySet="Personals" />
+            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiples" />
           </AssociationSet>
+          <EntitySet Name="TipoPaleletas" EntityType="BDMarinaModel.TipoPaleleta" />
           <AssociationSet Name="FK_PapeletaMultiple_TipoPaleleta" Association="BDMarinaModel.FK_PapeletaMultiple_TipoPaleleta">
-            <End Role="TipoPaleleta" EntitySet="TipoPaleleta" />
-            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiple" />
+            <End Role="TipoPaleleta" EntitySet="TipoPaleletas" />
+            <End Role="PapeletaMultiple" EntitySet="PapeletaMultiples" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Calendario">
-          <Key>
-            <PropertyRef Name="IdCalendario" />
-          </Key>
-          <Property Name="IdCalendario" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaInicial" Type="DateTime" Precision="3" />
-          <Property Name="FechaFinal" Type="DateTime" Precision="3" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="RolGuardia" Relationship="BDMarinaModel.FK_RolGuardia_Calendario" FromRole="Calendario" ToRole="RolGuardia" />
-        </EntityType>
         <EntityType Name="CondicionPapeleta">
           <Key>
             <PropertyRef Name="IdCondicionP" />
@@ -592,8 +295,8 @@
           <Property Name="EstadoAprobacion" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
           <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_CondicionPapeleta_Personal" FromRole="CondicionPapeleta" ToRole="Personal" />
           <NavigationProperty Name="PapeletaMultiple" Relationship="BDMarinaModel.FK_CondicionPapeleta_PapeletaMultiple" FromRole="CondicionPapeleta" ToRole="PapeletaMultiple" />
+          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_CondicionPapeleta_Personal" FromRole="CondicionPapeleta" ToRole="Personal" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -602,17 +305,7 @@
           <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_Personal_Departamento" FromRole="Departamento" ToRole="Personal" />
-        </EntityType>
-        <EntityType Name="Dependencia">
-          <Key>
-            <PropertyRef Name="IdDependencia" />
-          </Key>
-          <Property Name="IdDependencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DescripcionCorta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_Personal_Dependencia" FromRole="Dependencia" ToRole="Personal" />
+          <NavigationProperty Name="Personals" Relationship="BDMarinaModel.FK_Personal_Departamento" FromRole="Departamento" ToRole="Personal" />
         </EntityType>
         <EntityType Name="Especialidad">
           <Key>
@@ -622,21 +315,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DescripcionCorta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_Personal_Especialidad" FromRole="Especialidad" ToRole="Personal" />
-        </EntityType>
-        <EntityType Name="FrecuenciaGuardia">
-          <Key>
-            <PropertyRef Name="IdFrecuencia" />
-          </Key>
-          <Property Name="IdFrecuencia" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Abreviatura" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Etiqueta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HoraInio" Type="Time" Precision="7" />
-          <Property Name="HoraFinal" Type="Time" Precision="7" />
-          <Property Name="TotalHoras" Type="Int32" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="RolGuardia" Relationship="BDMarinaModel.FK_RolGuardia_FrecuenciaGuardia" FromRole="FrecuenciaGuardia" ToRole="RolGuardia" />
+          <NavigationProperty Name="Personals" Relationship="BDMarinaModel.FK_Personal_Especialidad" FromRole="Especialidad" ToRole="Personal" />
         </EntityType>
         <EntityType Name="GradoPersonal">
           <Key>
@@ -648,20 +327,30 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DescripcionCorta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Sueldo" Relationship="BDMarinaModel.FK_GradoPersonal_Sueldo" FromRole="GradoPersonal" ToRole="Sueldo" />
-          <NavigationProperty Name="Turnos" Relationship="BDMarinaModel.FK_GradoPersonal_Turnos" FromRole="GradoPersonal" ToRole="Turnos" />
-          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_Personal_GradoPersonal" FromRole="GradoPersonal" ToRole="Personal" />
+          <NavigationProperty Name="Personals" Relationship="BDMarinaModel.FK_Personal_GradoPersonal" FromRole="GradoPersonal" ToRole="Personal" />
         </EntityType>
-        <EntityType Name="Periodo">
+        <EntityType Name="PapeletaMultiple">
           <Key>
-            <PropertyRef Name="IdPeriodo" />
+            <PropertyRef Name="IdPapeleta" />
           </Key>
-          <Property Name="IdPeriodo" Type="Int32" Nullable="false" />
-          <Property Name="Ano" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="Mes" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="RolGuardia" Relationship="BDMarinaModel.FK_RolGuardia_Periodo" FromRole="Periodo" ToRole="RolGuardia" />
+          <Property Name="IdPapeleta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroPapeleta" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="IdPersonalRegistro" Type="Int32" />
+          <Property Name="IdPersonalEnturno" Type="Int32" />
+          <Property Name="IdPersonalRemplazo" Type="Int32" />
+          <Property Name="IdTipoPapeleta" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="FechaCubrir" Type="DateTime" Precision="0" />
+          <Property Name="FechaDevolverTurno" Type="DateTime" Precision="0" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioRegistro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CondicionPapeletas" Relationship="BDMarinaModel.FK_CondicionPapeleta_PapeletaMultiple" FromRole="PapeletaMultiple" ToRole="CondicionPapeleta" />
+          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal" FromRole="PapeletaMultiple" ToRole="Personal" />
+          <NavigationProperty Name="Personal1" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal1" FromRole="PapeletaMultiple" ToRole="Personal" />
+          <NavigationProperty Name="TipoPaleleta" Relationship="BDMarinaModel.FK_PapeletaMultiple_TipoPaleleta" FromRole="PapeletaMultiple" ToRole="TipoPaleleta" />
         </EntityType>
         <EntityType Name="Personal">
           <Key>
@@ -693,106 +382,22 @@
           <Property Name="UsuarioRegistro" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioActualizacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="CondicionPapeleta" Relationship="BDMarinaModel.FK_CondicionPapeleta_Personal" FromRole="Personal" ToRole="CondicionPapeleta" />
+          <NavigationProperty Name="CondicionPapeletas" Relationship="BDMarinaModel.FK_CondicionPapeleta_Personal" FromRole="Personal" ToRole="CondicionPapeleta" />
           <NavigationProperty Name="Departamento" Relationship="BDMarinaModel.FK_Personal_Departamento" FromRole="Personal" ToRole="Departamento" />
-          <NavigationProperty Name="Dependencia" Relationship="BDMarinaModel.FK_Personal_Dependencia" FromRole="Personal" ToRole="Dependencia" />
           <NavigationProperty Name="Especialidad" Relationship="BDMarinaModel.FK_Personal_Especialidad" FromRole="Personal" ToRole="Especialidad" />
           <NavigationProperty Name="GradoPersonal" Relationship="BDMarinaModel.FK_Personal_GradoPersonal" FromRole="Personal" ToRole="GradoPersonal" />
-          <NavigationProperty Name="RolGuardia" Relationship="BDMarinaModel.FK_RolGuardia_Personal" FromRole="Personal" ToRole="RolGuardia" />
-          <NavigationProperty Name="PapeletaMultiple" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal" FromRole="Personal" ToRole="PapeletaMultiple" />
-          <NavigationProperty Name="PapeletaMultiple1" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal1" FromRole="Personal" ToRole="PapeletaMultiple" />
+          <NavigationProperty Name="PapeletaMultiples" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal" FromRole="Personal" ToRole="PapeletaMultiple" />
+          <NavigationProperty Name="PapeletaMultiples1" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal1" FromRole="Personal" ToRole="PapeletaMultiple" />
         </EntityType>
-        <EntityType Name="Restricciones">
-          <Key>
-            <PropertyRef Name="IdRestricción" />
-          </Key>
-          <Property Name="IdRestricción" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Regla" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Valor" Type="Int32" />
-          <Property Name="Obligatorio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="RolGuardia">
-          <Key>
-            <PropertyRef Name="IdRolGuardia" />
-          </Key>
-          <Property Name="IdRolGuardia" Type="Int32" Nullable="false" />
-          <Property Name="IdTipoGuardia" Type="Int32" Nullable="false" />
-          <Property Name="IdCalendario" Type="Int32" Nullable="false" />
-          <Property Name="IdPersonal" Type="Int32" Nullable="false" />
-          <Property Name="IdPeriodo" Type="Int32" />
-          <Property Name="IdFrecuencia" Type="Int32" />
-          <Property Name="IdPersonalCambio" Type="Int32" />
-          <Property Name="FechaProgramada" Type="DateTime" Precision="0" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <Property Name="Observacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioRegistro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioModificacioon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Calendario" Relationship="BDMarinaModel.FK_RolGuardia_Calendario" FromRole="RolGuardia" ToRole="Calendario" />
-          <NavigationProperty Name="FrecuenciaGuardia" Relationship="BDMarinaModel.FK_RolGuardia_FrecuenciaGuardia" FromRole="RolGuardia" ToRole="FrecuenciaGuardia" />
-          <NavigationProperty Name="Periodo" Relationship="BDMarinaModel.FK_RolGuardia_Periodo" FromRole="RolGuardia" ToRole="Periodo" />
-          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_RolGuardia_Personal" FromRole="RolGuardia" ToRole="Personal" />
-          <NavigationProperty Name="TipoGuardia" Relationship="BDMarinaModel.FK_RolGuardia_TipoGuardia" FromRole="RolGuardia" ToRole="TipoGuardia" />
-        </EntityType>
-        <EntityType Name="Sueldo">
-          <Key>
-            <PropertyRef Name="IdSueldo" />
-          </Key>
-          <Property Name="IdSueldo" Type="Int32" Nullable="false" />
-          <Property Name="Moneda" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="CostoHora" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="CostoHoraExtra" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="GradoPersonal" Relationship="BDMarinaModel.FK_GradoPersonal_Sueldo" FromRole="Sueldo" ToRole="GradoPersonal" />
-        </EntityType>
-        <EntityType Name="TipoGuardia">
-          <Key>
-            <PropertyRef Name="IdTipoGuardia" />
-          </Key>
-          <Property Name="IdTipoGuardia" Type="Int32" Nullable="false" />
-          <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="RolGuardia" Relationship="BDMarinaModel.FK_RolGuardia_TipoGuardia" FromRole="TipoGuardia" ToRole="RolGuardia" />
-        </EntityType>
-        <EntityType Name="TipoPaleleta">
-          <Key>
-            <PropertyRef Name="IdTipoPapeleta" />
-          </Key>
-          <Property Name="IdTipoPapeleta" Type="Int32" Nullable="false" />
-          <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="RequiereAprobacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="PapeletaMultiple" Relationship="BDMarinaModel.FK_PapeletaMultiple_TipoPaleleta" FromRole="TipoPaleleta" ToRole="PapeletaMultiple" />
-        </EntityType>
-        <EntityType Name="Turnos">
-          <Key>
-            <PropertyRef Name="IdTurno" />
-          </Key>
-          <Property Name="IdTurno" Type="Int32" Nullable="false" />
-          <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DescripcionCorta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="HorasServicio" Type="Int32" />
-          <Property Name="FrecuenciaTurno" Type="Int32" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="GradoPersonal" Relationship="BDMarinaModel.FK_GradoPersonal_Turnos" FromRole="Turnos" ToRole="GradoPersonal" />
-        </EntityType>
-        <EntityType Name="Vacaciones">
-          <Key>
-            <PropertyRef Name="IdVacaciones" />
-          </Key>
-          <Property Name="IdVacaciones" Type="Int32" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_RolGuardia_Calendario">
-          <End Type="BDMarinaModel.Calendario" Role="Calendario" Multiplicity="1" />
-          <End Type="BDMarinaModel.RolGuardia" Role="RolGuardia" Multiplicity="*" />
+        <Association Name="FK_CondicionPapeleta_PapeletaMultiple">
+          <End Type="BDMarinaModel.PapeletaMultiple" Role="PapeletaMultiple" Multiplicity="1" />
+          <End Type="BDMarinaModel.CondicionPapeleta" Role="CondicionPapeleta" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Calendario">
-              <PropertyRef Name="IdCalendario" />
+            <Principal Role="PapeletaMultiple">
+              <PropertyRef Name="IdPapeleta" />
             </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdCalendario" />
+            <Dependent Role="CondicionPapeleta">
+              <PropertyRef Name="IdPapeleta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -820,18 +425,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Personal_Dependencia">
-          <End Type="BDMarinaModel.Dependencia" Role="Dependencia" Multiplicity="0..1" />
-          <End Type="BDMarinaModel.Personal" Role="Personal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dependencia">
-              <PropertyRef Name="IdDependencia" />
-            </Principal>
-            <Dependent Role="Personal">
-              <PropertyRef Name="IdDependencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Personal_Especialidad">
           <End Type="BDMarinaModel.Especialidad" Role="Especialidad" Multiplicity="0..1" />
           <End Type="BDMarinaModel.Personal" Role="Personal" Multiplicity="*" />
@@ -844,42 +437,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RolGuardia_FrecuenciaGuardia">
-          <End Type="BDMarinaModel.FrecuenciaGuardia" Role="FrecuenciaGuardia" Multiplicity="0..1" />
-          <End Type="BDMarinaModel.RolGuardia" Role="RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FrecuenciaGuardia">
-              <PropertyRef Name="IdFrecuencia" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdFrecuencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GradoPersonal_Sueldo">
-          <End Type="BDMarinaModel.Sueldo" Role="Sueldo" Multiplicity="0..1" />
-          <End Type="BDMarinaModel.GradoPersonal" Role="GradoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sueldo">
-              <PropertyRef Name="IdSueldo" />
-            </Principal>
-            <Dependent Role="GradoPersonal">
-              <PropertyRef Name="IdSueldo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GradoPersonal_Turnos">
-          <End Type="BDMarinaModel.Turnos" Role="Turnos" Multiplicity="0..1" />
-          <End Type="BDMarinaModel.GradoPersonal" Role="GradoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Turnos">
-              <PropertyRef Name="IdTurno" />
-            </Principal>
-            <Dependent Role="GradoPersonal">
-              <PropertyRef Name="IdTurno" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Personal_GradoPersonal">
           <End Type="BDMarinaModel.GradoPersonal" Role="GradoPersonal" Multiplicity="0..1" />
           <End Type="BDMarinaModel.Personal" Role="Personal" Multiplicity="*" />
@@ -889,77 +446,6 @@
             </Principal>
             <Dependent Role="Personal">
               <PropertyRef Name="IdGrado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RolGuardia_Periodo">
-          <End Type="BDMarinaModel.Periodo" Role="Periodo" Multiplicity="0..1" />
-          <End Type="BDMarinaModel.RolGuardia" Role="RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Periodo">
-              <PropertyRef Name="IdPeriodo" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdPeriodo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RolGuardia_Personal">
-          <End Type="BDMarinaModel.Personal" Role="Personal" Multiplicity="1" />
-          <End Type="BDMarinaModel.RolGuardia" Role="RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personal">
-              <PropertyRef Name="IdPersonal" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RolGuardia_TipoGuardia">
-          <End Type="BDMarinaModel.TipoGuardia" Role="TipoGuardia" Multiplicity="1" />
-          <End Type="BDMarinaModel.RolGuardia" Role="RolGuardia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoGuardia">
-              <PropertyRef Name="IdTipoGuardia" />
-            </Principal>
-            <Dependent Role="RolGuardia">
-              <PropertyRef Name="IdTipoGuardia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="PapeletaMultiple">
-          <Key>
-            <PropertyRef Name="IdPapeleta" />
-          </Key>
-          <Property Name="IdPapeleta" Type="Int32" Nullable="false" />
-          <Property Name="NumeroPapeleta" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-          <Property Name="IdPersonalRegistro" Type="Int32" />
-          <Property Name="IdPersonalEnturno" Type="Int32" />
-          <Property Name="IdPersonalRemplazo" Type="Int32" />
-          <Property Name="IdTipoPapeleta" Type="Int32" />
-          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-          <Property Name="FechaCubrir" Type="DateTime" Precision="0" />
-          <Property Name="FechaDevolverTurno" Type="DateTime" Precision="0" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <Property Name="UsuarioRegistro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioModificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CondicionPapeleta" Relationship="BDMarinaModel.FK_CondicionPapeleta_PapeletaMultiple" FromRole="PapeletaMultiple" ToRole="CondicionPapeleta" />
-          <NavigationProperty Name="Personal" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal" FromRole="PapeletaMultiple" ToRole="Personal" />
-          <NavigationProperty Name="Personal1" Relationship="BDMarinaModel.FK_PapeletaMultiple_Personal1" FromRole="PapeletaMultiple" ToRole="Personal" />
-          <NavigationProperty Name="TipoPaleleta" Relationship="BDMarinaModel.FK_PapeletaMultiple_TipoPaleleta" FromRole="PapeletaMultiple" ToRole="TipoPaleleta" />
-        </EntityType>
-        <Association Name="FK_CondicionPapeleta_PapeletaMultiple">
-          <End Type="BDMarinaModel.PapeletaMultiple" Role="PapeletaMultiple" Multiplicity="1" />
-          <End Type="BDMarinaModel.CondicionPapeleta" Role="CondicionPapeleta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PapeletaMultiple">
-              <PropertyRef Name="IdPapeleta" />
-            </Principal>
-            <Dependent Role="CondicionPapeleta">
-              <PropertyRef Name="IdPapeleta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -987,6 +473,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TipoPaleleta">
+          <Key>
+            <PropertyRef Name="IdTipoPapeleta" />
+          </Key>
+          <Property Name="IdTipoPapeleta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="RequiereAprobacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="PapeletaMultiples" Relationship="BDMarinaModel.FK_PapeletaMultiple_TipoPaleleta" FromRole="TipoPaleleta" ToRole="PapeletaMultiple" />
+        </EntityType>
         <Association Name="FK_PapeletaMultiple_TipoPaleleta">
           <End Type="BDMarinaModel.TipoPaleleta" Role="TipoPaleleta" Multiplicity="0..1" />
           <End Type="BDMarinaModel.PapeletaMultiple" Role="PapeletaMultiple" Multiplicity="*" />
@@ -999,24 +495,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BDMarinaModelStoreContainer" CdmEntityContainer="BDMarinaConexion">
-          <EntitySetMapping Name="Calendario">
-            <EntityTypeMapping TypeName="BDMarinaModel.Calendario">
-              <MappingFragment StoreEntitySet="Calendario">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
-                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdCalendario" ColumnName="IdCalendario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CondicionPapeleta">
+          <EntitySetMapping Name="CondicionPapeletas">
             <EntityTypeMapping TypeName="BDMarinaModel.CondicionPapeleta">
               <MappingFragment StoreEntitySet="CondicionPapeleta">
                 <ScalarProperty Name="Observacion" ColumnName="Observacion" />
@@ -1028,7 +513,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Departamento">
+          <EntitySetMapping Name="Departamentoes">
             <EntityTypeMapping TypeName="BDMarinaModel.Departamento">
               <MappingFragment StoreEntitySet="Departamento">
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
@@ -1037,17 +522,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Dependencia">
-            <EntityTypeMapping TypeName="BDMarinaModel.Dependencia">
-              <MappingFragment StoreEntitySet="Dependencia">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdDependencia" ColumnName="IdDependencia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Especialidad">
+          <EntitySetMapping Name="Especialidads">
             <EntityTypeMapping TypeName="BDMarinaModel.Especialidad">
               <MappingFragment StoreEntitySet="Especialidad">
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
@@ -1057,21 +532,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FrecuenciaGuardia">
-            <EntityTypeMapping TypeName="BDMarinaModel.FrecuenciaGuardia">
-              <MappingFragment StoreEntitySet="FrecuenciaGuardia">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="TotalHoras" ColumnName="TotalHoras" />
-                <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
-                <ScalarProperty Name="HoraInio" ColumnName="HoraInio" />
-                <ScalarProperty Name="Etiqueta" ColumnName="Etiqueta" />
-                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdFrecuencia" ColumnName="IdFrecuencia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GradoPersonal">
+          <EntitySetMapping Name="GradoPersonals">
             <EntityTypeMapping TypeName="BDMarinaModel.GradoPersonal">
               <MappingFragment StoreEntitySet="GradoPersonal">
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
@@ -1083,18 +544,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Periodo">
-            <EntityTypeMapping TypeName="BDMarinaModel.Periodo">
-              <MappingFragment StoreEntitySet="Periodo">
+          <EntitySetMapping Name="PapeletaMultiples">
+            <EntityTypeMapping TypeName="BDMarinaModel.PapeletaMultiple">
+              <MappingFragment StoreEntitySet="PapeletaMultiple">
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaDevolverTurno" ColumnName="FechaDevolverTurno" />
+                <ScalarProperty Name="FechaCubrir" ColumnName="FechaCubrir" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Mes" ColumnName="Mes" />
-                <ScalarProperty Name="Ano" ColumnName="Ano" />
-                <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
+                <ScalarProperty Name="IdTipoPapeleta" ColumnName="IdTipoPapeleta" />
+                <ScalarProperty Name="IdPersonalRemplazo" ColumnName="IdPersonalRemplazo" />
+                <ScalarProperty Name="IdPersonalEnturno" ColumnName="IdPersonalEnturno" />
+                <ScalarProperty Name="IdPersonalRegistro" ColumnName="IdPersonalRegistro" />
+                <ScalarProperty Name="NumeroPapeleta" ColumnName="NumeroPapeleta" />
+                <ScalarProperty Name="IdPapeleta" ColumnName="IdPapeleta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Personal">
+          <EntitySetMapping Name="Personals">
             <EntityTypeMapping TypeName="BDMarinaModel.Personal">
               <MappingFragment StoreEntitySet="Personal">
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
@@ -1126,103 +596,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Restricciones">
-            <EntityTypeMapping TypeName="BDMarinaModel.Restricciones">
-              <MappingFragment StoreEntitySet="Restricciones">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Obligatorio" ColumnName="Obligatorio" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="Regla" ColumnName="Regla" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdRestricción" ColumnName="IdRestricción" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RolGuardia">
-            <EntityTypeMapping TypeName="BDMarinaModel.RolGuardia">
-              <MappingFragment StoreEntitySet="RolGuardia">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="UsuarioModificacioon" ColumnName="UsuarioModificacioon" />
-                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
-                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="FechaProgramada" ColumnName="FechaProgramada" />
-                <ScalarProperty Name="IdPersonalCambio" ColumnName="IdPersonalCambio" />
-                <ScalarProperty Name="IdFrecuencia" ColumnName="IdFrecuencia" />
-                <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
-                <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
-                <ScalarProperty Name="IdCalendario" ColumnName="IdCalendario" />
-                <ScalarProperty Name="IdTipoGuardia" ColumnName="IdTipoGuardia" />
-                <ScalarProperty Name="IdRolGuardia" ColumnName="IdRolGuardia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sueldo">
-            <EntityTypeMapping TypeName="BDMarinaModel.Sueldo">
-              <MappingFragment StoreEntitySet="Sueldo">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="CostoHoraExtra" ColumnName="CostoHoraExtra" />
-                <ScalarProperty Name="CostoHora" ColumnName="CostoHora" />
-                <ScalarProperty Name="Moneda" ColumnName="Moneda" />
-                <ScalarProperty Name="IdSueldo" ColumnName="IdSueldo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoGuardia">
-            <EntityTypeMapping TypeName="BDMarinaModel.TipoGuardia">
-              <MappingFragment StoreEntitySet="TipoGuardia">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
-                <ScalarProperty Name="IdTipoGuardia" ColumnName="IdTipoGuardia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoPaleleta">
+          <EntitySetMapping Name="TipoPaleletas">
             <EntityTypeMapping TypeName="BDMarinaModel.TipoPaleleta">
               <MappingFragment StoreEntitySet="TipoPaleleta">
                 <ScalarProperty Name="RequiereAprobacion" ColumnName="RequiereAprobacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Descripción" ColumnName="Descripción" />
                 <ScalarProperty Name="IdTipoPapeleta" ColumnName="IdTipoPapeleta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Turnos">
-            <EntityTypeMapping TypeName="BDMarinaModel.Turnos">
-              <MappingFragment StoreEntitySet="Turnos">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="FrecuenciaTurno" ColumnName="FrecuenciaTurno" />
-                <ScalarProperty Name="HorasServicio" ColumnName="HorasServicio" />
-                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
-                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
-                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vacaciones">
-            <EntityTypeMapping TypeName="BDMarinaModel.Vacaciones">
-              <MappingFragment StoreEntitySet="Vacaciones">
-                <ScalarProperty Name="IdVacaciones" ColumnName="IdVacaciones" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PapeletaMultiple">
-            <EntityTypeMapping TypeName="BDMarinaModel.PapeletaMultiple">
-              <MappingFragment StoreEntitySet="PapeletaMultiple">
-                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="FechaDevolverTurno" ColumnName="FechaDevolverTurno" />
-                <ScalarProperty Name="FechaCubrir" ColumnName="FechaCubrir" />
-                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdTipoPapeleta" ColumnName="IdTipoPapeleta" />
-                <ScalarProperty Name="IdPersonalRemplazo" ColumnName="IdPersonalRemplazo" />
-                <ScalarProperty Name="IdPersonalEnturno" ColumnName="IdPersonalEnturno" />
-                <ScalarProperty Name="IdPersonalRegistro" ColumnName="IdPersonalRegistro" />
-                <ScalarProperty Name="NumeroPapeleta" ColumnName="NumeroPapeleta" />
-                <ScalarProperty Name="IdPapeleta" ColumnName="IdPapeleta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1240,8 +620,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>

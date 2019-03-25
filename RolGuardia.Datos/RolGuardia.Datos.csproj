@@ -65,22 +65,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDMarina.edmx</DependentUpon>
     </Compile>
-    <Compile Include="modelo\Calendario.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
     <Compile Include="modelo\CondicionPapeleta.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
     </Compile>
     <Compile Include="modelo\Departamento.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
     </Compile>
-    <Compile Include="modelo\Dependencia.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
     <Compile Include="modelo\Especialidad.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modelo\FrecuenciaGuardia.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
     </Compile>
     <Compile Include="modelo\GradoPersonal.cs">
@@ -89,34 +80,13 @@
     <Compile Include="modelo\PapeletaMultiple.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
     </Compile>
-    <Compile Include="modelo\Periodo.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
     <Compile Include="modelo\Personal.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="modelo\Restricciones.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modelo\RolGuardia.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modelo\Sueldo.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modelo\TipoGuardia.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
     </Compile>
     <Compile Include="modelo\TipoPaleleta.cs">
       <DependentUpon>BDMarina.tt</DependentUpon>
     </Compile>
-    <Compile Include="modelo\Turnos.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modelo\Vacaciones.cs">
-      <DependentUpon>BDMarina.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="modelo\BDMarina.edmx">

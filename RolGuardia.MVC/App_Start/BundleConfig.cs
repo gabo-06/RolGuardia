@@ -34,7 +34,8 @@ namespace RolGuardia.MVC
                         "~/Scripts/core/core.js",
                         "~/Scripts/core/general_data.js",
                         "~/Scripts/core/user_interface.js",
-                        "~/Scripts/core/utilities.js"));
+                        "~/Scripts/core/utilities.js",
+                        "~/Scripts/core/enumeraciones.js"));
             #endregion
             #endregion
 

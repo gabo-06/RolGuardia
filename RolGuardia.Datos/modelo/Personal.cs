@@ -17,10 +17,9 @@ namespace RolGuardia.Datos.modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Personal()
         {
-            this.CondicionPapeleta = new HashSet<CondicionPapeleta>();
-            this.RolGuardia = new HashSet<RolGuardia>();
-            this.PapeletaMultiple = new HashSet<PapeletaMultiple>();
-            this.PapeletaMultiple1 = new HashSet<PapeletaMultiple>();
+            this.CondicionPapeletas = new HashSet<CondicionPapeleta>();
+            this.PapeletaMultiples = new HashSet<PapeletaMultiple>();
+            this.PapeletaMultiples1 = new HashSet<PapeletaMultiple>();
         }
     
         public int IdPersonal { get; set; }
@@ -51,16 +50,13 @@ namespace RolGuardia.Datos.modelo
         public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CondicionPapeleta> CondicionPapeleta { get; set; }
+        public virtual ICollection<CondicionPapeleta> CondicionPapeletas { get; set; }
         public virtual Departamento Departamento { get; set; }
-        public virtual Dependencia Dependencia { get; set; }
         public virtual Especialidad Especialidad { get; set; }
         public virtual GradoPersonal GradoPersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RolGuardia> RolGuardia { get; set; }
+        public virtual ICollection<PapeletaMultiple> PapeletaMultiples { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PapeletaMultiple> PapeletaMultiple { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PapeletaMultiple> PapeletaMultiple1 { get; set; }
+        public virtual ICollection<PapeletaMultiple> PapeletaMultiples1 { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace RolGuardia.Datos.modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GradoPersonal()
         {
-            this.Personal = new HashSet<Personal>();
+            this.Personals = new HashSet<Personal>();
         }
     
         public int IdGrado { get; set; }
@@ -27,9 +27,7 @@ namespace RolGuardia.Datos.modelo
         public string DescripcionCorta { get; set; }
         public string Estado { get; set; }
     
-        public virtual Sueldo Sueldo { get; set; }
-        public virtual Turnos Turnos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Personal> Personal { get; set; }
+        public virtual ICollection<Personal> Personals { get; set; }
     }
 }

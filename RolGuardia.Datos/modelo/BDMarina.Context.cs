@@ -25,22 +25,12 @@ namespace RolGuardia.Datos.modelo
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Calendario> Calendario { get; set; }
-        public virtual DbSet<CondicionPapeleta> CondicionPapeleta { get; set; }
-        public virtual DbSet<Departamento> Departamento { get; set; }
-        public virtual DbSet<Dependencia> Dependencia { get; set; }
-        public virtual DbSet<Especialidad> Especialidad { get; set; }
-        public virtual DbSet<FrecuenciaGuardia> FrecuenciaGuardia { get; set; }
-        public virtual DbSet<GradoPersonal> GradoPersonal { get; set; }
-        public virtual DbSet<Periodo> Periodo { get; set; }
-        public virtual DbSet<Personal> Personal { get; set; }
-        public virtual DbSet<Restricciones> Restricciones { get; set; }
-        public virtual DbSet<RolGuardia> RolGuardia { get; set; }
-        public virtual DbSet<Sueldo> Sueldo { get; set; }
-        public virtual DbSet<TipoGuardia> TipoGuardia { get; set; }
-        public virtual DbSet<TipoPaleleta> TipoPaleleta { get; set; }
-        public virtual DbSet<Turnos> Turnos { get; set; }
-        public virtual DbSet<Vacaciones> Vacaciones { get; set; }
-        public virtual DbSet<PapeletaMultiple> PapeletaMultiple { get; set; }
+        public virtual DbSet<CondicionPapeleta> CondicionPapeletas { get; set; }
+        public virtual DbSet<Departamento> Departamentoes { get; set; }
+        public virtual DbSet<Especialidad> Especialidads { get; set; }
+        public virtual DbSet<GradoPersonal> GradoPersonals { get; set; }
+        public virtual DbSet<PapeletaMultiple> PapeletaMultiples { get; set; }
+        public virtual DbSet<Personal> Personals { get; set; }
+        public virtual DbSet<TipoPaleleta> TipoPaleletas { get; set; }
     }
 }

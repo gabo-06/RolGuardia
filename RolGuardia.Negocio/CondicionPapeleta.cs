@@ -16,7 +16,7 @@ namespace RolGuardia.Negocio
         {
             try
             {
-                List<DTO.CondicionPapeleta> dtoListaCondicionPapeleta = (from condicionPapeleta in BD.CondicionPapeleta
+                List<DTO.CondicionPapeleta> dtoListaCondicionPapeleta = (from condicionPapeleta in BD.CondicionPapeletas
                                                                          select new DTO.CondicionPapeleta
                                                                          {
                                                                              IdCondicionP = condicionPapeleta.IdCondicionP,

@@ -52,6 +52,7 @@
     <Compile Include="PapeletaMultiple.cs" />
     <Compile Include="Personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoPapeleta.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RolGuardia.Datos\RolGuardia.Datos.csproj">

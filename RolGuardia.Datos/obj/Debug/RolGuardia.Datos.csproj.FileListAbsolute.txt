@@ -20,3 +20,4 @@ D:\gabriel\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.csproj.CoreCom
 D:\gabriel\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.csproj.CopyComplete
 D:\gabriel\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.dll
 D:\gabriel\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.pdb
+C:\Users\Gabriel\source\repos\ProyectoRolGuardia\RolGuardia\RolGuardia.Datos\obj\Debug\RolGuardia.Datos.csprojAssemblyReference.cache

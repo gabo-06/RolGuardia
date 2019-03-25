@@ -21,7 +21,7 @@ namespace RolGuardia.Datos.modelo
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public string Observacion { get; set; }
     
-        public virtual Personal Personal { get; set; }
         public virtual PapeletaMultiple PapeletaMultiple { get; set; }
+        public virtual Personal Personal { get; set; }
     }
 }
