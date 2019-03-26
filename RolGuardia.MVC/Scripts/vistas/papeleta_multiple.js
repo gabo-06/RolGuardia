@@ -446,46 +446,6 @@ rolGuardia.papeletaMultiple.inicio = function ()
             $("#txtMotivo").val(papeleta.Observacion);
             // #endregion
         });
-
-
-
-        // #region Agrega el índice del registro seleccionado al arreglo de filas seleccionadas (Control Radiobutton).
-        let idPersonal = parseInt($(this).val());
-        let indice = $.inArray(idPersonal, rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas);
-
-        // if (this.checked && indice === -1)
-        // { 
-        rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id = idPersonal;
-        // rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.push(idPersonal);
-        // }
-        // else if (!this.checked && indice !== -1)
-        // {
-        //    rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);        
-        //}
-        //  #endregion
-
-        // #region Agrega el índice del registro seleccionado al arreglo de filas seleccionadas (Control Checkbox).
-        // let idPersonal = parseInt($(this).val());
-        // let indice = $.inArray(idPersonal, rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas);
-        // 
-        // if (this.checked && indice === -1)
-        //     rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.push(idPersonal);
-        // else if (!this.checked && indice !== -1)
-        //     rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
-        // #endregion
-
-        // #region Agrega el índice del registro seleccionado al arreglo de filas seleccionadas (Control Switch).
-        // let contenedor = $(this).closest(".custom-switch");
-        // let inputSwitch = $(contenedor).find("input[type=checkbox]");
-        // let idPersonal = parseInt($(inputSwitch).attr("id"));
-        // let indice = $.inArray(idPersonal, rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas);
-        // // let fila = $(inputSwitch).closest("tr");
-        //         
-        // if (!$(this)["0"].control.checked)
-        //     rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.push(idPersonal);
-        // else
-        //     rolGuardia.papeletaMultiple.listado.tabla.arregloDeFilasSeleccionadas.splice(indice, 1);
-        // #endregion
     });
     $("#txtNumeroPapeletaF").on("keyup", function ()
     {
@@ -872,11 +832,10 @@ rolGuardia.papeletaMultiple.inicio = function ()
         $("#txtFechaDevolvera").attr("readonly", false).toggleClass("bg-light");
         // #endregion
         // #region Cuando se quiere crear una nueva papeleta ya no hay una papeleta seleccionada por tanto la variable se limpia
+        $("#" + rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id).prop('checked', false);
         rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id = null;
-        $(".SeleccionFilaPapeleta").attr('checked', false);
         // #endmregion
     });
-
 };
 
 $("#tblPapeletaMultiple").on('draw.dt', function ()
@@ -886,7 +845,7 @@ $("#tblPapeletaMultiple").on('draw.dt', function ()
     if (rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id !== null)
     {
         checkboxId = rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id;
-        $('#' + checkboxId).attr('checked', true);
+        $('#' + checkboxId).prop('checked', true);
     }
 
     // if ($("#SeleccionarPapeletasTodas").is(':checked'))
