@@ -271,8 +271,8 @@ rolGuardia.papeletaMultiple.listado.tabla.fila.botonEditar.click = function ()
         else
             $("#AsigancionGuardia").removeClass("d-block").addClass("d-none");
         $("#txtMotivo").attr("readonly", false).toggleClass("bg-light");
-        $("#txtFechaCubrira").attr("readonly", false).toggleClass("bg-light");
-        $("#txtFechaDevolvera").attr("readonly", false).toggleClass("bg-light");
+        $("#txtFechaCubrira").attr("disabled", false).toggleClass("bg-light");
+        $("#txtFechaDevolvera").attr("disabled", false).toggleClass("bg-light");
         // #endregion
         // #region Carga los datos
         $(".TituloNumeroPapeleta").text(papeleta.NumeroPapeleta);
@@ -317,24 +317,21 @@ rolGuardia.papeletaMultiple.listado.tabla.fila.botonEliminar.click = function ()
 
 rolGuardia.papeletaMultiple.registro.formulario.controles.limpiar = function ()
 {
+    $("#hdIdPapeleta").val("");
     $("#txtCIPF").val("");
     $("#hdIdPersonal").val("");
     $("#txtGradoNombre").val("");
     $("#txtCIP").val("");
     $("#txtDepartamento").val("");
-
     $("#cmbTipoPapeleta").val(null).trigger('change');
-
     $("#txtCIPCubriraF").val("");
     $("#hdIdPersonalCubrira").val("");
     $("#txtGradoNombreCubrira").val("");
     $("#txtFechaCubrira").val("");
-
     $("#txtCIPDevolveraF").val("");
     $("#hdIdPersonalDevolvera").val("");
     $("#txtGradoNombreDevolvera").val("");
     $("#txtFechaDevolvera").val("");
-
     $("#txtMotivo").val("");
 };
 
@@ -416,8 +413,8 @@ rolGuardia.papeletaMultiple.inicio = function ()
             else
                 $("#AsigancionGuardia").removeClass("d-block").addClass("d-none");
             $("#txtMotivo").attr("readonly", true).toggleClass("bg-light");
-            $("#txtFechaCubrira").attr("readonly", true).toggleClass("bg-light");
-            $("#txtFechaDevolvera").attr("readonly", true).toggleClass("bg-light");
+            $("#txtFechaCubrira").attr("disabled", true).toggleClass("bg-light");
+            $("#txtFechaDevolvera").attr("disabled", true).toggleClass("bg-light");
             // #endregion
             // #region Carga los datos
             $(".TituloNumeroPapeleta").text(papeleta.NumeroPapeleta);
@@ -719,7 +716,9 @@ rolGuardia.papeletaMultiple.inicio = function ()
         }
         else
         {
+            // #region Llena la papeleta
             let papeleta = {
+                IdPapeleta: $("#hdIdPapeleta").val().trim() === "" ? null : parseInt($("#hdIdPapeleta").val().trim()),
                 personalRegistro: {
                     IdPersonal: parseInt($("#hdIdPersonal").val().trim())
                 },
@@ -736,23 +735,41 @@ rolGuardia.papeletaMultiple.inicio = function ()
                 "FechaCubrir": $("#txtFechaCubrira").val().trim(),
                 "FechaDevolverTurno": $("#txtFechaDevolvera").val().trim()
             };
-            $.ajax({
-                url: "/PapeletaMultiple/registrarPapeleta",
-                async: false,
-                type: "POST",
-                data: JSON.stringify(papeleta),
-                contentType: "application/json",
-                dataType: 'json'
-            }).done(function ()
-            {
-                rolGuardia.papeletaMultiple.listado.tabla.DataTable.ajax.reload();
-            });
+            // #endregion
+            // #region Guarda la papeleta
+            if (papeleta.IdPapeleta !== null)
+                $.ajax({
+                    url: "/PapeletaMultiple/registrarPapeleta",
+                    async: false,
+                    type: "POST",
+                    data: JSON.stringify(papeleta),
+                    contentType: "application/json",
+                    dataType: 'json'
+                }).done(function ()
+                {
+                    rolGuardia.papeletaMultiple.listado.tabla.DataTable.ajax.reload();
+                });
+            else
+                $.ajax({
+                    url: "/PapeletaMultiple/editarPapeleta",
+                    async: false,
+                    type: "POST",
+                    data: JSON.stringify(papeleta),
+                    contentType: "application/json",
+                    dataType: 'json'
+                }).done(function ()
+                {
+                    rolGuardia.papeletaMultiple.listado.tabla.DataTable.ajax.reload();
+                });
+            // #endregion
             // #region Cambia el título del formulario de Registro
             $("#TituloRegistroPapeleta").removeClass("d-block").addClass("d-none");
             $("#TituloEdicionPapeleta").removeClass("d-block").addClass("d-none");
             $("#TituloDetallePapeleta").removeClass("d-block").addClass("d-none");
             // #endregion
+            // #region Limpiar los controles del formulario
             rolGuardia.papeletaMultiple.registro.formulario.controles.limpiar();
+            // #endregion            // #region Cambia de pestaña
             $("#CabeceraPestañaListado").toggleClass("active");
             $("#CabeceraPestañaRegistro").toggleClass("active");
 
@@ -766,6 +783,7 @@ rolGuardia.papeletaMultiple.inicio = function ()
                 $("#CuerpoPestañaListado").toggleClass("active ");
                 $("#CuerpoPestañaRegistro").toggleClass("active ");
             }
+            // #endregion
         }
     });
     $("#txtCIPDevolveraF").on("change", function ()
@@ -828,8 +846,8 @@ rolGuardia.papeletaMultiple.inicio = function ()
         $("#cmbTipoPapeleta").val(null).trigger('change');
         $("#AsigancionGuardia").removeClass("d-block").addClass("d-none");
         $("#txtMotivo").attr("readonly", false).toggleClass("bg-light");
-        $("#txtFechaCubrira").attr("readonly", false).toggleClass("bg-light");
-        $("#txtFechaDevolvera").attr("readonly", false).toggleClass("bg-light");
+        $("#txtFechaCubrira").attr("disabled", false).toggleClass("bg-light");
+        $("#txtFechaDevolvera").attr("disabled", false).toggleClass("bg-light");
         // #endregion
         // #region Cuando se quiere crear una nueva papeleta ya no hay una papeleta seleccionada por tanto la variable se limpia
         $("#" + rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id).prop('checked', false);

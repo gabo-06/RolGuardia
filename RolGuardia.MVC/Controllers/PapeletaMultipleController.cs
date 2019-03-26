@@ -138,6 +138,25 @@ namespace RolGuardia.MVC.Controllers
             }
         }
 
+        public void editarPapeleta(Model.PapeletaMultiple papeleta)
+        {
+
+            #region Variables
+            Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();
+            DTO.PapeletaMultiple dtoPapeleta;
+            #endregion
+
+            try
+            {
+                dtoPapeleta = Mapper.Map<Model.PapeletaMultiple, DTO.PapeletaMultiple>(papeleta);
+                sePapeletaMultiple.editar(dtoPapeleta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void aprobarPapeleta(int IdPapeleta = 0)
         {
             Servicio.PapeletaMultiple sePapeletaMultiple = new Servicio.PapeletaMultiple();

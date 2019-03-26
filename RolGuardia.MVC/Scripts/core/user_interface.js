@@ -42,12 +42,14 @@ rolGuardia.userInterface.configurarComboSelect2 = function (combo, data, placeho
 
 rolGuardia.userInterface.configurarControlDeFecha = function (controlFecha, funcion)
 {
+    debugger
     controlFecha.datepicker({
         autoclose: true,
         language: "es",
         // format: "yyyy-mm-dd"
         format: "dd/mm/yyyy",
-        orientation: "bottom auto"
+        orientation: "bottom auto",
+        // setDate: rolGuardia.utilities.convertiFecha(Date.now())
     }).on("changeDate", funcion);
 };
 

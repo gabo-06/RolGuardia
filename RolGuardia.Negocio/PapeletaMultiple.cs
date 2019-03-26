@@ -92,27 +92,61 @@ namespace RolGuardia.Negocio
                     ModeloDatos.PapeletaMultiple papeletaMultiple = new ModeloDatos.PapeletaMultiple()
                     {
                         NumeroPapeleta = numeroPapeleta,
-
                         IdPersonalRegistro = papeleta.personalRegistro.IdPersonal,
                         IdPersonalEnturno = papeleta.personalEnTurno.IdPersonal,
                         IdPersonalRemplazo = papeleta.personalReemplazo.IdPersonal,
                         // IdTipoPapeleta = null,
-                        // Descripcion = "",
                         Estado = "ACT",
                         Observacion = papeleta.Observacion,
                         FechaCubrir = papeleta.FechaCubrir,
                         FechaDevolverTurno = papeleta.FechaDevolverTurno,
                         FechaRegistro = DateTime.Today,
-                        // UsuarioRegistro = "",
-                        // UsuarioModificacion = ""
                     };
 
                     BD.PapeletaMultiples.Add(papeletaMultiple);
                     BD.SaveChanges();
                 }
-
-                // return 0;
             }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void editar(DTO.PapeletaMultiple papeleta)
+        {
+            #region Variables
+            int IDPapeletaMayor = 0;
+            int cantidadPapeletas = 0;
+            string numeroPapeleta = String.Empty;
+            #endregion
+
+            try
+            {
+                using (ModeloDatos.BDMarinaConexion BD = new ModeloDatos.BDMarinaConexion())
+                {
+                    ModeloDatos.PapeletaMultiple papeletaAEditar =
+                        (ModeloDatos.PapeletaMultiple)(from pap in BD.PapeletaMultiples
+                                                       where pap.IdPapeleta == papeleta.IdPapeleta
+                                                       select pap).FirstOrDefault();
+
+                    if (papeletaAEditar != null)
+                    {
+                        papeletaAEditar.IdPersonalRegistro = papeleta.personalRegistro.IdPersonal;
+                        papeletaAEditar.IdPersonalEnturno = papeleta.personalEnTurno.IdPersonal;
+                        papeletaAEditar.IdPersonalRemplazo = papeleta.personalReemplazo.IdPersonal;
+                        papeletaAEditar.IdTipoPapeleta = papeleta.IdPapeleta;
+                        papeletaAEditar.Observacion = papeleta.Observacion;
+                        papeletaAEditar.FechaCubrir = papeleta.FechaCubrir;
+                        papeletaAEditar.FechaDevolverTurno = papeleta.FechaDevolverTurno;
+                    }
+
+                    BD.SaveChanges();
+                }
+            }
+
+            // return 0;
             catch (Exception ex)
             {
 
@@ -184,7 +218,7 @@ namespace RolGuardia.Negocio
 
 
                          where pap.IdPapeleta == IdPapeleta
-                         
+
                          select new DTO.PapeletaMultiple
                          {
                              IdPapeleta = IdPapeleta,
