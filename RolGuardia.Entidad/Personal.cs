@@ -8,7 +8,7 @@ namespace RolGuardia.Entidad
 {
     public class Personal
     {
-        public int IdPersonal { get; set; }
+        public int? IdPersonal { get; set; }
         public GradoPersonal Grado { get; set; }
         public string Nombres { get; set; }
         public string ApellidoPaterno { get; set; }

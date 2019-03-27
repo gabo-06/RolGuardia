@@ -250,10 +250,12 @@ rolGuardia.papeletaMultiple.listado.tabla.fila.botonEditar.click = function ()
     // #endregion 
 
     rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id = parseInt($(this).attr("IdPapeleta").toString().trim());
-    let data = { "IdPapeleta": rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id };
+    let data = {
+        "IdPapeleta": rolGuardia.papeletaMultiple.listado.tabla.papeletaSeleccionada.id
+    };
     $.ajax({
         url: "/PapeletaMultiple/leerPapeletaPorId",
-        async: true,
+        async: false,
         type: "POST",
         data: JSON.stringify(data),
         contentType: "application/json",
@@ -288,26 +290,37 @@ rolGuardia.papeletaMultiple.listado.tabla.fila.botonEditar.click = function ()
         $("#txtDepartamento").val(papeleta.personalRegistro.Departamento.Descripcion);
         // #endregion
         // #region Carga los datos del personal que cubre
-        $("#txtCIPCubriraF").val(papeleta.personalEnTurno.cip);
-        $("#hdIdPersonalCubrira").val(papeleta.personalEnTurno.IdPersonal);
-        $("#txtGradoNombreCubrira").val(papeleta.personalEnTurno.Grado.Descripcion + " " +
-            papeleta.personalEnTurno.Nombres + " " +
-            papeleta.personalEnTurno.ApellidoPaterno + " " +
-            papeleta.personalEnTurno.ApellidoMaterno);
-        $("#txtFechaCubrira").datepicker('setDate', rolGuardia.utilities.convertiFecha(papeleta.FechaCubrir));
-        // #endregion
+        if (papeleta.personalEnTurno.IdPersonal !== 0)
+        {
+            $("#hdIdPersonalCubrira").val(papeleta.personalEnTurno.IdPersonal);
+            $("#txtCIPCubriraF").val(papeleta.personalEnTurno.cip);
+            $("#txtGradoNombreCubrira").val(papeleta.personalEnTurno.Grado.Descripcion + " " +
+                papeleta.personalEnTurno.Nombres + " " +
+                papeleta.personalEnTurno.ApellidoPaterno + " " +
+                papeleta.personalEnTurno.ApellidoMaterno);
+            $("#txtFechaCubrira").datepicker('setDate', rolGuardia.utilities.convertiFecha(papeleta.FechaCubrir));
+        }
+        else
+            $("#txtFechaCubrira").datepicker('setDate', null);
+        // #endregion        
         // #region Carga los datos del personal que devuelve
-        $("#txtCIPDevolveraF").val(papeleta.personalReemplazo.cip);
-        $("#hdIdPersonalDevolvera").val(papeleta.personalReemplazo.IdPersonal);
-        $("#txtGradoNombreDevolvera").val(papeleta.personalReemplazo.Grado.Descripcion + " " +
-            papeleta.personalReemplazo.Nombres + " " +
-            papeleta.personalReemplazo.ApellidoPaterno + " " +
-            papeleta.personalReemplazo.ApellidoMaterno);
-        $("#txtFechaDevolvera").datepicker('setDate', rolGuardia.utilities.convertiFecha(papeleta.FechaDevolverTurno));
+        if (papeleta.personalReemplazo.IdPersonal !== 0)
+        {
+            $("#hdIdPersonalDevolvera").val(papeleta.personalReemplazo.IdPersonal);
+            $("#txtCIPDevolveraF").val(papeleta.personalReemplazo.cip);
+            $("#txtGradoNombreDevolvera").val(papeleta.personalReemplazo.Grado.Descripcion + " " +
+                papeleta.personalReemplazo.Nombres + " " +
+                papeleta.personalReemplazo.ApellidoPaterno + " " +
+                papeleta.personalReemplazo.ApellidoMaterno);
+            $("#txtFechaDevolvera").datepicker('setDate', rolGuardia.utilities.convertiFecha(papeleta.FechaDevolverTurno));
+        }
+        else
+            $("#txtFechaDevolvera").datepicker('setDate', null);
         // #endregion
         $("#txtMotivo").val(papeleta.Observacion);
         // #endregion
     });
+    rolGuardia.papeletaMultiple.listado.tabla.DataTable.ajax.reload();
 };
 
 rolGuardia.papeletaMultiple.listado.tabla.fila.botonEliminar.click = function ()
@@ -427,17 +440,23 @@ rolGuardia.papeletaMultiple.inicio = function ()
             $("#txtDepartamento").val(papeleta.personalRegistro.Departamento.Descripcion);
             // #endregion
             // #region Carga los datos del personal que cubre
-            $("#txtGradoNombreCubrira").val(papeleta.personalEnTurno.Grado.Descripcion + " " +
-                papeleta.personalEnTurno.Nombres + " " +
-                papeleta.personalEnTurno.ApellidoPaterno + " " +
-                papeleta.personalEnTurno.ApellidoMaterno);
+            if (papeleta.personalEnTurno.IdPersonal !== 0)
+            {
+                $("#txtGradoNombreCubrira").val(papeleta.personalEnTurno.Grado.Descripcion + " " +
+                    papeleta.personalEnTurno.Nombres + " " +
+                    papeleta.personalEnTurno.ApellidoPaterno + " " +
+                    papeleta.personalEnTurno.ApellidoMaterno);
+            }
             $("#txtFechaCubrira").datepicker('setDate', rolGuardia.utilities.convertiFecha(papeleta.FechaCubrir));
             // #endregion
             // #region Carga los datos del personal que devuelve
-            $("#txtGradoNombreDevolvera").val(papeleta.personalReemplazo.Grado.Descripcion + " " +
-                papeleta.personalReemplazo.Nombres + " " +
-                papeleta.personalReemplazo.ApellidoPaterno + " " +
-                papeleta.personalReemplazo.ApellidoMaterno);
+            if (papeleta.personalReemplazo.IdPersonal !== 0)
+            {
+                $("#txtGradoNombreDevolvera").val(papeleta.personalReemplazo.Grado.Descripcion + " " +
+                    papeleta.personalReemplazo.Nombres + " " +
+                    papeleta.personalReemplazo.ApellidoPaterno + " " +
+                    papeleta.personalReemplazo.ApellidoMaterno);
+            }
             $("#txtFechaDevolvera").datepicker('setDate', rolGuardia.utilities.convertiFecha(papeleta.FechaDevolverTurno));
             // #endregion
             $("#txtMotivo").val(papeleta.Observacion);
@@ -623,7 +642,19 @@ rolGuardia.papeletaMultiple.inicio = function ()
         if ($("#cmbTipoPapeleta option:selected").text().trim().toUpperCase() === rolGuardia.enumeraciones.TipoPapeleta["CAMBIO DE GUARDIA"])
             $("#AsigancionGuardia").removeClass("d-none").addClass("d-block");
         else
+        {
             $("#AsigancionGuardia").removeClass("d-block").addClass("d-none");
+            // #region Limpiar los controles de Asignación de Guardia
+            $("#txtCIPCubriraF").val("");
+            $("#hdIdPersonalCubrira").val("");
+            $("#txtGradoNombreCubrira").val("");
+            $("#txtFechaCubrira").datepicker('setDate', null);
+            $("#txtCIPDevolveraF").val("");
+            $("#hdIdPersonalDevolvera").val("");
+            $("#txtGradoNombreDevolvera").val("");
+            $("#txtFechaDevolvera").datepicker('setDate', null);
+            // #endregion
+        }
     });
     $("#frmRegistroPapeleta").on("submit", function (e)
     {
@@ -709,7 +740,8 @@ rolGuardia.papeletaMultiple.inicio = function ()
         let cipCubrira = $("#txtCIPCubriraF").val().trim();
         let cipDevolvera = $("#txtCIPDevolveraF").val().trim();
 
-        if (cipCubrira === cipDevolvera)
+        if (($("#cmbTipoPapeleta option:selected").text().trim().toUpperCase() === rolGuardia.enumeraciones.TipoPapeleta["CAMBIO DE GUARDIA"])
+            && (cipCubrira === cipDevolvera))
         {
             alert("El CIP que cubirá no puede ser igual al CIP que devolverá");
             return false;
@@ -719,25 +751,26 @@ rolGuardia.papeletaMultiple.inicio = function ()
             // #region Llena la papeleta
             let papeleta = {
                 IdPapeleta: $("#hdIdPapeleta").val().trim() === "" ? null : parseInt($("#hdIdPapeleta").val().trim()),
+                tipoPapeleta: {
+                    IdTipoPapeleta: parseInt($("#cmbTipoPapeleta").val())
+                },
                 personalRegistro: {
                     IdPersonal: parseInt($("#hdIdPersonal").val().trim())
                 },
                 personalEnTurno: {
-                    IdPersonal: parseInt($("#hdIdPersonalCubrira").val().trim())
+                    IdPersonal: ($("#hdIdPersonalCubrira").val().trim() === "") ? parseInt($("#hdIdPersonalCubrira").val().trim()) : null
                 },
                 personalReemplazo: {
-                    IdPersonal: parseInt($("#hdIdPersonalDevolvera").val().trim())
+                    IdPersonal: ($("#hdIdPersonalDevolvera").val().trim() === "") ? parseInt($("#hdIdPersonalDevolvera").val().trim()) : null
                 },
-                // "IdPersonalRegistro": parseInt($("#hdIdPersonal").val().trim()),
-                // "IdPersonalEnturno": parseInt($("#hdIdPersonalCubrira").val().trim()),
-                // "IdPersonalRemplazo": parseInt($("#hdIdPersonalDevolvera").val().trim()),
-                "Observacion": $("#txtMotivo").val().trim(),
-                "FechaCubrir": $("#txtFechaCubrira").val().trim(),
-                "FechaDevolverTurno": $("#txtFechaDevolvera").val().trim()
+                "FechaCubrir": $("#txtFechaCubrira").val().trim() === "" ? null : $("#txtFechaCubrira").val().trim(),
+                "FechaDevolverTurno": $("#txtFechaDevolvera").val().trim() === "" ? null : $("#txtFechaDevolvera").val().trim(),
+                "Observacion": $("#txtMotivo").val().trim()
             };
             // #endregion
             // #region Guarda la papeleta
-            if (papeleta.IdPapeleta !== null)
+            if (papeleta.IdPapeleta === null)
+            {
                 $.ajax({
                     url: "/PapeletaMultiple/registrarPapeleta",
                     async: false,
@@ -749,7 +782,9 @@ rolGuardia.papeletaMultiple.inicio = function ()
                 {
                     rolGuardia.papeletaMultiple.listado.tabla.DataTable.ajax.reload();
                 });
+            }
             else
+            {
                 $.ajax({
                     url: "/PapeletaMultiple/editarPapeleta",
                     async: false,
@@ -761,6 +796,7 @@ rolGuardia.papeletaMultiple.inicio = function ()
                 {
                     rolGuardia.papeletaMultiple.listado.tabla.DataTable.ajax.reload();
                 });
+            }
             // #endregion
             // #region Cambia el título del formulario de Registro
             $("#TituloRegistroPapeleta").removeClass("d-block").addClass("d-none");

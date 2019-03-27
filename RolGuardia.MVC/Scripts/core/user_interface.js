@@ -42,7 +42,6 @@ rolGuardia.userInterface.configurarComboSelect2 = function (combo, data, placeho
 
 rolGuardia.userInterface.configurarControlDeFecha = function (controlFecha, funcion)
 {
-    debugger
     controlFecha.datepicker({
         autoclose: true,
         language: "es",

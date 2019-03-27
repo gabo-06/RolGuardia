@@ -48,7 +48,7 @@ namespace RolGuardia.Negocio
                           ApellidoPaterno = grupoPersonal.ApellidoPaterno,
                           ApellidoMaterno = grupoPersonal.ApellidoMaterno,
                           Departamento = grupoDepartamento.Descripcion,
-                          FechaRegistro = grupoPersonal.FechaRegistro,
+                          FechaRegistro = papeletaMultiple.FechaRegistro,
                           Estado = papeletaMultiple.Estado
                       }).ToList();
 
@@ -134,12 +134,12 @@ namespace RolGuardia.Negocio
                     if (papeletaAEditar != null)
                     {
                         papeletaAEditar.IdPersonalRegistro = papeleta.personalRegistro.IdPersonal;
-                        papeletaAEditar.IdPersonalEnturno = papeleta.personalEnTurno.IdPersonal;
-                        papeletaAEditar.IdPersonalRemplazo = papeleta.personalReemplazo.IdPersonal;
-                        papeletaAEditar.IdTipoPapeleta = papeleta.IdPapeleta;
+                        papeletaAEditar.IdPersonalEnturno = (papeleta.personalEnTurno.IdPersonal == 0) ? null : papeleta.personalEnTurno.IdPersonal;
+                        papeletaAEditar.IdPersonalRemplazo = (papeleta.personalReemplazo.IdPersonal == 0) ? null : papeleta.personalReemplazo.IdPersonal; ;
+                        papeletaAEditar.IdTipoPapeleta = papeleta.tipoPapeleta.IdTipoPapeleta;
+                        papeletaAEditar.FechaCubrir = (papeleta.FechaCubrir.Value == papeleta.FechaCubrir.GetValueOrDefault())  ? null: papeleta.FechaCubrir  ;
+                        papeletaAEditar.FechaDevolverTurno = (papeleta.FechaDevolverTurno.Value == papeleta.FechaDevolverTurno.GetValueOrDefault()) ? null : papeleta.FechaDevolverTurno;
                         papeletaAEditar.Observacion = papeleta.Observacion;
-                        papeletaAEditar.FechaCubrir = papeleta.FechaCubrir;
-                        papeletaAEditar.FechaDevolverTurno = papeleta.FechaDevolverTurno;
                     }
 
                     BD.SaveChanges();
@@ -207,7 +207,7 @@ namespace RolGuardia.Negocio
 
                          from grpPerReg in GrpPerReg.DefaultIfEmpty()
                          from grpPerTur in GrpPerTur.DefaultIfEmpty()
-                         from grpPerRem in GrpPerTur.DefaultIfEmpty()
+                         from grpPerRem in GrpPerRem.DefaultIfEmpty()
 
                          join gra in BD.GradoPersonals on grpPerReg.GradoPersonal equals gra into GrpGra
                          from grpGra in GrpGra.DefaultIfEmpty()
@@ -245,11 +245,11 @@ namespace RolGuardia.Negocio
                                  {
                                      Descripcion = grpGra.Descripcion
                                  },
-                                 IdPersonal = grpPerReg.IdPersonal,
-                                 Nombres = grpPerReg.Nombres,
-                                 ApellidoPaterno = grpPerReg.ApellidoPaterno,
-                                 ApellidoMaterno = grpPerReg.ApellidoMaterno,
-                                 cip = grpPerReg.Cip,
+                                 IdPersonal = grpPerTur.IdPersonal,
+                                 Nombres = grpPerTur.Nombres,
+                                 ApellidoPaterno = grpPerTur.ApellidoPaterno,
+                                 ApellidoMaterno = grpPerTur.ApellidoMaterno,
+                                 cip = grpPerTur.Cip,
                                  Departamento = new DTO.Departamento
                                  {
                                      Descripcion = grpDep.Descripcion
@@ -261,11 +261,11 @@ namespace RolGuardia.Negocio
                                  {
                                      Descripcion = grpGra.Descripcion
                                  },
-                                 IdPersonal = grpPerReg.IdPersonal,
-                                 Nombres = grpPerReg.Nombres,
-                                 ApellidoPaterno = grpPerReg.ApellidoPaterno,
-                                 ApellidoMaterno = grpPerReg.ApellidoMaterno,
-                                 cip = grpPerReg.Cip,
+                                 IdPersonal = grpPerRem.IdPersonal,
+                                 Nombres = grpPerRem.Nombres,
+                                 ApellidoPaterno = grpPerRem.ApellidoPaterno,
+                                 ApellidoMaterno = grpPerRem.ApellidoMaterno,
+                                 cip = grpPerRem.Cip,
                                  Departamento = new DTO.Departamento
                                  {
                                      Descripcion = grpDep.Descripcion

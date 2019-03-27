@@ -20,6 +20,12 @@ namespace RolGuardia.MVC.App_Start
                         .ForMember(dest => dest.Descripcion,
                                     opt => opt.MapFrom(src => src.Descripcion));
 
+                cfg.CreateMap<Model.TipoPapeleta, DTO.TipoPapeleta>()
+                        .ForMember(dest => dest.IdTipoPapeleta,
+                                    opt => opt.MapFrom(src => src.IdTipoPapeleta))
+                        .ForMember(dest => dest.Descripcion,
+                                    opt => opt.MapFrom(src => src.Descripcion));
+
                 cfg.CreateMap<DTO.GradoPersonal, Model.GradoPersonal>()
                         .ForMember(dest => dest.IdGrado,
                                     opt => opt.MapFrom(src => src.IdGrado))
@@ -53,6 +59,8 @@ namespace RolGuardia.MVC.App_Start
                                     opt => opt.MapFrom(src => src.IdPapeleta))
                         .ForMember(dest => dest.NombreCompleto,
                                     opt => opt.MapFrom(src => src.ApellidoPaterno + " " + src.ApellidoMaterno + " " + src.Nombres))
+                        .ForMember(dest => dest.tipoPapeleta,
+                                    opt => opt.MapFrom(src => src.tipoPapeleta))
                         .ForMember(dest => dest.FechaRegistro,
                                     opt => opt.MapFrom(src => src.FechaRegistro))
                         .ForMember(dest => dest.Estado,
