@@ -37,7 +37,7 @@ namespace RolGuardia.Negocio
                       from grupoDepartamento in GrupoDepartamento.DefaultIfEmpty()
 
                       where papeletaMultiple.Estado != "INA"
-
+                      orderby papeletaMultiple.FechaRegistro ascending
                       select new DTO.PapeletaMultiple
                       {
                           IdPapeleta = papeletaMultiple.IdPapeleta,
@@ -93,13 +93,13 @@ namespace RolGuardia.Negocio
                     {
                         NumeroPapeleta = numeroPapeleta,
                         IdPersonalRegistro = papeleta.personalRegistro.IdPersonal,
-                        IdPersonalEnturno = papeleta.personalEnTurno.IdPersonal,
-                        IdPersonalRemplazo = papeleta.personalReemplazo.IdPersonal,
-                        // IdTipoPapeleta = null,
+                        IdPersonalEnturno = (papeleta.personalEnTurno.IdPersonal == 0) ? null : papeleta.personalEnTurno.IdPersonal,
+                        IdPersonalRemplazo = (papeleta.personalReemplazo.IdPersonal == 0) ? null : papeleta.personalReemplazo.IdPersonal,
+                        IdTipoPapeleta = papeleta.tipoPapeleta.IdTipoPapeleta,
                         Estado = "ACT",
                         Observacion = papeleta.Observacion,
-                        FechaCubrir = papeleta.FechaCubrir,
-                        FechaDevolverTurno = papeleta.FechaDevolverTurno,
+                        FechaCubrir = (papeleta.FechaCubrir.HasValue) ? papeleta.FechaCubrir : null,
+                        FechaDevolverTurno = (papeleta.FechaDevolverTurno.HasValue) ? papeleta.FechaDevolverTurno : null,
                         FechaRegistro = DateTime.Today,
                     };
 
@@ -135,10 +135,10 @@ namespace RolGuardia.Negocio
                     {
                         papeletaAEditar.IdPersonalRegistro = papeleta.personalRegistro.IdPersonal;
                         papeletaAEditar.IdPersonalEnturno = (papeleta.personalEnTurno.IdPersonal == 0) ? null : papeleta.personalEnTurno.IdPersonal;
-                        papeletaAEditar.IdPersonalRemplazo = (papeleta.personalReemplazo.IdPersonal == 0) ? null : papeleta.personalReemplazo.IdPersonal; ;
+                        papeletaAEditar.IdPersonalRemplazo = (papeleta.personalReemplazo.IdPersonal == 0) ? null : papeleta.personalReemplazo.IdPersonal;
                         papeletaAEditar.IdTipoPapeleta = papeleta.tipoPapeleta.IdTipoPapeleta;
-                        papeletaAEditar.FechaCubrir = (papeleta.FechaCubrir.Value == papeleta.FechaCubrir.GetValueOrDefault())  ? null: papeleta.FechaCubrir  ;
-                        papeletaAEditar.FechaDevolverTurno = (papeleta.FechaDevolverTurno.Value == papeleta.FechaDevolverTurno.GetValueOrDefault()) ? null : papeleta.FechaDevolverTurno;
+                        papeletaAEditar.FechaCubrir = (papeleta.FechaCubrir.HasValue) ? papeleta.FechaCubrir : null;
+                        papeletaAEditar.FechaDevolverTurno = (papeleta.FechaDevolverTurno.HasValue) ? papeleta.FechaDevolverTurno : null;
                         papeletaAEditar.Observacion = papeleta.Observacion;
                     }
 
@@ -209,8 +209,12 @@ namespace RolGuardia.Negocio
                          from grpPerTur in GrpPerTur.DefaultIfEmpty()
                          from grpPerRem in GrpPerRem.DefaultIfEmpty()
 
-                         join gra in BD.GradoPersonals on grpPerReg.GradoPersonal equals gra into GrpGra
-                         from grpGra in GrpGra.DefaultIfEmpty()
+                         join graPerReg in BD.GradoPersonals on grpPerReg.GradoPersonal equals graPerReg into GrpGraPerReg
+                         from grpGraPerReg in GrpGraPerReg.DefaultIfEmpty()
+                         join graPerTur in BD.GradoPersonals on grpPerTur.GradoPersonal equals graPerTur into GrpGraPerTur
+                         from grpGraPerTur in GrpGraPerTur.DefaultIfEmpty()
+                         join graPerRem in BD.GradoPersonals on grpPerRem.GradoPersonal equals graPerRem into GrpGraPerRem
+                         from grpGraPerRem in GrpGraPerRem.DefaultIfEmpty()
                          join dep in BD.Departamentoes on grpPerReg.Departamento equals dep into GrpDep
                          from grpDep in GrpDep.DefaultIfEmpty()
                          join tip in BD.TipoPaleletas on pap.TipoPaleleta equals tip into GrpTip
@@ -227,7 +231,7 @@ namespace RolGuardia.Negocio
                              {
                                  Grado = new DTO.GradoPersonal
                                  {
-                                     Descripcion = grpGra.Descripcion
+                                     Descripcion = grpGraPerReg.Descripcion
                                  },
                                  IdPersonal = grpPerReg.IdPersonal,
                                  Nombres = grpPerReg.Nombres,
@@ -243,7 +247,7 @@ namespace RolGuardia.Negocio
                              {
                                  Grado = new DTO.GradoPersonal
                                  {
-                                     Descripcion = grpGra.Descripcion
+                                     Descripcion = grpGraPerTur.Descripcion
                                  },
                                  IdPersonal = grpPerTur.IdPersonal,
                                  Nombres = grpPerTur.Nombres,
@@ -259,7 +263,7 @@ namespace RolGuardia.Negocio
                              {
                                  Grado = new DTO.GradoPersonal
                                  {
-                                     Descripcion = grpGra.Descripcion
+                                     Descripcion = grpGraPerRem.Descripcion
                                  },
                                  IdPersonal = grpPerRem.IdPersonal,
                                  Nombres = grpPerRem.Nombres,
@@ -278,7 +282,7 @@ namespace RolGuardia.Negocio
                              },
                              FechaCubrir = pap.FechaCubrir,
                              FechaDevolverTurno = pap.FechaDevolverTurno,
-                             Observacion = pap.Observacion
+                             Observacion = pap.Observacion.Trim()
                          }).FirstOrDefault();
 
                     return papeletaMultiple;

@@ -12,9 +12,9 @@
     padding: 0 0.5em !important;
 }
 
-.OrderID::before
-{
-    /*border: none !important;
+    .OrderID::before
+    {
+        /*border: none !important;
     background-color: transparent !important;
     border-radius: 0.2em !important;
     box-shadow: none !important;
@@ -29,9 +29,9 @@
     padding: 0.2em !important;
     text-rendering: auto !important;
     -webkit-font-smoothing: antialiased !important;*/
-    content: "" !important;
-    display: none !important;
-}
+        content: "" !important;
+        display: none !important;
+    }
 
 .OrderIDno::before
 {
@@ -51,3 +51,18 @@
     -webkit-font-smoothing: antialiased !important;
 }
 /*#endregion*/
+
+.ControSoloLectura
+{
+    background-color: white !important;
+}
+
+.FilaSeleccionadaDetalle
+{
+    background-color: #e2d2ff !important;
+}
+
+.FilaSeleccionadaEdicion
+{
+    background-color: #bcdcff !important;
+}

@@ -189,6 +189,7 @@
     <Content Include="Content\css\datatables_checkboxes\dataTables.checkboxes.css" />
     <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\mis_estilos\general.css" />
+    <Content Include="Content\css\mis_estilos\papeleta_multiple.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\datepicker\bootstrap-datepicker.min.css" />
     <Content Include="Content\img\avatars\avatar-2.jpg" />

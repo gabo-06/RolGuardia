@@ -12,13 +12,13 @@ rolGuardia.userInterface.menuLateral.menu = {};
 
 rolGuardia.userInterface.menuLateral.menu.pintar = function ()
 {
-	var IdMenuSeleccionado = $("#IdMenuSeleccionado").val(); // Obtiene el id del menú seleccionado, el valor del id viene desde el controlador, donde se setea manualmente.
+    var IdMenuSeleccionado = $("#IdMenuSeleccionado").val(); // Obtiene el id del menú seleccionado, el valor del id viene desde el controlador, donde se setea manualmente.
 
-	if (IdMenuSeleccionado !== "")
-	{
-		$("#" + IdMenuSeleccionado).closest("ul").addClass("show");
-		$("#" + IdMenuSeleccionado).closest("li").addClass("active");
-	}
+    if (IdMenuSeleccionado !== "")
+    {
+        $("#" + IdMenuSeleccionado).closest("ul").addClass("show");
+        $("#" + IdMenuSeleccionado).closest("li").addClass("active");
+    }
 };
 rolGuardia.userInterface.configurarComboSelect2 = function (combo, data, placeholder)
 {
@@ -38,6 +38,18 @@ rolGuardia.userInterface.configurarComboSelect2 = function (combo, data, placeho
         }
     });
     combo.val(null).trigger('change');
+};
+
+rolGuardia.userInterface.configurarControlDeFecha = function (controlFecha, funcion)
+{
+    controlFecha.datepicker({
+        autoclose: true,
+        language: "es",
+        // format: "yyyy-mm-dd"
+        format: "dd/mm/yyyy",
+        orientation: "bottom auto",
+        // setDate: rolGuardia.utilities.convertiFecha(Date.now())
+    }).on("changeDate", funcion);
 };
 
 rolGuardia.userInterface.menuLateral.menu.pintar();  // Se llama cada vez que se carga la página.

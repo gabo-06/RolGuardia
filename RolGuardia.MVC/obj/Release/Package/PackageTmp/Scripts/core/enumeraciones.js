@@ -14,9 +14,3 @@ rolGuardia.enumeraciones.TipoPapeleta = {
     "VACACIONES": "VACACIONES",
     "CAMBIO DE GUARDIA": "CAMBIO DE GUARDIA"
 };
-
-rolGuardia.enumeraciones.TipoOperacion = {
-    "REGISTRO": "REGISTRO",
-    "EDICION": "EDICION",
-    "DETALLE": "DETALLE"
-};

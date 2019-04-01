@@ -1,19 +1,7 @@
 ﻿@*PaletaMultiple/Index*@
 @section styles
 {
-    <style>
-        tr > th:first-child:after,
-        tr > th:first-child:before
-        {
-            display: none !important;
-        }
-
-        .custom-control-label:after,
-        .custom-control-label:before
-        {
-            left: inherit;
-        }
-    </style>
+    <link href="~/Content/css/mis_estilos/papeleta_multiple.css" rel="stylesheet" />
     <link href="~/Content/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
 }
 @section scripts
@@ -47,66 +35,58 @@
                     <div class="tab-content">
                         <div id="CuerpoPestañaListado" class="tab-pane fade show active" role="tabpanel">
                             @*<div class="card bg-light pt-2 col-12 col-lg-12 col-xxl-12 ">*@
-                            <div class="card bg-light">
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                            <div class="form-group col-xl-6 col-sm-12 mb-4">
-                                                <label class="col-form-label text-left font-weight-bold" for="txtNumeroPapeletaF">Número de Papeleta</label>
-                                                <input type="text" class="col-lg-12 form-control" id="txtNumeroPapeletaF" tabindex="6" placeholder="Número de Papeleta">
-                                            </div>
-                                            <div class="form-group col-xl-6 col-sm-12 mb-4">
-                                                <label class="col-form-label text-left font-weight-bold" for="txtApellidosNombresF">Apellidos y Nombres</label>
-                                                <input type="text" class="col-lg-12 form-control" id="txtApellidosNombresF" tabindex="6" placeholder="Apellidos y Nombres">
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="row ml-0 mb-3">
+                                <button type="button" class="col-xl-1 col-12 col btn btn-primary" id="btnNuevaPapeleta" data-toggle="tooltip" data-placement="right" title="" data-original-title="Nueva Papeleta">
+                                    <i class="fas fa-file"></i> Nueva
+                                </button>
                             </div>
-                            <div class="row">
-                                <div class="col-12 col-lg-12 col-xl-12">
-                                    <div class="card bg-light">
-                                        <div class="card bg-light ml-3 mt-3 mr-3 mb-0">
-                                            @*<span class="badge badge-dark col-2">Estados de Papeleta</span>*@
-                                            <div class="card-header">Estados de Papeleta</div>
-                                            <div class="card-body">
-                                                <span class="font-weight-bold text-info float-left mr-4"><i class="fas fa-square"></i> Papeleta Activa </span>
-                                                <span class="font-weight-bold text-success float-left mr-4"><i class="fas fa-square"></i> Papeleta Aprobada</span>
-                                                <span class="font-weight-bold text-danger float-left mr-4"><i class="fas fa-square"></i> Papeleta Rechazada</span>
-                                                <span class="font-weight-bold text-dark float-left mr-4"><i class="fas fa-square"></i> Papeleta Inactiva</span>
-                                            </div>
+                            <div class="card bg-light">
+                                <div class="card-header font-weight-bold">Filtro</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-xl-6 col-sm-12 mb-2">
+                                            @*<label class="col-form-label text-left font-weight-bold" for="txtNumeroPapeletaF">Número de Papeleta</label>*@
+                                            <input type="text" class="col-lg-12 form-control" id="txtNumeroPapeletaF" placeholder="Número de Papeleta">
                                         </div>
-                                        <div class="card-body pt-2 pb-0">
-                                            <button type="button" class="btn btn-primary" id="btnNuevaPapeleta" data-toggle="tooltip" data-placement="top" title="" data-original-title="Nueva Papeleta">
-                                                <i class="fas fa-plus-square"></i>
-                                            </button>
-                                        </div>
-                                        <div class="card-body pt-0">
-                                            <table id="tblPapeletaMultiple" class="table table-striped table-light" style="width:100%">
-                                                <thead>
-                                                    <tr class="bg-dark text-light">
-                                                        <th></th>
-                                                        <th>
-                                                            @*<label class='custom-control custom-checkbox' style='text-align: center! important; padding: 0! important; display: contents;'>
-                                                                <input type='checkbox' class='custom-control-input FilaPapeleta' id='SeleccionarPapeletasTodas' value='' name='validation-checkbox-custom'>
-                                                                <span class='custom-control-label' style='top: 12px'></span>
-                                                            </label>*@
-                                                        </th>
-                                                        <th># de Papeleta</th>
-                                                        <th>Grado</th>
-                                                        <th>Especialidad</th>
-                                                        <th>Apellidos y Nombres</th>
-                                                        <th>Departamento</th>
-                                                        <th>Fecha de Registro</th>
-                                                        <th>Operaciones</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
+                                        <div class="form-group col-xl-6 col-sm-12 mb-2">
+                                            @*<label class="col-form-label text-left font-weight-bold" for="txtApellidosNombresF">Apellidos y Nombres</label>*@
+                                            <input type="text" class="col-lg-12 form-control" id="txtApellidosNombresF" placeholder="Apellidos y Nombres">
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
-                            <div class="modal fade" id="ConfirmacionAprobacion" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+
+                            <div class="card bg-light">
+                                <div class="card-header">Datos</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-3"><span class="font-weight-bold text-info float-left mr-4"><i class="fas fa-square"></i> Papeleta Activa </span></div>
+                                        <div class="col-xl-3"><span class="font-weight-bold text-success float-left mr-4"><i class="fas fa-square"></i> Papeleta Aprobada</span></div>
+                                        <div class="col-xl-3"><span class="font-weight-bold text-danger float-left mr-4"><i class="fas fa-square"></i> Papeleta Rechazada</span></div>
+                                        <div class="col-xl-3"><span class="font-weight-bold text-dark float-left mr-4"><i class="fas fa-square"></i> Papeleta Inactiva</span></div>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <table id="tblPapeletaMultiple" class="table table-striped table-light" style="width:100%">
+                                        <thead>
+                                            <tr class="bg-dark text-light">
+                                                <th></th>
+                                                @*<th></th>*@
+                                                <th># de Papeleta</th>
+                                                <th>Grado</th>
+                                                <th>Especialidad</th>
+                                                <th>Apellidos y Nombres</th>
+                                                <th>Departamento</th>
+                                                <th>Fecha de Registro</th>
+                                                <th>Operaciones</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="ConfirmacionAprobacion" role="dialog" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -130,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="ConfirmacionRechazo" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                            <div class="modal fade" id="ConfirmacionRechazo" role="dialog" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -155,7 +135,7 @@
                                 </div>
                             </div>
 
-                            <div class="modal fade" id="ConfirmacionEliminacion" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                            <div class="modal fade" id="ConfirmacionEliminacion" role="dialog" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -179,268 +159,209 @@
                                     </div>
                                 </div>
                             </div>
-                            @*</div>*@
                         </div>
                         <div id="CuerpoPestañaRegistro" class="tab-pane fade show" role="tabpanel">
-                            @*<div class="card bg-light pt-2 col-12 col-lg-12 col-xxl-12 ">*@
                             <form id="frmRegistroPapeleta">
                                 <div class="card bg-light">
                                     <div class="card-header">
-                                        <h3 class="text-primary TituloOperacionPapeleta" id="TituloRegistroPapeleta">
-                                            <strong>
-                                                <i class="fas fa-plus-square"></i> Nueva Papeleta
-                                            </strong>
-                                        </h3>
-                                        <h3 class="text-primary d-none TituloOperacionPapeleta" id="TituloEdicionPapeleta">
-                                            <strong>
-                                                <i class="fas fa-edit"></i> Papeleta:
-                                            </strong>
-                                            <span class="TituloNumeroPapeleta"></span>
-                                        </h3>
-                                        <h3 class="text-primary d-none TituloOperacionPapeleta" id="TituloDetallePapeleta">
-                                            <strong>
-                                                <i class="fas fa-edit"></i> Papeleta:
-                                            </strong>
-                                            <span class="TituloNumeroPapeleta"></span>
+                                        <h3 class="text-primary TituloOperacionPapeleta">
+                                            <strong>Papeleta</strong>
                                         </h3>
                                         <input type="hidden" id="hdIdPapeleta" />
                                     </div>
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtCIPF">CIP:</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-2 col-sm-12 mb-2">
-                                                    <input type="text" class="form-control" id="txtCIPF" tabindex="6" placeholder="CIP">
+                                        <h5 class="mb-4 card-title font-italic">Personal que registra papeleta</h5>
+                                        <div class="card-text">
+                                            <div class="row form-group mb-2">
+                                                <div class="col-xl-2 col-sm-12">
+                                                    <input type="text" class="form-control" id="txtCIPF" tabindex="6" placeholder="CIP" disabled>
                                                     <input type="hidden" id="hdIdPersonal" />
                                                 </div>
-                                                <div class="col-xl-1 col-sm-12 mb-2 btn-group d-flex">
-                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar">
+                                                <div class="col-xl-1 col-sm-12 btn-group d-flex">
+                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar" disabled>
                                                         <i class="fas fa-search"></i>
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 ">
-                                                <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
-                                                    <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true" class="text-warning">×</span>
-                                                    </button>
-                                                    <div class="alert-icon">
-                                                        <i class="fas fa-fw fa-exclamation-circle"></i>
-                                                    </div>
-                                                    <div class="alert-message text-warning">
-                                                        <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 ">
-                                                <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
-                                                    <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true" class="text-danger">×</span>
-                                                    </button>
-                                                    <div class="alert-icon">
-                                                        <i class="fas fa-fw fa-times-circle"></i>
-                                                    </div>
-                                                    <div class="alert-message text-danger">
-                                                        <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
+                                            <div class="row">
+                                                <div class="col-12 ">
+                                                    <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true" class="text-warning">×</span>
+                                                        </button>
+                                                        <div class="alert-icon">
+                                                            <i class="fas fa-fw fa-exclamation-circle"></i>
+                                                        </div>
+                                                        <div class="alert-message text-warning">
+                                                            <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtGradoNombre">Grado y Nombre:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtGradoNombre" name="txtGradoNombre" tabindex="6" placeholder="Grado y Nombre" readonly>
+                                                <div class="col-12 ">
+                                                    <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true" class="text-danger">×</span>
+                                                        </button>
+                                                        <div class="alert-icon">
+                                                            <i class="fas fa-fw fa-times-circle"></i>
+                                                        </div>
+                                                        <div class="alert-message text-danger">
+                                                            <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtCIP">CIP:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtCIP" name="txtCIP" tabindex="6" placeholder="CIP" readonly>
+                                            <div class="row">
+                                                <div class="col-xl-9 col-sm-12 form-group">
+                                                    <input type="text" class="col-lg-12 form-control" id="txtGradoNombre" name="txtGradoNombre" tabindex="6" placeholder="Grado y Nombre" disabled>
+                                                </div>
+                                                <div class="col-xl-3 col-sm-12 form-group">
+                                                    <input type="text" class="col-lg-12 form-control" id="txtDepartamento" name="txtDepartamento" tabindex="6" placeholder="Departamento" disabled>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtDepartamento">Departamento:</label>
-                                                    <input type="text" class="col-lg-12 form-control bg-light" id="txtDepartamento" name="txtDepartamento" tabindex="6" placeholder="Departamento" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card bg-light">
-                                    <div class="card-body">
-                                        <!--#region Combo Tipo de Condición -->
-                                        <div class="row">
-                                            <div class="col-xl-4 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="cmbCondicion" class="col-form-label text-left font-weight-bold">Tipo de Papeleta</label>
-                                                    <select class="form-control" id="cmbTipoPapeleta" name="validation-select">
+                                            <div class="row form-group mt-2">
+                                                <div class="col-xl-4 col-sm-12">
+                                                    <select class="form-control" id="cmbTipoPapeleta" name="cmbTipoPapeleta" tabindex="6" disabled>
                                                         <option></option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--#endregion -->
-                                        <hr />
                                         <div class="d-none" id="AsigancionGuardia">
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <label class="col-form-label text-left font-weight-bold" for="txtCIPCubriraF">CIP:</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xl-2 col-sm-12 mb-2">
-                                                        <input type="text" class="form-control" id="txtCIPCubriraF" tabindex="6" placeholder="CIP">
+                                            <h5 class="mt-4 mb-4 card-title font-italic">Personal que solicita cambio de turno</h5>
+                                            <div class="card-text">
+                                                <div class="row form-group mb-2">
+                                                    <div class="col-xl-2 col-sm-12">
+                                                        <input type="text" class="form-control" id="txtCIPCubriraF" tabindex="7" placeholder="CIP">
                                                         <input type="hidden" id="hdIdPersonalCubrira" />
                                                     </div>
-                                                    <div class="col-xl-1 col-sm-12 mb-2 btn-group d-flex">
-                                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar">
+                                                    <div class="col-xl-1 col-sm-12 btn-group d-flex">
+                                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar" tabindex="8" disabled>
                                                             <i class="fas fa-search"></i>
                                                         </button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12 ">
-                                                    <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
-                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true" class="text-warning">×</span>
-                                                        </button>
-                                                        <div class="alert-icon">
-                                                            <i class="fas fa-fw fa-exclamation-circle"></i>
-                                                        </div>
-                                                        <div class="alert-message text-warning">
-                                                            <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 ">
-                                                    <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
-                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true" class="text-danger">×</span>
-                                                        </button>
-                                                        <div class="alert-icon">
-                                                            <i class="fas fa-fw fa-times-circle"></i>
-                                                        </div>
-                                                        <div class="alert-message text-danger">
-                                                            <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-9 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label class="col-form-label text-left font-weight-bold" for="txtGradoNombreCubrira">Grado y Nombre:</label>
-                                                        <input type="text" class="col-lg-12 form-control bg-light" id="txtGradoNombreCubrira" name="txtGradoNombreCubrira" tabindex="6" placeholder="Grado y Nombre" readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label class="col-form-label text-left font-weight-bold" for="txtFechaCubrira">Cubrirá el día:</label>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-prepend">
-                                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                                            </span>
-                                                            <input type="text" class="form-control dtpFecha bg-light" id="txtFechaCubrira" name="txtFechaCubrira" tabindex="3" readonly />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
                                                 <div class="row">
-                                                    <div class="col-12">
-                                                        <label class="col-form-label text-left font-weight-bold" for="txtCIPDevolveraF">CIP:</label>
+                                                    <div class="col-12 ">
+                                                        <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                            <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true" class="text-warning">×</span>
+                                                            </button>
+                                                            <div class="alert-icon">
+                                                                <i class="fas fa-fw fa-exclamation-circle"></i>
+                                                            </div>
+                                                            <div class="alert-message text-warning">
+                                                                <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 ">
+                                                        <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                            <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true" class="text-danger">×</span>
+                                                            </button>
+                                                            <div class="alert-icon">
+                                                                <i class="fas fa-fw fa-times-circle"></i>
+                                                            </div>
+                                                            <div class="alert-message text-danger">
+                                                                <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-xl-2 col-sm-12 mb-2">
-                                                        <input type="text" class="form-control" id="txtCIPDevolveraF" tabindex="6" placeholder="CIP">
+                                                    <div class="col-xl-9 col-sm-12">
+                                                        <div class="form-group">
+                                                            <input type="text" class="col-lg-12 form-control" id="txtGradoNombreCubrira" name="txtGradoNombreCubrira" placeholder="Grado y Nombre" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-3 col-sm-12">
+                                                        <div class="form-group">
+                                                            <div class="input-group date">
+                                                                <span class="input-group-prepend">
+                                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                                </span>
+                                                                <input type="text" class="form-control dtpFecha" id="txtFechaCubrira" name="txtFechaCubrira" tabindex="9" placeholder="Cubrirá el día" disabled />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h5 class="mt-3 mb-4 card-title font-italic">Personal que cubrirá el turno</h5>
+                                            <div class="card-text">
+                                                <div class="row form-group mb-2">
+                                                    <div class="col-xl-2 col-sm-12">
+                                                        <input type="text" class="form-control" id="txtCIPDevolveraF" tabindex="10" placeholder="CIP">
                                                         <input type="hidden" id="hdIdPersonalDevolvera" />
                                                     </div>
-                                                    <div class="col-xl-1 col-sm-12 mb-2 btn-group d-flex">
-                                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar">
+                                                    <div class="col-xl-1 col-sm-12 btn-group d-flex">
+                                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar" tabindex="11" disabled>
                                                             <i class="fas fa-search"></i>
                                                         </button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12 ">
-                                                    <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
-                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true" class="text-warning">×</span>
-                                                        </button>
-                                                        <div class="alert-icon">
-                                                            <i class="fas fa-fw fa-exclamation-circle"></i>
+                                                <div class="row">
+                                                    <div class="col-12 ">
+                                                        <div class="alert alert-warning alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                            <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true" class="text-warning">×</span>
+                                                            </button>
+                                                            <div class="alert-icon">
+                                                                <i class="fas fa-fw fa-exclamation-circle"></i>
+                                                            </div>
+                                                            <div class="alert-message text-warning">
+                                                                <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
+                                                            </div>
                                                         </div>
-                                                        <div class="alert-message text-warning">
-                                                            <span class="font-weight-bold">Advertencia: </span> ¡Ingrese un CIP para buscar!
+                                                    </div>
+                                                    <div class="col-12 ">
+                                                        <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
+                                                            <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true" class="text-danger">×</span>
+                                                            </button>
+                                                            <div class="alert-icon">
+                                                                <i class="fas fa-fw fa-times-circle"></i>
+                                                            </div>
+                                                            <div class="alert-message text-danger">
+                                                                <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 ">
-                                                    <div class="alert alert-danger alert-outline-coloured alert-dismissible d-none" role="alert">
-                                                        <button type="button" class="btn-sm close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true" class="text-danger">×</span>
-                                                        </button>
-                                                        <div class="alert-icon">
-                                                            <i class="fas fa-fw fa-times-circle"></i>
-                                                        </div>
-                                                        <div class="alert-message text-danger">
-                                                            <span class="font-weight-bold">Error: </span> ¡Personal no encontrado!
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-xl-9 col-sm-12 form-group mb-0">
+                                                        <input type="text" class="col-lg-12 form-control" id="txtGradoNombreDevolvera" name="txtGradoNombreDevolvera" placeholder="Grado y Nombre" disabled>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-9 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label class="col-form-label text-left font-weight-bold" for="txtGradoNombreDevolvera">Grado y Nombre:</label>
-                                                        <input type="text" class="col-lg-12 form-control bg-light" id="txtGradoNombreDevolvera" name="txtGradoNombreDevolvera" tabindex="6" placeholder="Grado y Nombre" readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label class="col-form-label text-left font-weight-bold" for="txtFechaDevolvera">Devolverá el día:</label>
+                                                    <div class="col-xl-3 col-sm-12 form-group mb-0">
                                                         <div class="input-group date">
                                                             <span class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                             </span>
-                                                            <input type="text" class="form-control bg-light dtpFecha" id="txtFechaDevolvera" name="txtFechaDevolvera" tabindex="3" readonly />
+                                                            <input type="text" class="form-control dtpFecha" id="txtFechaDevolvera" name="txtFechaDevolvera" tabindex="12" placeholder="Devolverá el día" disabled />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label class="col-form-label text-left font-weight-bold" for="txtMotivo">Motivo:</label>
-                                                    <textarea class="form-control" placeholder="Motivo" id="txtMotivo" rows="5" tabindex=""></textarea>
-                                                </div>
+                                        <div class="row mt-4">
+                                            <div class="col-12 form-group">
+                                                <textarea class="form-control" id="txtMotivo" rows="5" tabindex="13" placeholder="Motivo" maxlength="200" disabled></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        @*<button type="submit" id="btnRegistrarPapeleta" class="btn btn-primary text-right" data-toggle="modal" data-target="#ConfirmacionRegistro">*@
-                                        <button type="submit" id="btnGuardarPapeleta" class="btn btn-primary text-right">
+                                        <button type="submit" id="btnGuardarPapeleta" class="btn btn-primary text-right" tabindex="14" disabled>
                                             <i class="far fa-save"></i> Guardar
                                         </button>
-                                        <button type="button" id="btnCancelarRegistroPapeleta" class="btn btn-danger text-right">
+                                        <button type="button" id="btnImprimirPapeleta" class="btn btn-warning text-right" tabindex="15" disabled>
+                                            <i class="fas fa-print"></i> Imprimir
+                                        </button>
+                                        <button type="button" id="btnCancelarRegistroPapeleta" class="btn btn-danger text-right" tabindex="16" disabled>
                                             <i class="far fa-times-circle"></i> Cancelar
                                         </button>
-                                        <div class="modal fade" id="ConfirmacionRegistro" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                        <div class="modal fade" id="ConfirmacionRegistro" role="dialog" style="display: none;" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -462,7 +383,6 @@
                                     </div>
                                 </div>
                             </form>
-                            @*</div>*@
                         </div>
                     </div>
                 </div>

@@ -18,9 +18,9 @@ namespace RolGuardia.MVC.Models
         public string NombreCompleto { get; set; }
         public string Departamento { get; set; }
         public TipoPapeleta tipoPapeleta { get; set; }
-        public DateTime FechaCubrir { get; set; }
-        public DateTime FechaDevolverTurno { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public Nullable<DateTime> FechaCubrir { get; set; }
+        public Nullable<DateTime> FechaDevolverTurno { get; set; }
+        public Nullable<DateTime> FechaRegistro { get; set; }
         public string Estado { get; set; }
         public string Observacion { get; set; }
     }

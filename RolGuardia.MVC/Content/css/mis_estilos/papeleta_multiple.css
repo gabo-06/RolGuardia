@@ -1,0 +1,21 @@
+﻿tr > th:first-child:after,
+tr > th:first-child:before
+{
+    display: none !important;
+}
+
+.custom-control-label:after,
+.custom-control-label:before
+{
+    left: inherit;
+}
+
+.Error:focus
+{
+    box-shadow: 0 0 0 0.2rem rgba(244,68,85,.25);
+}
+
+.Error
+{
+    border-color: red !important;
+}

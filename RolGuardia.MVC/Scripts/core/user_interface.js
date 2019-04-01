@@ -39,7 +39,7 @@ rolGuardia.userInterface.configurarComboSelect2 = function (combo, data, placeho
     });
     combo.val(null).trigger('change');
 };
-
+// #region Configura un control de fecha recibiendo el control (elemento del DOM) y la función que se ejecuta al seleccionar la fecha.
 rolGuardia.userInterface.configurarControlDeFecha = function (controlFecha, funcion)
 {
     controlFecha.datepicker({
@@ -51,5 +51,5 @@ rolGuardia.userInterface.configurarControlDeFecha = function (controlFecha, func
         // setDate: rolGuardia.utilities.convertiFecha(Date.now())
     }).on("changeDate", funcion);
 };
-
+// #endregion
 rolGuardia.userInterface.menuLateral.menu.pintar();  // Se llama cada vez que se carga la página.
